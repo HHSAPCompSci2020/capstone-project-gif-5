@@ -32,7 +32,7 @@ public class DrawingSurface extends PApplet {
 	private double x;
 
 	public DrawingSurface() {
-		master = new Player();
+		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
 		goblin = new Goblin();
 		counter = 1;
 		gcounter = 1;
@@ -68,7 +68,7 @@ public class DrawingSurface extends PApplet {
 		goblin.draw(this);
 
 		//animate le object
-		animation();
+		
 		
 		
 		//the wand action
@@ -87,8 +87,8 @@ public class DrawingSurface extends PApplet {
 
 
 	
-
-	
+     
+	 
 	public void keyPressed() {
 		
 		if (key == 'w') {
@@ -131,40 +131,7 @@ public class DrawingSurface extends PApplet {
 	}
 
 	
-	public void animation(){
-		
-		repeat++;
-		if (repeat % 10 == 0) {
-			counter++;
-			if (counter > 6) {
-				counter = 1;
-			}
-		}
-
-		if (repeat % 3 == 0) {
-			gcounter++;
-			if (gcounter > 6) {
-				gcounter = 1;
-			}
-		}
-		
-		if (!facingLeft) {
-			photo = loadImage("WIZARD" + counter + ".png");
-		} else {
-			photo = loadImage("LWIZARD" + counter + ".png");
-		}
-
-		if (!facingLeft) {
-			goblinImg = loadImage("goblin" + gcounter + ".png");
-		} else {
-			goblinImg = loadImage("Lgoblin" + gcounter + ".png");
-		}
-
-
-		image(goblinImg, goblin.getX(),goblin.getY(), 48, 48);
-		image(photo, master.getX(), master.getY()-10,64,64);
-
-	}
+	
 
 	public void setUpWand(){
 		 translate((float) master.getX(), (float) master.getY());

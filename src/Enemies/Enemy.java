@@ -63,8 +63,8 @@ public class Enemy {
     }
 
     public boolean Intersects(Player p) {
-        float distanceX = p.getX() - getX();
-        float distanceY = p.getY() - getY();
+        float distanceX = (float)p.getX() - getX();
+        float distanceY = (float)p.getY() - getY();
         float radiusSum = getDiameter() / 2 + p.getDiameter();
         return distanceX * distanceX + distanceY * distanceY <= radiusSum * radiusSum;
     }

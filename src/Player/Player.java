@@ -1,7 +1,6 @@
 package Player;
 import gbitton299.shapes.*;
-import processing.core.PApplet;
-
+import processing.core.*;
 import javax.imageio.*;
 import java.awt.image.*;
 import java.io.*;
@@ -11,7 +10,7 @@ import javax.swing.*;
 
 
 
-public class Player{
+public class Player extends MovingImage{
 	
 	private int x,y, diameter;
 	private int ax,ay;
@@ -21,14 +20,12 @@ public class Player{
 	private boolean keyReleased;
 	private int state = 0;
 	
-	public Player() {
-	
-		x = 100;
-		y = 100;
-		diameter = 40;
-		health = 100;
+	public Player(PImage i,int x,int y,int w,int h,String name, int frames) {
+		
+		super( i,  x,  y,  w,  h,  frames,  name);
 		
 	}
+	
 	
 	
 
@@ -156,11 +153,11 @@ public class Player{
 	}
 
 
-	public int getX(){
+	public double getX(){
 		return x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
