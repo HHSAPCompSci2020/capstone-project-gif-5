@@ -17,6 +17,19 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 */
+
+
+
+
+
+/**
+ * 
+ * @author ido Tal
+ * @version
+ * This class connects everything together and draws it
+ */
+
+
 public class DrawingSurface extends PApplet {
 	
 
@@ -35,7 +48,10 @@ public class DrawingSurface extends PApplet {
 	private int repeat;
 	private boolean facingLeft;
 	private double x;
-
+	
+	/**
+	 * constructs the player and some monsters
+	 */
 	public DrawingSurface() {
 		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
 		enemies.add(new Goblin());
@@ -44,8 +60,10 @@ public class DrawingSurface extends PApplet {
 		gcounter = 1;
 		repeat = 0;
 	}
-	
-
+		
+	/**
+	 * initializes the images
+	 */
 	public void setup() {
 		long start = System.currentTimeMillis();
 		imageMode(CENTER);
@@ -57,7 +75,9 @@ public class DrawingSurface extends PApplet {
 		photo.resize(128,128);
 	}
 	
-
+	/**
+	 * draws the enemiesand other things on the dungeon
+	 */
 	public void draw() {
 		
 
@@ -99,7 +119,9 @@ public class DrawingSurface extends PApplet {
 
 	
      
-	 
+	 /**
+	  * checks key pressed and then makes the wizard move
+	  */
 	public void keyPressed() {
 		
 		if (key == 'w') {
@@ -129,20 +151,27 @@ public class DrawingSurface extends PApplet {
 			master.changeState(2);
 		}
 	}
+	/**
+	 * checks if the mouse is pressed
+	 */
 	public void mousePressed() {
 		
 		
 		
 		
 	}
-	
+	/**
+	 * checks if a key is realeased
+	 */
 
 	public void keyReleased(){
 		master.keyReleased();
 	}
 
 	
-	
+	/**
+	 * setsUp the wand to make it rotates in the correct angle and face the mouse at all times
+	 */
 
 	public void setUpWand(){
 		 translate((float) master.getX(), (float) master.getY());
