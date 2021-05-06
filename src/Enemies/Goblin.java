@@ -14,12 +14,11 @@ public class Goblin extends Enemy{
 		health = 25;
 	}
 
-    public void makeGoblins(Player p) {
-        if (Intersects(p)) {
-            p.setHealth(-0.5);
+    public void act(Player p) {
+        super.act(p);
+        if (intersects(p)) {
+            p.setHealth(-10);
         }
-
-        act(p);
     }
 
 
