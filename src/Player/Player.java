@@ -162,7 +162,7 @@ public class Player extends MovingImage{
 
 	/**
 	 * makes it so you move smoothly in correct direction
-	 * @param change the way you move
+	 * @param changer the way you move
 	 */
 	public void changeState(int changer){
 		state = changer;
@@ -185,7 +185,7 @@ public class Player extends MovingImage{
 	}
 	/**
 	 * adds an amount to the health
-	 * @param new value to set health to
+	 * @param change new value to set health to
 	 */
 	public void setHealth(double change) {
 		health += change;

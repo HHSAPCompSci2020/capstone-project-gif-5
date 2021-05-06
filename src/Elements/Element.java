@@ -23,7 +23,7 @@ public abstract class Element extends MovingImage{
 	 * @param y the starting y coordinate
 	 * @param w the width of the ice image
 	 * @param h the height of the ice image
-	 * @param frames 
+	 * @param frames The number of frames the animation has
 	 * @param speed the speed of the ice element
 	 * @param direction the direction that the ice element will move towards
 	 * */
