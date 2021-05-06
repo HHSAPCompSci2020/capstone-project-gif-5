@@ -16,6 +16,17 @@ public abstract class Element extends MovingImage{
 	private Shape s; //for testing intersections
 	
 	//what does "frames" do?
+	
+	/**instantiates an ice element
+	 * @param img the ice image
+	 * @param x the starting x coordinate
+	 * @param y the starting y coordinate
+	 * @param w the width of the ice image
+	 * @param h the height of the ice image
+	 * @param frames 
+	 * @param speed the speed of the ice element
+	 * @param direction the direction that the ice element will move towards
+	 * */
 	public Element(PImage img, int x, int y, int w, int h, int frames, int speed, double direction, String name) {
 		super(img, x, y, w, h, frames, name);
 		s = new Circle(); // s is a new shape
@@ -23,6 +34,9 @@ public abstract class Element extends MovingImage{
 		this.direction = direction;
 	}
 	
+	/** checks whether any enemies have touched the element. if there are any, then interact with them
+	 * @param e an arraylist full of all the enemies
+	 * */
 	public void interactWithEnemies(ArrayList<Enemy> e) {
 		for(int i = 0; i < e.size(); i ++) {
 			if(this.intersectsEnemy(e.get(i))) {
@@ -34,7 +48,8 @@ public abstract class Element extends MovingImage{
 
 	/**
 	 * returns whether any of the four corners of the enemy are inside the element
-	 * 
+	 * @param e the enemy that this element checks for intersection with
+	 * @return whether this element has intersected this enemy or not
 	 * */
 	public boolean intersectsEnemy(Enemy e) {
 		// if s intersects any of the enemies, the enemies will lose health
@@ -57,6 +72,11 @@ public abstract class Element extends MovingImage{
 		return false;
 	}
 	
+	/** returns whether the given point is inside the element or not
+	 * @param x the x coordinate of the given point
+	 * @param y the y coordinate of the given point
+	 * @return whether the given point is inside the element
+	 * */
 	public boolean isPointInside(int x, int y) {
 		// 
 		if(this.x + width >= x && this.x <= x) {
@@ -74,13 +94,19 @@ public abstract class Element extends MovingImage{
 	// when the element hits a wall or enemy, it dissipates.
 	// however, based on the placement of the enemies around the element,
 	// elements dissipate in different ways. 
+	/** makes this element disappear from the board
+	 * */
 	public abstract void dissipate(); 
 	
+	/** draws the element
+	 * */
 	public void draw(PApplet g) {	
 		super.draw(g);
 		
 	}
 	
+	/**moves the element
+	 * */
 	public void move() {
 		// changes the x and y coordinates of the element,
 		// moves in the direction of the private angle variable
@@ -102,9 +128,16 @@ public abstract class Element extends MovingImage{
 		y -= speed * Math.sin(direction);
 	}
 	
+	/** returns the starting x coordinate of the element
+	 * @return the starting x coordinate of the element
+	 * */
 	public double getX() {
 		return x;
 	}
+	
+	/** returns the starting y coordinate of the element
+	 * @return the starting y coordinate of the element
+	 * */
 	public double getY() {
 		return y;
 	}
