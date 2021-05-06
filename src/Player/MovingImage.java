@@ -68,7 +68,8 @@ public class MovingImage extends Rectangle2D.Double {
 		
 		repeat++;
 		if (repeat % 10 == 0) {
-			counter++;
+			counter
+			++;
 			if (counter > frames) {
 				counter = 1;
 			}
