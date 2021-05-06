@@ -1,6 +1,8 @@
 package Testers;
 
 import javax.swing.*;
+
+import Elements.Element;
 import Enemies.*;
 import processing.core.*;
 import gbitton299.shapes.*;
@@ -21,10 +23,12 @@ public class DrawingSurface extends PApplet {
 
 	Player master;
 	Goblin goblin;
+	Element ice;
 	private PImage photo;
 	private PImage wand;
 	private PImage dungeon1;
 	private PImage goblinImg;
+	private PImage iceImg;
 	private int gcounter;
 	private int counter;
 	private int repeat;
@@ -34,6 +38,7 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
 		goblin = new Goblin();
+		ice = new Ice();
 		counter = 1;
 		gcounter = 1;
 		repeat = 0;

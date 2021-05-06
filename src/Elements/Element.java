@@ -22,15 +22,52 @@ public abstract class Element extends MovingImage{
 		this.speed = speed;
 		this.direction = direction;
 	}
-
 	
-	public boolean intersectsEnemy(ArrayList<Enemy> enemies) {
+	public void interactWithEnemies(ArrayList<Enemy> e) {
+		for(int i = 0; i < e.size(); i ++) {
+			if(this.intersectsEnemy(e.get(i))) {
+				//enemy loses health
+				dissipate();
+			}
+		}
+	}
+
+	/**
+	 * returns whether any of the four corners of the enemy are inside the element
+	 * 
+	 * */
+	public boolean intersectsEnemy(Enemy e) {
 		// if s intersects any of the enemies, the enemies will lose health
 		// if this is true, the element will dissipate and be set to null;
 		
+		//if any of the four coordinates of the square around an enemy
+		//is inside the element, then return true
+		if(isPointInside(e.getX(), e.getY())) {
+			return true;
+		}
+		if(isPointInside(e.getX() + e.getDiameter(), e.getY())) {
+			return true;
+		}
+		if(isPointInside(e.getX() + e.getDiameter(), e.getY() + e.getDiameter())) {
+			return true;
+		}
+		if(isPointInside(e.getX(), e.getY() + e.getDiameter())) {
+			return true;
+		}
+		return false;
 	}
 	
-	public boolean intersectsWalls() { //parameters? you need the dungeon so you know where the walls are
+	public boolean isPointInside(int x, int y) {
+		// 
+		if(this.x + width >= x && this.x <= x) {
+			if(this.y + height >= y && this.y <= y) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean intersectsWalls(Dungeon d) { //parameters? you need the dungeon so you know where the walls are
 		
 	}
 	
@@ -39,8 +76,9 @@ public abstract class Element extends MovingImage{
 	// elements dissipate in different ways. 
 	public abstract void dissipate(); 
 	
-	public void draw(PApplet g) {
-		super(g); // why doesn't this work?
+	public void draw(PApplet g) {	
+		super.draw(g);
+		
 	}
 	
 	public void move() {
@@ -61,6 +99,12 @@ public abstract class Element extends MovingImage{
 		}
 	}
 	
+	public double getX() {
+		return x;
+	}
+	public double getY() {
+		return y;
+	}
 	
 	// other methods : 
 	// intersects wall?
