@@ -8,6 +8,16 @@ import java.util.Scanner;
 
 import processing.core.PApplet;
 
+
+
+/**
+ * This class reads the dungeon and easily makes levels
+ * @author ido Tal
+ * @version 5/6/20
+ *
+ */
+
+
 public abstract class Dungeon {
 
 	/** Add a field to represent the grid. This time, make it a 2D array of characters. **/
@@ -148,7 +158,11 @@ public abstract class Dungeon {
 	}
 	
 
-
+	/**
+	 * This reads the file and updates the array
+	 * @param filename the name of the file being read
+	 * @param gameData the data of whats there 
+	 */
 	public void readData (String filename, char[][] gameData) {
 		File dataFile = new File(filename);
 
