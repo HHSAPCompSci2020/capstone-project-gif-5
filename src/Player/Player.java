@@ -183,6 +183,7 @@ public class Player extends MovingImage{
 		}
 		return isPointInside;
 	}
+	
 	/**
 	 * adds an amount to the health
 	 * @param change new value to set health to
