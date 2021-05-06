@@ -43,7 +43,7 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param y  the y coordinate of the image
 	 * @param w the width of the image
 	 * @param h  the height of the image
-	 * @param frames  the number of frames the animation has
+	 * @param frames the number of frames the animation has
 	 * @param name the name of the image file
 	 * 
 	 * */
