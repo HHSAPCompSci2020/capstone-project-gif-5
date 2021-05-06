@@ -2,6 +2,7 @@ package Testers;
 
 
 import java.awt.Dimension;
+
 import Player.*;
 import Enemies.*;
 import javax.swing.JFrame;
@@ -10,11 +11,19 @@ import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 
 import javax.swing.*;
+/**
+ * The main class that runs everything
+ * @author All of us
+ * @version 5/6/2021
+ */
 public class DungeonGame{
 	
 	
 	
-	
+	/**
+	 * The main method
+	 * @param args
+	 */
 	public static void main(String args[]) {
 	
 		DrawingSurface drawing = new DrawingSurface();
@@ -35,10 +44,7 @@ public class DungeonGame{
 
 		window.setVisible(true);
 		canvas.requestFocus();
-		
-		
-		
-	}//bruh
+	}
 	
 	
 	
