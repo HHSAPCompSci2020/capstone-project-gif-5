@@ -38,7 +38,7 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
 		goblin = new Goblin();
-		ice = new Ice();
+//		ice = new Ice();
 		counter = 1;
 		gcounter = 1;
 		repeat = 0;
@@ -61,7 +61,7 @@ public class DrawingSurface extends PApplet {
 		
 
 		//creating goblins
-		goblin.makeGoblins(master);
+		goblin.act(master);
 		
 
 		//everything in this Matrix is pushed
@@ -70,7 +70,7 @@ public class DrawingSurface extends PApplet {
 		//draw ze stuff
 		image(dungeon1,500,400);
 		master.draw(this);
-		goblin.draw(this);
+//		goblin.draw(this);
 
 		//animate le object
 		

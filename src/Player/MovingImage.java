@@ -22,12 +22,12 @@ public class MovingImage extends Rectangle2D.Double {
 	
 	// FIELDS
 	PApplet i;
-	private PImage image;
+	protected PImage image;
 	private int counter;
 	private int repeat;
 	private int frames;
 	private boolean facingLeft;
-	private String name;
+	protected String name;
 
 	// CONSTRUCTORS
 	public MovingImage(PImage img, int x, int y, int w, int h, int frames, String name) {
