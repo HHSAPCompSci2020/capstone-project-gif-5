@@ -8,6 +8,7 @@ import processing.core.*;
 import gbitton299.shapes.*;
 import Player.*;
 import java.lang.*;
+import java.util.ArrayList;
 /*
 import javax.imageio.*;
 import java.awt.image.*;
@@ -22,7 +23,7 @@ public class DrawingSurface extends PApplet {
 	
 
 	Player master;
-	Goblin goblin;
+	ArrayList<Enemy> enemies = new ArrayList<Enemy> ();
 	Element ice;
 	private PImage photo;
 	private PImage wand;
@@ -37,7 +38,7 @@ public class DrawingSurface extends PApplet {
 
 	public DrawingSurface() {
 		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
-		goblin = new Goblin();
+		enemies.add(new Goblin());
 //		ice = new Ice();
 		counter = 1;
 		gcounter = 1;
@@ -61,9 +62,14 @@ public class DrawingSurface extends PApplet {
 		
 
 		//creating goblins
-		goblin.act(master);
+		enemies.get(1).act(master);
 		
-
+		for(Enemy e : enemies) {
+			if(e.getHealth() <= 0) {
+				enemies.remove(e);
+			}
+		}
+		
 		//everything in this Matrix is pushed
 		pushMatrix();
 		

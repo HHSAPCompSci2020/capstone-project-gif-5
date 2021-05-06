@@ -86,5 +86,9 @@ public class Enemy {
     public void loseHealth(int x) {
     	health -= x;
     }
+    
+    public int getHealth() {
+    	return health;
+    }
 
 }
