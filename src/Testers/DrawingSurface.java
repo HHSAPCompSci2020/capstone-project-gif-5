@@ -62,7 +62,7 @@ public class DrawingSurface extends PApplet {
 		
 
 		//creating goblins
-		enemies.get(1).act(master);
+		enemies.get(0).act(master);
 		
 		for(Enemy e : enemies) {
 			if(e.getHealth() <= 0) {
