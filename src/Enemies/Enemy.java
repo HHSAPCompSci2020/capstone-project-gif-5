@@ -13,13 +13,7 @@ public class Enemy {
     protected int ax, ay;
     boolean sawPlayer = false;
 
-    public void draw(PApplet surface) {
-        //surface.circle((float) x, (float) y, (float) (Math.abs(diameter)));
-    }
-
     public void act(Player p) {//double angle) {
-        // x +=  1/(Math.cos(angle));
-        // y +=  1/(Math.sin(angle));
         if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<500) {
             sawPlayer = true;
         }
@@ -62,7 +56,7 @@ public class Enemy {
         return diameter;
     }
 
-    public boolean Intersects(Player p) {
+    public boolean intersects(Player p) {
         float distanceX = (float)p.getX() - getX();
         float distanceY = (float)p.getY() - getY();
         float radiusSum = getDiameter() / 2 + p.getDiameter();
@@ -87,6 +81,14 @@ public class Enemy {
 
     public double getAngle(Player p){
         return Math.atan2((double) p.getX() - getX(), (double) p.getY() - getY());
+    }
+    
+    public void loseHealth(int x) {
+    	health -= x;
+    }
+    
+    public int getHealth() {
+    	return health;
     }
 
 }

@@ -12,7 +12,7 @@ import processing.core.PImage;
 public abstract class Element extends MovingImage{
 	
 	private int speed;
-	private double direction; // in radians
+	protected double direction; // in radians
 	private Shape s; //for testing intersections
 	
 	//what does "frames" do?
