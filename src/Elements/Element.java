@@ -67,9 +67,9 @@ public abstract class Element extends MovingImage{
 		return false;
 	}
 	
-	public boolean intersectsWalls(Dungeon d) { //parameters? you need the dungeon so you know where the walls are
-		
-	}
+//	public boolean intersectsWalls(Dungeon d) { //parameters? you need the dungeon so you know where the walls are
+//		
+//	}
 	
 	// when the element hits a wall or enemy, it dissipates.
 	// however, based on the placement of the enemies around the element,
@@ -90,13 +90,16 @@ public abstract class Element extends MovingImage{
 		
 		
 		
-		if(intersectsWalls()) {
-			dissipate();
-		}
-		else {
-			x += speed * Math.cos(direction);
-			y -= speed * Math.sin(direction);
-		}
+//		if(intersectsWalls()) {
+//			dissipate();
+//		}
+//		else {
+//			x += speed * Math.cos(direction);
+//			y -= speed * Math.sin(direction);
+//		}
+		
+		x += speed * Math.cos(direction);
+		y -= speed * Math.sin(direction);
 	}
 	
 	public double getX() {

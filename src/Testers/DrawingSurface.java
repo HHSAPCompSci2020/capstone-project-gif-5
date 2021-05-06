@@ -3,6 +3,7 @@ package Testers;
 import javax.swing.*;
 
 import Elements.Element;
+import Elements.Ice;
 import Enemies.*;
 import processing.core.*;
 import gbitton299.shapes.*;
@@ -38,7 +39,7 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
 		goblin = new Goblin();
-		ice = new Ice();
+		ice = new Ice(iceImg, 100, 100, 50, 50, 0, 0, 0);
 		counter = 1;
 		gcounter = 1;
 		repeat = 0;
@@ -50,9 +51,10 @@ public class DrawingSurface extends PApplet {
 		imageMode(CENTER);
 		//size(100,100);
 		photo = loadImage("WIZARD"+1+".png");
-		goblinImg = loadImage("goblin.png");
+		goblinImg = loadImage("goblin1.png");
 		wand = loadImage("wand.png");
 		dungeon1 = loadImage("dungeon1.png");
+		iceImg = loadImage("icicle1.png");
 		photo.resize(128,128);
 	}
 	
@@ -71,6 +73,7 @@ public class DrawingSurface extends PApplet {
 		image(dungeon1,500,400);
 		master.draw(this);
 		goblin.draw(this);
+		ice.draw(this);
 
 		//animate le object
 		
