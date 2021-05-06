@@ -17,6 +17,13 @@ import java.lang.*;
  * by: Shelby
  * on: 5/3/13
  */
+
+
+/**
+ * This represents an image that can move
+ *@author John Shelby
+ *@version 5/6
+ */
  
 public class MovingImage extends Rectangle2D.Double {
 	
@@ -31,7 +38,13 @@ public class MovingImage extends Rectangle2D.Double {
 
 	// CONSTRUCTORS
 	/** creates a moving image with starting coordinates (x, y), width w, height h, with "frames" amount of animation switches,
-	 * 
+	 * @param img the image file of the moving image
+	 * @param x  the x coordinate of the image
+	 * @param y  the y coordinate of the image
+	 * @param w the width of the image
+	 * @param h  the height of the image
+	 * @param frames  the number of frames the animation has
+	 * @param name the name of the image file
 	 * 
 	 * */
 	public MovingImage(PImage img, int x, int y, int w, int h, int frames, String name) {
@@ -64,7 +77,9 @@ public class MovingImage extends Rectangle2D.Double {
 	}
 	
 	/**
-	 * 
+	 * Makes the limits for the moving image
+	 * @param window Width is the width of the window
+	 * @param window Height is the height of the window
 	 * */
 	public void applyWindowLimits(int windowWidth, int windowHeight) {
 		x = Math.min(x,windowWidth-width);
