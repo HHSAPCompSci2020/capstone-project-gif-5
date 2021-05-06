@@ -7,12 +7,21 @@ import gbitton299.shapes.*;
 import Player.*;
 import java.lang.*;
 import Player.*;
+/**
+ * A class supposed to describe an enemy in the game, it also has everything any enemy can do or anything it has.
+ * @author Gilad Bitton
+ * @version 5/6/2021
+ */
 public class Enemy {
 
     protected int x, y, diameter, health;
     protected int ax, ay;
     boolean sawPlayer = false;
 
+    /**
+     * A method representing how each enemy will act, for example, all enemies will move towards the player.
+     * @param p The Player the Enemy moves towards
+     */
     public void act(Player p) {//double angle) {
         if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<500) {
             sawPlayer = true;
@@ -34,7 +43,12 @@ public class Enemy {
     }
 
     
-
+    /**
+     * A method to check if something is inside the enemy
+     * @param x1 The x coordinate of the thing that you check
+     * @param y1 The y coordinate of the thing that you check
+     * @return returns whether or not those coordinates are within the enemy "circle".
+     */
     public boolean isPointInside(double x1, double y1) {
         boolean isPointInside = false;
         double d = Math.sqrt((x1 - x) * 2 + (y1 - y) * 2);
@@ -44,18 +58,36 @@ public class Enemy {
         return isPointInside;
     }
 
+    /**
+     * 
+     * @return X location of enemy
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * 
+     * @return Y location of enemy
+     */
     public int getY() {
         return y;
     }
 
+    
+   /**
+    * 
+    * @return Diameter of enemy "Circle"
+    */
     public int getDiameter() {
         return diameter;
     }
 
+    /**
+     * Checks if an enemy and a player are intersecting
+     * @param p The player you check if you intersect with
+     * @return whether or not the enemy intersected with the Player.
+     */
     public boolean intersects(Player p) {
         float distanceX = (float)p.getX() - getX();
         float distanceY = (float)p.getY() - getY();
@@ -63,6 +95,9 @@ public class Enemy {
         return distanceX * distanceX + distanceY * distanceY <= radiusSum * radiusSum;
     }
 
+    /** 
+     * Controls how fast the enemy is going when they accelerate from 0 to their max speed.
+     */
     public void accelerate() {
         double amount = 0.2;
         if (ax > 0) {
@@ -79,14 +114,27 @@ public class Enemy {
         y += ay;
     }
 
+    /**
+     * Gets the angle of the enemy relative to the player
+     * @param p The Player you check how far you are away from
+     * @return The angle from the enemy to the player
+     */
     public double getAngle(Player p){
         return Math.atan2((double) p.getX() - getX(), (double) p.getY() - getY());
     }
     
+    /**
+     * Loses a specified amount of health
+     * @param x Amount of health lost
+     */
     public void loseHealth(int x) {
     	health -= x;
     }
     
+    /**
+     * 
+     * @return Amount of health the enemy has
+     */
     public int getHealth() {
     	return health;
     }
