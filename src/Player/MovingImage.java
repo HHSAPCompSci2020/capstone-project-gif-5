@@ -78,8 +78,8 @@ public class MovingImage extends Rectangle2D.Double {
 	
 	/**
 	 * Makes the limits for the moving image
-	 * @param window Width is the width of the window
-	 * @param window Height is the height of the window
+	 * @param windowWidth is the width of the window
+	 * @param windowHeight is the height of the window
 	 * */
 	public void applyWindowLimits(int windowWidth, int windowHeight) {
 		x = Math.min(x,windowWidth-width);

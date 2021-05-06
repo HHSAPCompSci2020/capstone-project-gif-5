@@ -22,7 +22,7 @@ public class DungeonGame{
 	
 	/**
 	 * The main method
-	 * @param args
+	 * @param args The arguments for the method 
 	 */
 	public static void main(String args[]) {
 	
