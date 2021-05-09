@@ -39,6 +39,7 @@ public class DrawingSurface extends PApplet {
 	Player master;
 	ArrayList<Enemy> enemies = new ArrayList<Enemy> ();
 	Element ice;
+	
 	private PImage photo;
 	private PImage wand;
 	private PImage dungeon1;
@@ -56,6 +57,7 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		
 //		Ice icee = new Ice(dungeon1, counter, counter, counter, counter, counter, counter, x);
+		ice = new Ice(iceImg, 100, 100, 100, 100, 1, 0, 0);
 		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
 		enemies.add(new Goblin());
 //		ice = new Ice();

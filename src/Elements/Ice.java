@@ -22,7 +22,8 @@ public class Ice extends Element {
 	 * @param direction the direction that the ice element will move towards
 	 * */
 	public Ice(PImage img, int x, int y, int w, int h, int frames, int speed, double direction) {
-		super(img, speed, speed, speed, speed, speed, speed, direction, "icicle1.png");
+//		super(img, speed, speed, speed, speed, speed, speed, direction, "icicle1.png");
+		super(img, x, y, w, h, frames, speed, direction, "icicle1.png");
 	}
 //		mario = new Mario(loadImage("mario.png"), DRAWING_WIDTH/2-Mario.MARIO_WIDTH/2,50);
 	@Override

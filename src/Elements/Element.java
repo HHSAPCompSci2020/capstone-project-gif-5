@@ -98,12 +98,12 @@ public abstract class Element extends MovingImage{
 	 * */
 	public abstract void dissipate(); 
 	
-	/** draws the element
-	 * */
-	public void draw(PApplet g) {	
-		super.draw(g);
-		
-	}
+//	/** draws the element
+//	 * */
+//	public void draw(PApplet g) {	
+//		super.draw(g);
+//		
+//	}
 	
 	/**moves the element
 	 * */
