@@ -36,7 +36,6 @@ public class DungeonGame{
 		window.pack();
 		window.setTitle("DungeonGame");
 	
-		
 		window.setSize(1000, 800);
 		window.setMinimumSize(new Dimension(1000,800));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,12 +44,4 @@ public class DungeonGame{
 		window.setVisible(true);
 		canvas.requestFocus();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }

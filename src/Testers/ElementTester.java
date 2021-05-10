@@ -36,7 +36,7 @@ public class ElementTester extends PApplet {
 	Element ice;
 	Player master;
 	
-	private PImage iceImg;
+	private PImage iceImg = new PImage();
 	private PImage photo;
 	
 	/**
@@ -65,6 +65,7 @@ public class ElementTester extends PApplet {
 	 * draws the enemiesand other things on the dungeon
 	 */
 	public void draw() {
+//		System.out.println("asdf");
 		ice.draw(this);
 //		master.draw(this);
 	}	
