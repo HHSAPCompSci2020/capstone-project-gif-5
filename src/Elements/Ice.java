@@ -31,4 +31,8 @@ public class Ice extends Element {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void draw() {
+		
+	}
 }
