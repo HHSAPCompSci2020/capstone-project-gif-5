@@ -18,7 +18,7 @@ import javax.swing.*;
 
 public class Player extends MovingImage{
 	
-	private int x,y, diameter;
+	private int diameter;
 	private int ax,ay;
 	private double health;
 	private double secondX,secondY;
@@ -35,9 +35,9 @@ public class Player extends MovingImage{
 	 * @param name the name of the image file
 	 * @param frames the number of frames of the player
 	 */
-	public Player(PImage i,int x,int y,int w,int h,String name, int frames) {
+	public Player(int x,int y,int w,int h,String name, int frames) {
 		
-		super( i,  x,  y,  w,  h,  frames,  name);
+		super( x,  y,  w,  h,  frames,  name);
 		
 	}
 	
@@ -52,6 +52,7 @@ public class Player extends MovingImage{
 		secondY = surface.mouseY;
 		accelerate();
 		act();
+		super.draw(surface);
 		
 		
 		

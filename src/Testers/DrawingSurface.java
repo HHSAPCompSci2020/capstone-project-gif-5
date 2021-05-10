@@ -57,8 +57,8 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		
 //		Ice icee = new Ice(dungeon1, counter, counter, counter, counter, counter, counter, x);
-		ice = new Ice(iceImg, 100, 100, 100, 100, 1, 0, 0);
-		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
+		//sice = new Ice( 100, 100, 100, 100, 1, 1, "ICE");
+		master = new Player( 10,  10,  64,  64,   "WIZARD",6);
 		enemies.add(new Goblin());
 //		ice = new Ice();
 		counter = 1;
@@ -74,6 +74,7 @@ public class DrawingSurface extends PApplet {
 		imageMode(CENTER);
 		//size(100,100);
 		photo = loadImage("WIZARD"+1+".png");
+		master.setImage(photo);
 		goblinImg = loadImage("goblin.png");
 		wand = loadImage("wand.png");
 		dungeon1 = loadImage("dungeon1.png");

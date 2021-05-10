@@ -47,15 +47,19 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param name the name of the image file
 	 * 
 	 * */
-	public MovingImage(PImage img, int x, int y, int w, int h, int frames, String name) {
+	public MovingImage( int x, int y, int w, int h, int frames, String name) {
 		super(x,y,w,h);
-		image = img;
+		
 		counter = 1;
 		this.frames = frames;
 		repeat = 0;
 		this.name = name;
 	}
 	
+	
+	public void setImage(PImage imga) {
+		image = imga;
+	}
 	
 	// METHODS	
 	/** moves the movingImage to location (x, y)
