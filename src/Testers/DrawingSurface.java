@@ -65,7 +65,16 @@ public class DrawingSurface extends PApplet {
 	private PImage downWall;
 	private PImage leftWall ;
 	private PImage rightWall ;
-	
+	private PImage topLeftFloor ;
+	private PImage topRightFloor ;
+	private PImage bottomLeftFloor;
+	private PImage bottomRightFloor; 
+	private PImage upFloor ;
+	private PImage downFloor;
+	private PImage leftFloor ;
+	private PImage rightFloor ;
+	private PImage blankFloor; 
+	private PImage blankFloor2; 
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -97,6 +106,17 @@ public class DrawingSurface extends PApplet {
 		 downWall = loadImage("tiles/tile051.png");
 		 leftWall = loadImage("tiles/tile030.png");
 		 rightWall = loadImage("tiles/tile035.png");
+		 
+		 topLeftFloor = loadImage("tiles/tile011.png");
+		 topRightFloor  = loadImage("tiles/tile014.png");;
+		 bottomLeftFloor= loadImage("tiles/tile031.png");;
+		 bottomRightFloor = loadImage("tiles/tile034.png");;
+		 upFloor = loadImage("tiles/tile012.png");
+		 downFloor = loadImage("tiles/tile032.png");
+		 leftFloor = loadImage("tiles/tile021.png");
+		 rightFloor = loadImage("tiles/tile024.png");
+		 blankFloor = loadImage("tiles/tile023.png");
+		 blankFloor2 = loadImage("tiles/tile022.png");
 		
 		
 		
@@ -182,34 +202,7 @@ public class DrawingSurface extends PApplet {
  						wall w = new wall((int)rectX,(int)rectY,64,64);
  						walls.add(w);
  						
- 						imageMode(CORNER);
- 						if(i==0 && j==0) {
  						
- 							image(topLeft,rectX,rectY,64,64);
- 							
- 						}else if(i==0 && j==Dungeon.grid[0].length-1) {
- 							image(topRight,rectX,rectY,64,64);
- 						}else if(i==Dungeon.grid.length-1 && j==0) {
- 							image(bottomLeft,rectX,rectY,64,64);
- 						}
- 						else if(i==Dungeon.grid.length-1 && j==Dungeon.grid[0].length-1) {
- 							image(bottomRight,rectX,rectY,64,64);
- 						}
- 						else if(j==0) {
- 							image(leftWall,rectX,rectY,64,64);
- 						}
- 						else if(j==Dungeon.grid[0].length-1) {
- 							image(rightWall,rectX,rectY,64,64);
- 						}
- 						else if(i==0) {
- 							image(upWall,rectX,rectY,64,64);
- 						}
- 						else if(i==Dungeon.grid.length-1) {
- 							image(downWall,rectX,rectY,64,64);
- 						}
- 						
- 						
- 				    	 imageMode(CENTER);
  					}
  				}
  			}
@@ -261,8 +254,49 @@ public class DrawingSurface extends PApplet {
  						else if(i==Dungeon.grid.length-1) {
  							image(downWall,rectX,rectY,64,64);
  						}
+ 						
+ 						
+ 						
+ 						
  						imageMode(CENTER);
- 					}}
+ 					}
+ 					
+ 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*') {
+ 					imageMode(CORNER);
+ 					if(i==1 && j==1) {
+	 						
+							image(topLeftFloor,rectX,rectY,64,64);
+							
+						}else if(i==1 && j==Dungeon.grid[0].length-2) {
+							image(topRightFloor,rectX,rectY,64,64);
+						}else if(i==Dungeon.grid.length-2 && j==1) {
+							image(bottomLeftFloor,rectX,rectY,64,64);
+						}
+						else if(i==Dungeon.grid.length-2 && j==Dungeon.grid[0].length-2) {
+							image(bottomRightFloor,rectX,rectY,64,64);
+						}
+						else if(j==1) {
+							image(leftFloor,rectX,rectY,64,64);
+						}
+						else if(j==Dungeon.grid[0].length-2) {
+							image(rightFloor,rectX,rectY,64,64);
+						}
+						else if(i==1) {
+							image(upFloor,rectX,rectY,64,64);
+						}
+						else if(i==Dungeon.grid.length-2) {
+							image(downFloor,rectX,rectY,64,64);
+						}else {
+							
+								image(blankFloor,rectX,rectY,64,64);
+							
+							
+						}
+ 					imageMode(CENTER);
+
+ 				}
+ 						
+ 				}
  			}
  		}
     	 
