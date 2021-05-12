@@ -86,36 +86,28 @@ public class Player extends MovingImage{
 	 * checks if it can move up
 	 */
 	public void moveUp(){
-		if(isPointInside(x,diameter + 10)) {
-			return;
-		}
+		
 		ay = -10;
 	}
 	/**
 	 * checks if it can move down
 	 */
 	public void moveDown(){
-		if(isPointInside(x, 800 + diameter * 2)) {
-			return;
-		}
+		
 		ay = 10;
 	}
 	/**
 	 * checks if it can move right
 	 */
 	public void moveRight(){
-		if(isPointInside(1000 + diameter * 2, y)) {
-			return;
-		}
+		
 		ax = 10;
 	}
 	/**
 	 * checks if it can move left
 	 */
 	public void moveLeft() {
-		if(isPointInside(diameter / 2, y)) {
-			return;
-		}
+		
 		ax = -10;
 	}
 
@@ -137,8 +129,7 @@ public class Player extends MovingImage{
 		else if(ay<0){
 			ay += amount;
 		}
-		x += ax;
-		y += ay;
+		moveByAmount(ax,ay);
 
 
 		if (run) {

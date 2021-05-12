@@ -11,6 +11,8 @@ import processing.core.*;
 import gbitton299.shapes.*;
 import Player.*;
 import java.lang.*;
+import Testers.wall;
+import java.util.ArrayList;
 /*
  * Represents a moving image.
  *
@@ -28,6 +30,8 @@ import java.lang.*;
 public class MovingImage extends Rectangle2D.Double {
 	
 	// FIELDS
+	private String inWall = "none";
+	public ArrayList<wall> w = new ArrayList<wall>();
 	PApplet i;
 	protected PImage image;
 	private int counter;
@@ -76,6 +80,16 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param y the vertical distance to move the movingImage
 	 * */
 	public void moveByAmount(double x, double y) {
+		
+		if(touchingWall(this.x,this.y)){
+			
+			
+			
+			return;
+		}
+		if(touchingWall(super.x + x,super.y + y)) {
+			return;
+		}
 		super.x += x;
 		super.y += y;
 	}
@@ -129,7 +143,31 @@ public class MovingImage extends Rectangle2D.Double {
 		i.image(image,(float)x,(float)y);
 
 	}
-	
+	public boolean touchingWall(double x, double y) {
+		if(w==null) {
+			return false;
+		}
+		Rectangle2D.Double q = new Rectangle2D.Double(x-32,y-32,width,height);
+		for(wall r : w) {
+			if(r.intersects(q)) {
+				if(r.x>q.x) {
+					inWall = "right";
+				}
+				if(r.x<q.x) {
+					inWall = "left";
+				}
+				if(r.y>q.y) {
+					inWall = "down";
+				}
+				if(r.y<q.y) {
+					inWall = "up";
+				}
+				
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }
 

@@ -51,6 +51,7 @@ public class DrawingSurface extends PApplet {
 	private int repeat;
 	private boolean facingLeft;
 	private double x;
+	private ArrayList<wall> walls = new ArrayList<wall>();
 	
 	/**
 	 * constructs the player and some monsters
@@ -79,6 +80,7 @@ public class DrawingSurface extends PApplet {
 		//size(100,100);
 		photo = loadImage("WIZARD"+1+".png");
 		master.setImage(photo);
+		
 		goblinImg = loadImage("goblin.png");
 		goblin.setImage(goblinImg);
 		wand = loadImage("wand.png");
@@ -91,7 +93,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-	
+		
 		Dungeon.draw(this, 0, 0, 10, 10);
 		//creating goblins
 //		goblin.act(master);
@@ -131,6 +133,7 @@ public class DrawingSurface extends PApplet {
 
 	
      public void dungeonSetUp() {
+    	 
     	 if (Dungeon != null) {
  			
  			for(int i = 0; i < Dungeon.grid.length;i++) {
@@ -142,9 +145,16 @@ public class DrawingSurface extends PApplet {
  					if(Dungeon.grid[i][j]=='*') {
  						master.moveToLocation(rectX, rectY);
  					}
+ 					if(Dungeon.grid[i][j]=='#') {
+ 						wall w = new wall((int)rectX,(int)rectY,64,64);
+ 						walls.add(w);
+ 					}
  				}
  			}
  		}
+    	 
+    	 master.w = walls;
+    	 
      }
 	 /**
 	  * checks key pressed and then makes the wizard move

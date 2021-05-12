@@ -14,15 +14,17 @@ import Player.*;
  * @version 5/6/2021
  */
 public class Enemy extends MovingImage{
-
+	
+	protected int diameter, health;
+    protected int ax, ay;
+    boolean sawPlayer = false;
+	
     public Enemy(int x, int y, int w, int h, int frames, String name) {
 		super(x, y, w, h, frames, name);
 		// TODO Auto-generated constructor stub
 	}
 
-	protected int x, y, diameter, health;
-    protected int ax, ay;
-    boolean sawPlayer = false;
+	
     
     public void draw(PApplet surface, Player p) {
     	super.draw(surface);
@@ -34,21 +36,23 @@ public class Enemy extends MovingImage{
      * @param p The Player the Enemy moves towards
      */
     public void act(Player p) {//double angle) {
+    	
         if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<500) {
+   
             sawPlayer = true;
         }
         if(sawPlayer) {
             if(x<p.getX()) {
-                x+=2;
+                x+=1;
             }
             else if(x>p.getX()) {
-                 x-=2;   
+                 x-=1;   
             }
             if(y<p.getY()) {
-                y+=2;
+                y+=1;
             }
             else if(y>p.getY()) {
-             y-=2;
+             y-=1;
             }
         }
     }

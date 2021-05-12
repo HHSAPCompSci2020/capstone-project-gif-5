@@ -19,6 +19,7 @@ public class Goblin extends Enemy{
 	}
     
     public void draw(PApplet surface, Player p) {
+    	
     	super.draw(surface, p);
     	act(p);
     }
@@ -28,6 +29,8 @@ public class Goblin extends Enemy{
      * @param p The player you act with and check if you intersect with
      */
     public void act(Player p) {
+    	//System.out.print("bruh");
+    	super.act(p);
         if (intersects(p)) {
             p.setHealth(-10);
         }
