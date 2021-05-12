@@ -48,7 +48,8 @@ public class ElementTester extends PApplet {
 			System.out.println("FAIL");
 		}
 		else System.out.println("SUCCESS");
-		ice = new Ice(iceImg, 100, 100, 100, 100, 1, 0, 0);
+		
+		ice = new Ice(100, 100, 100, 100, 1, "icicle1.png");
 //		master = new Player(photo,  10,  10,  32,  32,   "WIZARD",6);
 	}
 		
