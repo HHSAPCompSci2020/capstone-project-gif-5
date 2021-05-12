@@ -39,10 +39,10 @@ public class DrawingSurface extends PApplet {
 	Player master;
 	ArrayList<Enemy> enemies = new ArrayList<Enemy> ();
 	Element ice;
-	
+	public DungeonMaker Dungeon;
 	private PImage photo;
 	private PImage wand;
-	private PImage dungeon1;	
+
 	private PImage goblinImg;
 	private PImage iceImg;
 	private int gcounter;
@@ -60,7 +60,8 @@ public class DrawingSurface extends PApplet {
 		//sice = new Ice( 100, 100, 100, 100, 1, 1, "ICE");
 		master = new Player( 10,  10,  64,  64,   "WIZARD",6);
 		enemies.add(new Goblin());
-		ice = new Ice(200, 200, 300, 300, 1, "icicle1.png");
+//		ice = new Ice();
+		Dungeon = new DungeonMaker("room1");
 		counter = 1;
 		gcounter = 1;
 		repeat = 0;
@@ -77,13 +78,8 @@ public class DrawingSurface extends PApplet {
 		master.setImage(photo);
 		goblinImg = loadImage("goblin.png");
 		wand = loadImage("wand.png");
-		dungeon1 = loadImage("dungeon1.png");
-		
-		iceImg = loadImage("icicle8.png");
 		
 		photo.resize(128,128);
-		
-		
 	}
 	
 	/**
@@ -91,7 +87,9 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-
+		if (Dungeon != null) {
+			Dungeon.draw(this, 0, 0, 20, 10);
+		}
 		//creating goblins
 		enemies.get(0).act(master);
 		
@@ -105,10 +103,8 @@ public class DrawingSurface extends PApplet {
 		pushMatrix();
 		
 		//draw ze stuff
-		image(dungeon1,500,400);
-//		master.draw(this);
-		ice.draw(this);
 		
+		master.draw(this);
 //		goblin.draw(this);
 
 		//animate le object
