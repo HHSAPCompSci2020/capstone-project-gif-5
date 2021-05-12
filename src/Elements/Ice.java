@@ -1,5 +1,8 @@
 package Elements;
 
+import java.util.ArrayList;
+
+import Enemies.Enemy;
 import gbitton299.shapes.Shape;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -31,8 +34,41 @@ public class Ice extends Element {
 	}
 	
 	@Override
-	public void dissipate() {
+
+	public void dissipate(int x, int y, double direction, ArrayList<Enemy> enemies) {
 		// TODO Auto-generated method stub
+		// after ice hits first enemy, it freezes the first enemy and slows the three enemies behind it
+		// 
+		boolean b = false;
+		
+		
+		if(/*if enemy exists at (x, y)*/) {
+			
+			// freeze enemy at (x, y)
+			
+			
+			if(direction == 0) {
+				// freeze enemies behind (x, y)
+			}
+			else if(direction == Math.PI / 2) {
+				
+			}		
+			else if(direction == Math.PI) {
+				
+			}
+			else if(direction == 3 * Math.PI / 2) {
+				
+			}	
+		}
+		else // if there is no enemy at (x, y)
+		{
+			//
+		}
+		
+		// erase ice element
+	}
+	
+	public void strikeEnemy() {
 		
 	}
 	
