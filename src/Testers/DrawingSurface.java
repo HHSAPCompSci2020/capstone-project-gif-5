@@ -53,6 +53,19 @@ public class DrawingSurface extends PApplet {
 	private double x;
 	private ArrayList<wall> walls = new ArrayList<wall>();
 	
+	
+	
+	
+	
+	private PImage topLeft ;
+	private PImage topRight ;
+	private PImage bottomLeft;
+	private PImage bottomRight; 
+	private PImage upWall ;
+	private PImage downWall;
+	private PImage leftWall ;
+	private PImage rightWall ;
+	
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -74,6 +87,20 @@ public class DrawingSurface extends PApplet {
 	 * initializes the images
 	 */
 	public void setup() {
+		
+	
+		 topLeft = loadImage("tiles/tile000.png");
+		 topRight  = loadImage("tiles/tile005.png");;
+		 bottomLeft= loadImage("tiles/tile040.png");;
+		 bottomRight = loadImage("tiles/tile045.png");;
+		 upWall = loadImage("tiles/tile001.png");
+		 downWall = loadImage("tiles/tile051.png");
+		 leftWall = loadImage("tiles/tile030.png");
+		 rightWall = loadImage("tiles/tile035.png");
+		
+		
+		
+		
 		dungeonSetUp();
 		long start = System.currentTimeMillis();
 		imageMode(CENTER);
@@ -93,8 +120,9 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-		
-		Dungeon.draw(this, 0, 0, 10, 10);
+		background(37,19,26);
+		//Dungeon.draw(this, 0, 0, 12, 10);
+		dungeonDraw();
 		//creating goblins
 //		goblin.act(master);
 		
@@ -131,27 +159,57 @@ public class DrawingSurface extends PApplet {
 		text("Health: " + master.getHealth(), 30, 30);
 		
 		
+		
 	}
 
 
 
 	
      public void dungeonSetUp() {
-    	 
+    	 imageMode(CENTER);
     	 if (Dungeon != null) {
  			
  			for(int i = 0; i < Dungeon.grid.length;i++) {
  				for(int j = 0; j < Dungeon.grid[0].length;j++) {
  					float rectWidth = 64;
  					float rectHeight = 64;
- 					float rectX =  j * rectWidth+150;
+ 					float rectX =  j * rectWidth+100;
  					float rectY =  i * rectHeight+50;
  					if(Dungeon.grid[i][j]=='*') {
- 						master.moveToLocation(rectX, rectY);
+ 						master.moveToLocation(rectX+40, rectY+40);
  					}
  					if(Dungeon.grid[i][j]=='#') {
  						wall w = new wall((int)rectX,(int)rectY,64,64);
  						walls.add(w);
+ 						
+ 						imageMode(CORNER);
+ 						if(i==0 && j==0) {
+ 						
+ 							image(topLeft,rectX,rectY,64,64);
+ 							
+ 						}else if(i==0 && j==Dungeon.grid[0].length-1) {
+ 							image(topRight,rectX,rectY,64,64);
+ 						}else if(i==Dungeon.grid.length-1 && j==0) {
+ 							image(bottomLeft,rectX,rectY,64,64);
+ 						}
+ 						else if(i==Dungeon.grid.length-1 && j==Dungeon.grid[0].length-1) {
+ 							image(bottomRight,rectX,rectY,64,64);
+ 						}
+ 						else if(j==0) {
+ 							image(leftWall,rectX,rectY,64,64);
+ 						}
+ 						else if(j==Dungeon.grid[0].length-1) {
+ 							image(rightWall,rectX,rectY,64,64);
+ 						}
+ 						else if(i==0) {
+ 							image(upWall,rectX,rectY,64,64);
+ 						}
+ 						else if(i==Dungeon.grid.length-1) {
+ 							image(downWall,rectX,rectY,64,64);
+ 						}
+ 						
+ 						
+ 				    	 imageMode(CENTER);
  					}
  				}
  			}
@@ -160,6 +218,59 @@ public class DrawingSurface extends PApplet {
     	 master.w = walls;
     	 
      }
+     
+     
+
+     public void dungeonDraw() {
+    	 imageMode(CENTER);
+    	 if (Dungeon != null) {
+ 			
+ 			for(int i = 0; i < Dungeon.grid.length;i++) {
+ 				for(int j = 0; j < Dungeon.grid[0].length;j++) {
+ 					float rectWidth = 64;
+ 					float rectHeight = 64;
+ 					float rectX =  j * rectWidth+100;
+ 					float rectY =  i * rectHeight+50;
+ 					
+ 					if(Dungeon.grid[i][j]=='#') {
+ 						wall w = new wall((int)rectX,(int)rectY,64,64);
+ 						walls.add(w);
+ 						
+ 						imageMode(CORNER);
+ 						if(i==0 && j==0) {
+ 						
+ 							image(topLeft,rectX,rectY,64,64);
+ 							
+ 						}else if(i==0 && j==Dungeon.grid[0].length-1) {
+ 							image(topRight,rectX,rectY,64,64);
+ 						}else if(i==Dungeon.grid.length-1 && j==0) {
+ 							image(bottomLeft,rectX,rectY,64,64);
+ 						}
+ 						else if(i==Dungeon.grid.length-1 && j==Dungeon.grid[0].length-1) {
+ 							image(bottomRight,rectX,rectY,64,64);
+ 						}
+ 						else if(j==0) {
+ 							image(leftWall,rectX,rectY,64,64);
+ 						}
+ 						else if(j==Dungeon.grid[0].length-1) {
+ 							image(rightWall,rectX,rectY,64,64);
+ 						}
+ 						else if(i==0) {
+ 							image(upWall,rectX,rectY,64,64);
+ 						}
+ 						else if(i==Dungeon.grid.length-1) {
+ 							image(downWall,rectX,rectY,64,64);
+ 						}
+ 						imageMode(CENTER);
+ 					}}
+ 			}
+ 		}
+    	 
+    	 master.w = walls;
+    	 
+     }
+     
+     
 	 /**
 	  * checks key pressed and then makes the wizard move
 	  */

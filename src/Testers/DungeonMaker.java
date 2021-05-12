@@ -41,22 +41,22 @@ public class DungeonMaker extends Dungeon {
 
 	// Constructs the grid defined in the file specified
 	public DungeonMaker(String filename) {
-		super(13,10,filename);
+		super(12,10,filename);
 		
 		 
 	}
 
 	public void draw(PApplet marker, float x, float y, float width, float height) {
-		marker.background(0);
+		marker.background(37,19,26);
 		marker.noFill();
 	
 		
 		
 		for(int i = 0; i < grid.length; i++) {
-			for(int j = 0; j < grid.length; j++) {
+			for(int j = 0; j < grid[0].length; j++) {
 				float rectWidth = 64;
 				float rectHeight = 64;
-				float rectX = x + j * rectWidth+150;
+				float rectX = x + j * rectWidth+100;
 				float rectY = y + i * rectHeight+50;
 			
 				if(grid[i][j] == '*') {
