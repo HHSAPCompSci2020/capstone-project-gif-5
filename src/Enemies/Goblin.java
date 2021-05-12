@@ -32,7 +32,7 @@ public class Goblin extends Enemy{
     	//System.out.print("bruh");
     	super.act(p);
         if (intersects(p)) {
-            p.setHealth(-10);
+            p.setHealth(-0.5);
         }
     }
 
