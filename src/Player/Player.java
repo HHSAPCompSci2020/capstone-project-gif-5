@@ -66,10 +66,6 @@ public class Player extends MovingImage{
 	public void act() {
 		if (run) {
 			accelerate();
-			if (keyReleased) {
-				run = false;
-				keyReleased = false;
-			}
 		}
 	}
 
@@ -152,7 +148,6 @@ public class Player extends MovingImage{
 			}
 			if (keyReleased) {
 				run = false;
-				keyReleased = false;
 			}
 		}
 	}
