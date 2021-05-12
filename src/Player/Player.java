@@ -48,20 +48,14 @@ public class Player extends MovingImage{
 	 * draws the wizard
 	 */
 	public void draw(PApplet surface) {
-		super.draw(surface);
 		secondX = surface.mouseX;
 		secondY = surface.mouseY;
+		accelerate();
 		act();
-<<<<<<< HEAD
-		
-		
-		
 		super.draw(surface);
 		
 		
 		
-=======
->>>>>>> 4951d0d0c304a225c7734a327251df22b208c676
 	}
 	/**
 	 * checks when a key is released
@@ -76,6 +70,10 @@ public class Player extends MovingImage{
 	public void act() {
 		if (run) {
 			accelerate();
+			if (keyReleased) {
+				run = false;
+				keyReleased = false;
+			}
 		}
 	}
 
@@ -158,6 +156,7 @@ public class Player extends MovingImage{
 			}
 			if (keyReleased) {
 				run = false;
+				keyReleased = false;
 			}
 		}
 	}
