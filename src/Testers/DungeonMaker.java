@@ -72,7 +72,7 @@ public class DungeonMaker extends Dungeon {
 				}else {
 					marker.fill(255,255,255);
 				}
-			
+		
 				
 				marker.rect(rectX,rectY,rectWidth,rectHeight);
 				
