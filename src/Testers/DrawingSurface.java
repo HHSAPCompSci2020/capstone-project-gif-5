@@ -42,7 +42,7 @@ public class DrawingSurface extends PApplet {
 	
 	private PImage photo;
 	private PImage wand;
-	private PImage dungeon1;
+	private PImage dungeon1;	
 	private PImage goblinImg;
 	private PImage iceImg;
 	private int gcounter;
@@ -60,7 +60,7 @@ public class DrawingSurface extends PApplet {
 		//sice = new Ice( 100, 100, 100, 100, 1, 1, "ICE");
 		master = new Player( 10,  10,  64,  64,   "WIZARD",6);
 		enemies.add(new Goblin());
-//		ice = new Ice();
+		ice = new Ice(200, 200, 300, 300, 1, "icicle1.png");
 		counter = 1;
 		gcounter = 1;
 		repeat = 0;
@@ -78,7 +78,12 @@ public class DrawingSurface extends PApplet {
 		goblinImg = loadImage("goblin.png");
 		wand = loadImage("wand.png");
 		dungeon1 = loadImage("dungeon1.png");
+		
+		iceImg = loadImage("icicle8.png");
+		
 		photo.resize(128,128);
+		
+		
 	}
 	
 	/**
@@ -101,7 +106,9 @@ public class DrawingSurface extends PApplet {
 		
 		//draw ze stuff
 		image(dungeon1,500,400);
-		master.draw(this);
+//		master.draw(this);
+		ice.draw(this);
+		
 //		goblin.draw(this);
 
 		//animate le object

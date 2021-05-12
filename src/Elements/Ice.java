@@ -1,16 +1,21 @@
 package Elements;
 
 import gbitton299.shapes.Shape;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Ice extends Element {
 	
+//private static PImage iceImg;
 //	private int speed;
 //	private double direction; // in radians
 //	private Shape s; //for testing intersections
 
 	
 	//what does "frames" do?
+	
+	private PImage iceImg = new PImage();
+	
 	/**instantiates an ice element
 	 * @param img the ice image
 	 * @param x the starting x coordinate
@@ -18,21 +23,25 @@ public class Ice extends Element {
 	 * @param w the width of the ice image
 	 * @param h the height of the ice image
 	 * @param frames The number of frames the animation has
-	 * @param speed the speed of the ice element
-	 * @param direction the direction that the ice element will move towards
 	 * */
-	public Ice(int x,int y,int w,int h,String name, int frames) {
-//		super(img, speed, speed, speed, speed, speed, speed, direction, "icicle1.png");
-		super( x,  y,  w,  h,  frames,  name);
+	public Ice(int x,int y,int w,int h,int frames,String name) {
+		
+		super(x,  y,  w,  h,  name,  frames);
+		
 	}
-//		mario = new Mario(loadImage("mario.png"), DRAWING_WIDTH/2-Mario.MARIO_WIDTH/2,50);
+	
 	@Override
 	public void dissipate() {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public void draw() {
+	public void draw(PApplet surface) {
+		iceImg = surface.loadImage(name);
+		this.setImage(iceImg);
+		super.draw(surface);
+		
+		
 		
 	}
 }

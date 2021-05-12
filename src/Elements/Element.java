@@ -13,25 +13,25 @@ public abstract class Element extends MovingImage{
 	
 	private int speed;
 	protected double direction; // in radians
+	private PImage p;
 	private Shape s; //for testing intersections
 	
 	//what does "frames" do?
 	
 	/**instantiates an ice element
-	 * @param img the ice image
 	 * @param x the starting x coordinate
 	 * @param y the starting y coordinate
 	 * @param w the width of the ice image
 	 * @param h the height of the ice image
 	 * @param frames The number of frames the animation has
-	 * @param speed the speed of the ice element
-	 * @param direction the direction that the ice element will move towards
 	 * */
-	public Element(PImage img, int x, int y, int w, int h, int frames, int speed, double direction, String name) {
-		super(img, x, y, w, h, frames, name);
+	public Element(int x,int y,int w,int h,String name, int frames) {
+		
+		super(x, y, w, h, frames, name);
 		s = new Circle(); // s is a new shape
 		this.speed = speed;
 		this.direction = direction;
+		
 	}
 	
 	/** checks whether any enemies have touched the element. if there are any, then interact with them
@@ -44,6 +44,13 @@ public abstract class Element extends MovingImage{
 				dissipate();
 			}
 		}
+	}
+	
+	public void draw(PApplet g) {
+		super.draw(g);
+		
+//		p = g.loadImage(name);
+//		g.draw(this);
 	}
 
 	/**
