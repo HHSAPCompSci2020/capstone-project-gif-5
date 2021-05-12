@@ -11,6 +11,7 @@ import processing.core.PImage;
 
 public abstract class Element extends MovingImage{
 	
+	private boolean isDead = false;
 	private int speed;
 	protected double direction; // in radians
 	private PImage p;
@@ -38,16 +39,29 @@ public abstract class Element extends MovingImage{
 	 * @param e an arraylist full of all the enemies
 	 * */
 	public void interactWithEnemies(ArrayList<Enemy> e) {
+		
+		boolean hasIntersected = false;
+		
 		for(int i = 0; i < e.size(); i ++) {
 			if(this.intersectsEnemy(e.get(i))) {
 				//enemy loses health
-				dissipate();
+				//dissipate();
+				strikeEnemy(e.get(i));
+				hasIntersected = true;
+				break;
 			}
+		}
+		
+		if(hasIntersected = false) {
+			dissipate();
 		}
 	}
 	
 	public void draw(PApplet g) {
-		super.draw(g);
+		if(isDead) {}
+		else {		
+			super.draw(g);
+			}
 		
 //		p = g.loadImage(name);
 //		g.draw(this);
@@ -58,12 +72,7 @@ public abstract class Element extends MovingImage{
 	 * @param e the enemy that this element checks for intersection with
 	 * @return whether this element has intersected this enemy or not
 	 * */
-	public boolean intersectsEnemy(Enemy e) {
-		// if s intersects any of the enemies, the enemies will lose health
-		// if this is true, the element will dissipate and be set to null;
-		
-		//if any of the four coordinates of the square around an enemy
-		//is inside the element, then return true
+	private boolean intersectsEnemy(Enemy e) {
 		if(isPointInside(e.getX(), e.getY())) {
 			return true;
 		}
@@ -84,7 +93,11 @@ public abstract class Element extends MovingImage{
 	 * @param e the y coordinate of the given point
 	 * @return whether the given point is inside the element
 	 * */
+<<<<<<< Updated upstream
 	public boolean isPointInside(double d, double e) {
+=======
+	private boolean isPointInside(double x, double y) {
+>>>>>>> Stashed changes
 		// 
 		if(this.x + width >= d && this.x <= d) {
 			if(this.y + height >= e && this.y <= e) {
@@ -94,23 +107,14 @@ public abstract class Element extends MovingImage{
 		return false;
 	}
 	
-//	public boolean intersectsWalls(Dungeon d) { //parameters? you need the dungeon so you know where the walls are
-//		
-//	}
-	
-	// when the element hits a wall or enemy, it dissipates.
-	// however, based on the placement of the enemies around the element,
-	// elements dissipate in different ways. 
-	/** makes this element disappear from the board
+	/** makes this element disappear from the board and affect any nearby enemies
+	 * 
 	 * */
-	public abstract void dissipate(); 
-	
-//	/** draws the element
-//	 * */
-//	public void draw(PApplet g) {	
-//		super.draw(g);
-//		
-//	}
+	public void dissipate() {
+		isDead = true;
+	}
+
+	public abstract void strikeEnemy(Enemy e);
 	
 	/**moves the element
 	 * */
