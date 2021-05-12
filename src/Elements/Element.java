@@ -80,14 +80,14 @@ public abstract class Element extends MovingImage{
 	}
 	
 	/** returns whether the given point is inside the element or not
-	 * @param x the x coordinate of the given point
-	 * @param y the y coordinate of the given point
+	 * @param d the x coordinate of the given point
+	 * @param e the y coordinate of the given point
 	 * @return whether the given point is inside the element
 	 * */
-	public boolean isPointInside(int x, int y) {
+	public boolean isPointInside(double d, double e) {
 		// 
-		if(this.x + width >= x && this.x <= x) {
-			if(this.y + height >= y && this.y <= y) {
+		if(this.x + width >= d && this.x <= d) {
+			if(this.y + height >= e && this.y <= e) {
 				return true;
 			}
 		}
