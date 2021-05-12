@@ -17,13 +17,17 @@ public class Goblin extends Enemy{
 		diameter = 40;
 		health = 25;
 	}
+    
+    public void draw(PApplet surface, Player p) {
+    	super.draw(surface, p);
+    	act(p);
+    }
 
     /**
      * What a Goblin does when they act
      * @param p The player you act with and check if you intersect with
      */
     public void act(Player p) {
-        super.act(p);
         if (intersects(p)) {
             p.setHealth(-10);
         }

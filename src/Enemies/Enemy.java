@@ -23,6 +23,11 @@ public class Enemy extends MovingImage{
 	protected int x, y, diameter, health;
     protected int ax, ay;
     boolean sawPlayer = false;
+    
+    public void draw(PApplet surface, Player p) {
+    	super.draw(surface);
+    	act(p);
+    }
 
     /**
      * A method representing how each enemy will act, for example, all enemies will move towards the player.

@@ -108,7 +108,7 @@ public class DrawingSurface extends PApplet {
 		//draw ze stuff
 		
 		master.draw(this);
-		goblin.draw(this);
+		goblin.draw(this, master);
 
 		//animate le object
 		
