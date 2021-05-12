@@ -19,6 +19,7 @@ public class Enemy extends MovingImage{
     protected int ax, ay;
     boolean sawPlayer = false;
     boolean dead = false;
+    boolean frozen = false;
 	
     public Enemy(int x, int y, int w, int h, int frames, String name) {
 		super(x, y, w, h, frames, name);
@@ -46,6 +47,20 @@ public class Enemy extends MovingImage{
         }
         if(sawPlayer) {
             if(x<p.getX()) {
+                x+=1;
+            }
+            else if(x>p.getX()) {
+                 x-=1;   
+            }
+            if(y<p.getY()) {
+                y+=1;
+            }
+            else if(y>p.getY()) {
+             y-=1;
+            }
+        }
+        if(frozen) {
+        	if(x<p.getX()) {
                 x+=1;
             }
             else if(x>p.getX()) {
