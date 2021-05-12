@@ -36,9 +36,9 @@ public class Player extends MovingImage{
 	 * @param frames the number of frames of the player
 	 */
 	public Player(int x,int y,int w,int h,String name, int frames) {
-		
 		super( x,  y,  w,  h,  frames,  name);
-		
+		diameter = 50;
+		health = 100;
 	}
 	
 	
@@ -48,10 +48,11 @@ public class Player extends MovingImage{
 	 * draws the wizard
 	 */
 	public void draw(PApplet surface) {
+		super.draw(surface);
 		secondX = surface.mouseX;
 		secondY = surface.mouseY;
-		accelerate();
 		act();
+<<<<<<< HEAD
 		
 		
 		
@@ -59,6 +60,8 @@ public class Player extends MovingImage{
 		
 		
 		
+=======
+>>>>>>> 4951d0d0c304a225c7734a327251df22b208c676
 	}
 	/**
 	 * checks when a key is released
