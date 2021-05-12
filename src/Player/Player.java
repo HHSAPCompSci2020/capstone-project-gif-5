@@ -48,14 +48,10 @@ public class Player extends MovingImage{
 	 * draws the wizard
 	 */
 	public void draw(PApplet surface) {
+		super.draw(surface);
 		secondX = surface.mouseX;
 		secondY = surface.mouseY;
-		accelerate();
 		act();
-		super.draw(surface);
-		
-		
-		
 	}
 	/**
 	 * checks when a key is released
