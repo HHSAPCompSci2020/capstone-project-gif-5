@@ -52,6 +52,16 @@ public class Player extends MovingImage{
 		secondX = surface.mouseX;
 		secondY = surface.mouseY;
 		act();
+<<<<<<< HEAD
+		
+		
+		
+		super.draw(surface);
+		
+		
+		
+=======
+>>>>>>> 4951d0d0c304a225c7734a327251df22b208c676
 	}
 	/**
 	 * checks when a key is released

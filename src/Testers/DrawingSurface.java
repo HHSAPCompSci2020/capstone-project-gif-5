@@ -56,7 +56,7 @@ public class DrawingSurface extends PApplet {
 	 * constructs the player and some monsters
 	 */
 	public DrawingSurface() {
-		
+	
 //		Ice icee = new Ice(dungeon1, counter, counter, counter, counter, counter, counter, x);
 		//sice = new Ice( 100, 100, 100, 100, 1, 1, "ICE");
 		master = new Player( 10,  10,  64,  64,   "WIZARD",6);
@@ -73,6 +73,7 @@ public class DrawingSurface extends PApplet {
 	 * initializes the images
 	 */
 	public void setup() {
+		dungeonSetUp();
 		long start = System.currentTimeMillis();
 		imageMode(CENTER);
 		//size(100,100);
@@ -82,7 +83,7 @@ public class DrawingSurface extends PApplet {
 		goblin.setImage(goblinImg);
 		wand = loadImage("wand.png");
 		
-		photo.resize(128,128);
+		//photo.resize(128,128);
 	}
 	
 	/**
@@ -90,9 +91,8 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-		if (Dungeon != null) {
-			Dungeon.draw(this, 0, 0, 20, 10);
-		}
+	
+		Dungeon.draw(this, 0, 0, 10, 10);
 		//creating goblins
 //		goblin.act(master);
 		
@@ -122,7 +122,7 @@ public class DrawingSurface extends PApplet {
 
 
 		//display text
-		text("Health: " + master.getHealth(), 100, 100);
+		text("Health: " + master.getHealth(), 30, 30);
 		
 		
 	}
@@ -130,7 +130,22 @@ public class DrawingSurface extends PApplet {
 
 
 	
-     
+     public void dungeonSetUp() {
+    	 if (Dungeon != null) {
+ 			
+ 			for(int i = 0; i < Dungeon.grid.length;i++) {
+ 				for(int j = 0; j < Dungeon.grid[0].length;j++) {
+ 					float rectWidth = 64;
+ 					float rectHeight = 64;
+ 					float rectX =  j * rectWidth+150;
+ 					float rectY =  i * rectHeight+50;
+ 					if(Dungeon.grid[i][j]=='*') {
+ 						master.moveToLocation(rectX, rectY);
+ 					}
+ 				}
+ 			}
+ 		}
+     }
 	 /**
 	  * checks key pressed and then makes the wizard move
 	  */
