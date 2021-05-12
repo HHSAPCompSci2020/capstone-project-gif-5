@@ -52,6 +52,9 @@ public class Player extends MovingImage{
 		secondY = surface.mouseY;
 		accelerate();
 		act();
+		
+		
+		
 		super.draw(surface);
 		
 		
