@@ -12,20 +12,23 @@ public class Goblin extends Enemy{
 	/**
 	 * Basic information of a normal Goblin
 	 */
-    public Goblin() {
-        super();
-		x = 700;
-		y = 700;
+    public Goblin(int x, int y, int w, int h, int frames, String name) {
+        super(x, y, w, h, frames, name);
 		diameter = 40;
 		health = 25;
 	}
+    
+    public void draw(PApplet surface, Player p) {
+    	act(p);
+    	super.draw(surface, p);
+    	
+    }
 
     /**
      * What a Goblin does when they act
      * @param p The player you act with and check if you intersect with
      */
     public void act(Player p) {
-        super.act(p);
         if (intersects(p)) {
             p.setHealth(-10);
         }

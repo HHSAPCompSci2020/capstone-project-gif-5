@@ -29,7 +29,7 @@ public abstract class Dungeon {
 	 * Construct an empty 2D array with some default dimensions.
 	 */
 	public Dungeon() {
-		grid = new char[20][20];
+		grid = new char[10][10];
 		
 	}
 	

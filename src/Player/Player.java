@@ -36,9 +36,9 @@ public class Player extends MovingImage{
 	 * @param frames the number of frames of the player
 	 */
 	public Player(int x,int y,int w,int h,String name, int frames) {
-		
 		super( x,  y,  w,  h,  frames,  name);
-		
+		diameter = 50;
+		health = 100;
 	}
 	
 	

@@ -1,3 +1,4 @@
+
 package Enemies;
 
 import javax.swing.*;
@@ -12,11 +13,25 @@ import Player.*;
  * @author Gilad Bitton
  * @version 5/6/2021
  */
-public class Enemy {
+public class Enemy extends MovingImage{
+	
 
-    protected int x, y, diameter, health;
+
+	protected int x, y, diameter, health;
     protected int ax, ay;
     boolean sawPlayer = false;
+    
+    public Enemy(int x, int y, int w, int h, int frames, String name) {
+		super(x, y, w, h, frames, name);
+		// TODO Auto-generated constructor stub
+		diameter = 40;
+		health = 25;
+	}
+    
+    public void draw(PApplet surface, Player p) {
+    	act(p);
+    	super.draw(surface);
+    }
 
     /**
      * A method representing how each enemy will act, for example, all enemies will move towards the player.
@@ -31,13 +46,13 @@ public class Enemy {
                 x+=2;
             }
             else if(x>p.getX()) {
-                 x-=2;   
+                x-=2;   
             }
             if(y<p.getY()) {
                 y+=2;
             }
             else if(y>p.getY()) {
-             y-=2;
+            	y-=2;
             }
         }
     }
@@ -62,7 +77,7 @@ public class Enemy {
      * 
      * @return X location of enemy
      */
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -70,7 +85,7 @@ public class Enemy {
      * 
      * @return Y location of enemy
      */
-    public int getY() {
+    public double getY() {
         return y;
     }
 
@@ -89,8 +104,8 @@ public class Enemy {
      * @return whether or not the enemy intersected with the Player.
      */
     public boolean intersects(Player p) {
-        float distanceX = (float)p.getX() - getX();
-        float distanceY = (float)p.getY() - getY();
+        float distanceX = (float)(p.getX() - getX());
+        float distanceY = (float)(p.getY() - getY());
         float radiusSum = getDiameter() / 2 + p.getDiameter();
         return distanceX * distanceX + distanceY * distanceY <= radiusSum * radiusSum;
     }
@@ -127,8 +142,8 @@ public class Enemy {
      * Loses a specified amount of health
      * @param x Amount of health lost
      */
-    public void loseHealth(int x) {
-    	health -= x;
+    public void loseHealth(int lost) {
+    	health -= lost;
     }
     
     /**
