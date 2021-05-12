@@ -19,8 +19,9 @@ public class Goblin extends Enemy{
 	}
     
     public void draw(PApplet surface, Player p) {
-    	super.draw(surface, p);
     	act(p);
+    	super.draw(surface, p);
+    	
     }
 
     /**

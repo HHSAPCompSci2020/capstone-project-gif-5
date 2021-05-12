@@ -14,19 +14,23 @@ import Player.*;
  * @version 5/6/2021
  */
 public class Enemy extends MovingImage{
+	
 
-    public Enemy(int x, int y, int w, int h, int frames, String name) {
-		super(x, y, w, h, frames, name);
-		// TODO Auto-generated constructor stub
-	}
 
 	protected int x, y, diameter, health;
     protected int ax, ay;
     boolean sawPlayer = false;
     
+    public Enemy(int x, int y, int w, int h, int frames, String name) {
+		super(x, y, w, h, frames, name);
+		// TODO Auto-generated constructor stub
+		diameter = 40;
+		health = 25;
+	}
+    
     public void draw(PApplet surface, Player p) {
-    	super.draw(surface);
     	act(p);
+    	super.draw(surface);
     }
 
     /**
@@ -42,13 +46,13 @@ public class Enemy extends MovingImage{
                 x+=2;
             }
             else if(x>p.getX()) {
-                 x-=2;   
+                x-=2;   
             }
             if(y<p.getY()) {
                 y+=2;
             }
             else if(y>p.getY()) {
-             y-=2;
+            	y-=2;
             }
         }
     }
@@ -138,8 +142,8 @@ public class Enemy extends MovingImage{
      * Loses a specified amount of health
      * @param x Amount of health lost
      */
-    public void loseHealth(int x) {
-    	health -= x;
+    public void loseHealth(int lost) {
+    	health -= lost;
     }
     
     /**
