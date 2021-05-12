@@ -18,6 +18,7 @@ public class Enemy extends MovingImage{
 	protected int diameter, health;
     protected int ax, ay;
     boolean sawPlayer = false;
+    boolean dead = false;
 	
     public Enemy(int x, int y, int w, int h, int frames, String name) {
 		super(x, y, w, h, frames, name);
@@ -27,8 +28,10 @@ public class Enemy extends MovingImage{
 	
     
     public void draw(PApplet surface, Player p) {
-    	super.draw(surface);
-    	act(p);
+    	if(!dead) {
+    		super.draw(surface);
+    		act(p);
+    	}
     }
 
     /**
@@ -144,6 +147,9 @@ public class Enemy extends MovingImage{
      */
     public void loseHealth(int x) {
     	health -= x;
+    	if(health <= 0) {
+    		dead = true;
+    	}
     }
     
     /**
