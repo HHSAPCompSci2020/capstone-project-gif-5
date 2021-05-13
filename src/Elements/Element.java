@@ -101,10 +101,6 @@ public abstract class Element extends MovingImage{
 	 * draws the element if its not dead
 	 */
 	public void draw(PApplet g) {
-		
-		
-		
-		
 		if(isDead) {
 			
 		}
