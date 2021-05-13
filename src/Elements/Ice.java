@@ -21,12 +21,12 @@ public class Ice extends Element {
 	
 	
 	/**instantiates an ice element
-	 * @param img the ice image
 	 * @param x the starting x coordinate
 	 * @param y the starting y coordinate
 	 * @param w the width of the ice image
 	 * @param h the height of the ice image
 	 * @param frames The number of frames the animation has
+	 * @param name name of the file path
 	 * */
 	public Ice(int x,int y,int w,int h,int frames,String name) {
 		

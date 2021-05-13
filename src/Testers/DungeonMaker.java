@@ -42,7 +42,7 @@ public class DungeonMaker extends Dungeon {
 	}
 	/**
 	 * he grid defined in the file specified
-	 * @param filename
+	 * @param filename The name of the file
 	 */
 	// Constructs the grid defined in the file specified
 	public DungeonMaker(String filename) {

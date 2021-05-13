@@ -43,7 +43,6 @@ public class MovingImage extends Rectangle2D.Double {
 
 	// CONSTRUCTORS
 	/** creates a moving image with starting coordinates (x, y), width w, height h, with "frames" amount of animation switches,
-	 * @param img the image file of the moving image
 	 * @param x  the x coordinate of the image
 	 * @param y  the y coordinate of the image
 	 * @param w the width of the image

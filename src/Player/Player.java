@@ -27,7 +27,6 @@ public class Player extends MovingImage{
 	private int state = 0;
 	/**
 	 * 
-	 * @param i the image
 	 * @param x the x variable which it will start in
 	 * @param y the y variable it starts in
 	 * @param w the width of the image
