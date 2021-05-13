@@ -83,7 +83,7 @@ public class DrawingSurface extends PApplet {
 //		Ice icee = new Ice(dungeon1, counter, counter, counter, counter, counter, counter, x);
 		//sice = new Ice( 100, 100, 100, 100, 1, 1, "ICE");
 		master = new Player( 10,  10,  64,  64,   "WIZARD",6);
-		goblin = new Goblin(500, 500, 64, 64, 6, "goblin");
+		goblin = new Goblin(600, 600, 64, 64, 6, "goblin");
 //		enemies.add(new Goblin());
 //		ice = new Ice();
 		Dungeon = new DungeonMaker("room1");

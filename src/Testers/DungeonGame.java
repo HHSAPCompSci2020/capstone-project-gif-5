@@ -24,6 +24,7 @@ public class DungeonGame{
 	 * The main method
 	 * @param args The arguments for the method 
 	 */
+	@SuppressWarnings("deprecation")
 	public static void main(String args[]) {
 	
 		DrawingSurface drawing = new DrawingSurface();
@@ -35,7 +36,7 @@ public class DungeonGame{
 		window.setVisible(true);
 		window.pack();
 		window.setTitle("DungeonGame");
-	
+		window.move(200, 200);
 		window.setSize(1000, 800);
 		window.setMinimumSize(new Dimension(1000,800));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
