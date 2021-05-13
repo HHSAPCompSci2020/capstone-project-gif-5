@@ -11,10 +11,10 @@ import processing.core.PImage;
 
 public abstract class Element extends MovingImage{
 	
-	private boolean isDead = false;
-	private int speed;
-	protected double direction; // in radians
-	private PImage p;
+	public boolean isDead = false;
+	protected int speed = 15;
+	public double direction; // in radians
+
 	private Shape s; //for testing intersections
 	
 	//what does "frames" do?
@@ -42,7 +42,7 @@ public abstract class Element extends MovingImage{
 	/** checks whether any enemies have touched the element. if there are any, then interact with them
 	 * @param e an arraylist full of all the enemies
 	 * */
-	public void interactWithObjects(double direction, ArrayList<Enemy> e) {
+	public void interactWithObjects(ArrayList<Enemy> e) {
 		
 		boolean hasIntersected = false;
 		
@@ -63,12 +63,14 @@ public abstract class Element extends MovingImage{
 	}
 	
 	public void draw(PApplet g) {
+		
 		if(isDead) {}
 		else {		
 //			super.draw(g);
-			p = g.loadImage(name);
-			this.setImage(p);
+			move();
+			
 			super.draw(g);
+			
 			}
 		
 //		p = g.loadImage(name);
@@ -117,6 +119,7 @@ public abstract class Element extends MovingImage{
 	 * */
 	public void dissipate() {
 		isDead = true;
+		moveToLocation(-10,-10);
 	}
 
 	public abstract void strikeEnemy(double direction, Enemy e);
@@ -140,8 +143,8 @@ public abstract class Element extends MovingImage{
 //			y -= speed * Math.sin(direction);
 //		}
 		
-		x += speed * Math.cos(direction);
-		y -= speed * Math.sin(direction);
+		moveByAmount(speed * Math.cos(direction),speed * Math.sin(direction));
+		
 		
 		
 	}
@@ -159,6 +162,10 @@ public abstract class Element extends MovingImage{
 	public double getY() {
 		return y;
 	}
+	
+	
+	
+	
 	
 	// other methods : 
 	// intersects wall?

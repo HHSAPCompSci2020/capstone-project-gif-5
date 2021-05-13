@@ -15,10 +15,11 @@ import Player.*;
  */
 public class Enemy extends MovingImage{
 	
-	protected int diameter, health;
+	protected int diameter, health = 100;
+	protected int ogH= 100;
     protected int ax, ay;
     boolean sawPlayer = false;
-    boolean dead = false;
+    public boolean dead = false;
     boolean frozen = false;
 	
     public Enemy(int x, int y, int w, int h, int frames, String name) {
@@ -30,6 +31,10 @@ public class Enemy extends MovingImage{
     
     public void draw(PApplet surface, Player p) {
     	if(!dead) {
+    		surface.fill(255,255,255);
+    		surface.rect((float)x-23, (float)y-40, 50, 5);
+    		surface.fill(255, 0, 0);
+    		surface.rect((float)x-23, (float)y-40, (float)(health* 0.02 * ogH), 5);
     		super.draw(surface);
     		act(p);
     	}
@@ -49,38 +54,56 @@ public class Enemy extends MovingImage{
      */
     public void act(Player p) {//double angle) {
     	
+    	
+    	
         if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<500) {
    
             sawPlayer = true;
         }
+        
+       
+        
+        
         if(sawPlayer) {
+        	
+        	if(frozen) {
+            	if(x<p.getX()) {
+            		moveByAmount(-0.5,0);
+                }
+                else if(x>p.getX()) {
+                	moveByAmount(0.5,0);
+                }
+                if(y<p.getY()) {
+                	moveByAmount(0,-0.5);
+                }
+                else if(y>p.getY()) {
+                	moveByAmount(0,0.5);
+                }
+            }
+        	
+        	
             if(x<p.getX()) {
-            	moveByAmount(1,0);
+            	moveByAmount(1.5,0);
             }
             else if(x>p.getX()) {
-            	moveByAmount(-1,0);
+            	moveByAmount(-1.5,0);
             }
             if(y<p.getY()) {
-            	moveByAmount(0,1);
+            	moveByAmount(0,1.5);
             }
             else if(y>p.getY()) {
-            	moveByAmount(0,-1);
+            	moveByAmount(0,-1.5);
             }
+            
+            
+            
         }
-        if(frozen) {
-        	if(x<p.getX()) {
-        		moveByAmount(1,0);
-            }
-            else if(x>p.getX()) {
-            	moveByAmount(-1,0);
-            }
-            if(y<p.getY()) {
-            	moveByAmount(0,1);
-            }
-            else if(y>p.getY()) {
-            	moveByAmount(0,-1);
-            }
-        }
+        
+        
+       
+        
+        
+       
     }
 
     
@@ -169,8 +192,11 @@ public class Enemy extends MovingImage{
      * @param x Amount of health lost
      */
     public void loseHealth(int x) {
+    	
     	health -= x;
     	if(health <= 0) {
+    		x = -100;
+    		y = - 100;
     		dead = true;
     	}
     }

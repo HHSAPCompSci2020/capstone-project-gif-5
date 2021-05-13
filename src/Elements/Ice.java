@@ -1,12 +1,13 @@
 package Elements;
 
 import java.util.ArrayList;
+import java.util.*;
 
 import Enemies.Enemy;
 import gbitton299.shapes.Shape;
 import processing.core.PApplet;
 import processing.core.PImage;
-
+import java.util.Timer;
 public class Ice extends Element {
 	
 //private static PImage iceImg;
@@ -14,10 +15,10 @@ public class Ice extends Element {
 //	private double direction; // in radians
 //	private Shape s; //for testing intersections
 
-	
+	protected int speed = 10;
 	//what does "frames" do?
 	
-	private PImage iceImg = new PImage();
+	
 	
 	/**instantiates an ice element
 	 * @param img the ice image
@@ -37,29 +38,15 @@ public class Ice extends Element {
 		
 		e.setFrozen(true);
 		
-		// code this later
+		e.loseHealth(10);
+	
 		
-//		if(direction == 0) {
-//			// slow enemies behind (x, y)
-//			
-//			
-//		}
-//		else if(direction == Math.PI / 2) {
-//			
-//		}		
-//		else if(direction == Math.PI) {
-//			
-//		}
-//		else if(direction == 3 * Math.PI / 2) {
-//			
-//		}	
+
 	}
 	
 	
 	
-//	public void draw(PApplet surface) {
-//		iceImg = surface.loadImage(name);
-//		this.setImage(iceImg);
-//		super.draw(surface);
-//	}
+	
+	
+	
 }

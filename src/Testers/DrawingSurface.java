@@ -39,6 +39,7 @@ public class DrawingSurface extends PApplet {
 	Player master;
 	Goblin goblin;
 	ArrayList<Enemy> enemies = new ArrayList<Enemy> ();
+	ArrayList<Element> elements = new ArrayList<Element> ();
 	Element ice;
 	public DungeonMaker Dungeon;
 	private PImage photo;
@@ -76,6 +77,7 @@ public class DrawingSurface extends PApplet {
 	private PImage blankFloor; 
 	private PImage blankFloor2; 
 	private PImage lW; 
+	private int element = 1;
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -131,6 +133,9 @@ public class DrawingSurface extends PApplet {
 		photo = loadImage("LWIZARD"+1+".png");
 		master.setImage2(photo);
 		
+		iceImg = loadImage("icicle8.png");
+		
+		
 		wand = loadImage("wand.png");
 		
 		//photo.resize(128,128);
@@ -154,7 +159,26 @@ public class DrawingSurface extends PApplet {
 //		}
 		
 		for(Enemy p : enemies) {
-			p.draw(this,master);
+			if(p.dead == true) {
+				p = null;
+				enemies.remove(p);
+			}else {
+				p.draw(this,master);
+			}
+			
+		}
+		
+		for(Element u : elements) {
+			u.interactWithObjects(enemies);
+			if(u.isDead == true) {
+				u = null;
+				elements.remove(u);
+				
+			}else {
+				u.draw(this);
+			}
+			
+			
 		}
 		
 		//everything in this Matrix is pushed
@@ -359,7 +383,17 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void mousePressed() {
 		
+		if(element == 1) {
+			
+			Ice i = new Ice ((int)master.getX(),(int)master.getY(),64,64,1,"ice");
+			i.setImage(iceImg);
+			
+			double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 		
+			i.direction = dir;
+			i.w = walls;
+			elements.add(i);
+		}
 		
 		
 	}

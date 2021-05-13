@@ -11,7 +11,7 @@ public class Goblin extends Enemy{
 
 	private boolean canAttack;
 	private int counter;
-	
+	protected int ogH;
 	/**
 	 * Basic information of a normal Goblin
 	 */
@@ -19,6 +19,7 @@ public class Goblin extends Enemy{
         super(x, y, w, h, frames, name);
 		diameter = 40;
 		health = 25;
+		ogH = 25;
 		canAttack = true;
 		counter = 0;
 	}
