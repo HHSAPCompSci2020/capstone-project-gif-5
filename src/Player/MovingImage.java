@@ -34,10 +34,11 @@ public class MovingImage extends Rectangle2D.Double {
 	public ArrayList<wall> w = new ArrayList<wall>();
 	PApplet i;
 	protected PImage image;
+	protected PImage image2;
 	private int counter;
 	private int repeat;
 	private int frames;
-	private boolean facingLeft;
+	public boolean facingLeft;
 	protected String name;
 
 	// CONSTRUCTORS
@@ -63,6 +64,9 @@ public class MovingImage extends Rectangle2D.Double {
 	
 	public void setImage(PImage imga) {
 		image = imga;
+	}
+	public void setImage2(PImage imga) {
+		image2 = imga;
 	}
 	
 	// METHODS	
@@ -90,6 +94,14 @@ public class MovingImage extends Rectangle2D.Double {
 		if(touchingWall(super.x + x,super.y + y)) {
 			return;
 		}
+		if(x>0) {
+			facingLeft = false;
+
+		}
+		if(x<0) {
+			facingLeft = true;
+
+		}
 		super.x += x;
 		super.y += y;
 	}
@@ -111,7 +123,12 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param g the PApplet used to draw the MovingImage
 	 * */
 	public void draw(PApplet g) {
-		g.image(image,(int)x,(int)y,(int)width,(int)height);
+		if(!facingLeft || image2==null) {
+			g.image(image,(int)x,(int)y,(int)width,(int)height);
+		}else {
+			g.image(image2,(int)x,(int)y,(int)width,(int)height);
+		}
+		
 	}
 	
 

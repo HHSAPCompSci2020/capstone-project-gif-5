@@ -75,6 +75,7 @@ public class DrawingSurface extends PApplet {
 	private PImage rightFloor ;
 	private PImage blankFloor; 
 	private PImage blankFloor2; 
+	private PImage lW; 
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -118,7 +119,7 @@ public class DrawingSurface extends PApplet {
 		 blankFloor = loadImage("tiles/tile023.png");
 		 blankFloor2 = loadImage("tiles/tile022.png");
 		
-		
+		lW = loadImage("LWIZARD1.png");
 		
 		
 		dungeonSetUp();
@@ -127,7 +128,9 @@ public class DrawingSurface extends PApplet {
 		//size(100,100);
 		photo = loadImage("WIZARD"+1+".png");
 		master.setImage(photo);
-	
+		photo = loadImage("LWIZARD"+1+".png");
+		master.setImage2(photo);
+		
 		wand = loadImage("wand.png");
 		
 		//photo.resize(128,128);
@@ -210,6 +213,8 @@ public class DrawingSurface extends PApplet {
  						Goblin goblin = new Goblin((int)rectX,(int)rectY, 64, 64, 6, "goblin");
  						goblinImg = loadImage("goblin.png");
  						goblin.setImage(goblinImg);
+ 						goblinImg = loadImage("Lgoblin6.png");
+ 						goblin.setImage2(goblinImg);
  						goblin.w = walls;
  						enemies.add(goblin);
  					}
@@ -377,6 +382,15 @@ public class DrawingSurface extends PApplet {
 		 rotate((float) (x+0.349));
 		 image(wand, 0,0);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

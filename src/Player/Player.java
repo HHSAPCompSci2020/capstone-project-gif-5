@@ -100,14 +100,12 @@ public class Player extends MovingImage{
 	 * checks if it can move right
 	 */
 	public void moveRight(){
-		
 		ax = 10;
 	}
 	/**
 	 * checks if it can move left
 	 */
 	public void moveLeft() {
-		
 		ax = -10;
 	}
 
