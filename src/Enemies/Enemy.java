@@ -34,6 +34,14 @@ public class Enemy extends MovingImage{
     		act(p);
     	}
     }
+    
+    public boolean getFrozen() {
+    	return frozen;
+    }
+    
+    public void setFrozen(boolean b) {
+    	frozen = b;
+    }
 
     /**
      * A method representing how each enemy will act, for example, all enemies will move towards the player.

@@ -35,10 +35,14 @@ public abstract class Element extends MovingImage{
 		
 	}
 	
+	public void act() {
+		
+	}
+	
 	/** checks whether any enemies have touched the element. if there are any, then interact with them
 	 * @param e an arraylist full of all the enemies
 	 * */
-	public void interactWithEnemies(ArrayList<Enemy> e) {
+	public void interactWithObjects(double direction, ArrayList<Enemy> e) {
 		
 		boolean hasIntersected = false;
 		
@@ -46,10 +50,11 @@ public abstract class Element extends MovingImage{
 			if(this.intersectsEnemy(e.get(i))) {
 				//enemy loses health
 				//dissipate();
-				strikeEnemy(e.get(i));
-				hasIntersected = true;
-				break;
+				// how to get direction?
+				strikeEnemy(direction, e.get(i));
+				dissipate();
 			}
+			//intersects walls?
 		}
 		
 		if(hasIntersected = false) {
@@ -60,6 +65,9 @@ public abstract class Element extends MovingImage{
 	public void draw(PApplet g) {
 		if(isDead) {}
 		else {		
+//			super.draw(g);
+			p = g.loadImage(name);
+			this.setImage(p);
 			super.draw(g);
 			}
 		
@@ -93,14 +101,11 @@ public abstract class Element extends MovingImage{
 	 * @param e the y coordinate of the given point
 	 * @return whether the given point is inside the element
 	 * */
-<<<<<<< Updated upstream
-	public boolean isPointInside(double d, double e) {
-=======
+
 	private boolean isPointInside(double x, double y) {
->>>>>>> Stashed changes
 		// 
-		if(this.x + width >= d && this.x <= d) {
-			if(this.y + height >= e && this.y <= e) {
+		if(this.x + width >= x && this.x <= x) {
+			if(this.y + height >= y && this.y <= y) {
 				return true;
 			}
 		}
@@ -114,7 +119,7 @@ public abstract class Element extends MovingImage{
 		isDead = true;
 	}
 
-	public abstract void strikeEnemy(Enemy e);
+	public abstract void strikeEnemy(double direction, Enemy e);
 	
 	/**moves the element
 	 * */
@@ -137,6 +142,8 @@ public abstract class Element extends MovingImage{
 		
 		x += speed * Math.cos(direction);
 		y -= speed * Math.sin(direction);
+		
+		
 	}
 	
 	/** returns the starting x coordinate of the element

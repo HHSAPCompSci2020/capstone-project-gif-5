@@ -33,51 +33,33 @@ public class Ice extends Element {
 		
 	}
 	
-	@Override
-
-	public void dissipate(int x, int y, double direction, ArrayList<Enemy> enemies) {
-		// TODO Auto-generated method stub
-		// after ice hits first enemy, it freezes the first enemy and slows the three enemies behind it
-		// 
-		boolean b = false;
+	public void strikeEnemy(double direction, Enemy e) {
 		
+		e.setFrozen(true);
 		
-		if(/*if enemy exists at (x, y)*/) {
-			
-			// freeze enemy at (x, y)
-			
-			
-			if(direction == 0) {
-				// freeze enemies behind (x, y)
-			}
-			else if(direction == Math.PI / 2) {
-				
-			}		
-			else if(direction == Math.PI) {
-				
-			}
-			else if(direction == 3 * Math.PI / 2) {
-				
-			}	
-		}
-		else // if there is no enemy at (x, y)
-		{
-			//
-		}
+		// code this later
 		
-		// erase ice element
+//		if(direction == 0) {
+//			// slow enemies behind (x, y)
+//			
+//			
+//		}
+//		else if(direction == Math.PI / 2) {
+//			
+//		}		
+//		else if(direction == Math.PI) {
+//			
+//		}
+//		else if(direction == 3 * Math.PI / 2) {
+//			
+//		}	
 	}
 	
-	public void strikeEnemy() {
-		
-	}
 	
-	public void draw(PApplet surface) {
-		iceImg = surface.loadImage(name);
-		this.setImage(iceImg);
-		super.draw(surface);
-		
-		
-		
-	}
+	
+//	public void draw(PApplet surface) {
+//		iceImg = surface.loadImage(name);
+//		this.setImage(iceImg);
+//		super.draw(surface);
+//	}
 }
