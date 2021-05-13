@@ -8,6 +8,8 @@ import gbitton299.shapes.Circle;
 import gbitton299.shapes.Shape;
 import processing.core.PApplet;
 import processing.core.PImage;
+import java.lang.*;
+import processing.core.*;
 
 public abstract class Element extends MovingImage{
 	
@@ -62,9 +64,42 @@ public abstract class Element extends MovingImage{
 		}
 	}
 	
+	
+	public void moveByAmount(double x, double y) {
+		
+		if(touchingWall(this.x,this.y)){
+			
+			dissipate();
+			isDead = true;
+			return;
+		}
+		if(touchingWall(super.x + x,super.y + y)) {
+			dissipate();
+			isDead = true;
+			return;
+
+			
+		}
+		if(x>0) {
+			facingLeft = false;
+
+		}
+		if(x<0) {
+			facingLeft = true;
+
+		}
+		super.x += x;
+		super.y += y;
+	}
+	
 	public void draw(PApplet g) {
 		
-		if(isDead) {}
+		
+		
+		
+		if(isDead) {
+			
+		}
 		else {		
 //			super.draw(g);
 			move();
@@ -142,6 +177,8 @@ public abstract class Element extends MovingImage{
 //			x += speed * Math.cos(direction);
 //			y -= speed * Math.sin(direction);
 //		}
+		
+		
 		
 		moveByAmount(speed * Math.cos(direction),speed * Math.sin(direction));
 		
