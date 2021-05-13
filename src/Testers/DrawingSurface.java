@@ -26,7 +26,7 @@ import javax.swing.*;
 /**
  * 
  * @author ido Tal
- * @version
+ * @version beta
  * This class connects everything together and draws it
  */
 
