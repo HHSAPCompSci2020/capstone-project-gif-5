@@ -104,6 +104,14 @@ Player
 * The player class will make a wizard sprite and make you be able to move and such. It will also create new elementals power. They will be using set elemental powers.
 Dungeon
 * A class representing the screen the player will play on. Also makes sure to create rooms with different enemies and such.
+DungeonMaker
+* Reads the specified dungeon text file and makes it a new dungeon.
+MovingImage
+* Represents every moving image in the dungeon, it is the super class for all the elements, enemies, and Player and it controls their sprite.
+DrawingSurface
+* Draws everything onto a canvas.
+DungeonGame
+* Is the main method for the game and it runs everything.
 
 
 
@@ -114,12 +122,15 @@ Credits:
 * Give credit to all outside resources used. This includes downloaded images or sounds, external java libraries, parent/tutor/student coding help, etc.]
 
 
-Ido: Creates sprites of the game and the player and dungeon classes
+Ido: Creates sprites of the game and the player, dungeon, and movingImage classes
 
 Gilad: Creates the enemy class and all of its subclasses
 
 
 Franklin: Creates the WizardElement class and all of its subclasses
+
+
+All of us: We all worked on DrawingSurface
 
 
 Additional credit to the processing library, which we used in our project.

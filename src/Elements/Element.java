@@ -27,6 +27,7 @@ public abstract class Element extends MovingImage{
 	 * @param w the width of the ice image
 	 * @param h the height of the ice image
 	 * @param frames The number of frames the animation has
+	 * @param name name of the file
 	 * */
 	public Element(int x,int y,int w,int h,String name, int frames) {
 		
@@ -64,7 +65,10 @@ public abstract class Element extends MovingImage{
 		}
 	}
 	
-	
+	/**This moves an element, its an override and it  moves stuff.
+	 * @param x is the move amount to the x
+	 * @param y is the move amount to the y
+	 */
 	public void moveByAmount(double x, double y) {
 		
 		if(touchingWall(this.x,this.y)){
@@ -92,6 +96,10 @@ public abstract class Element extends MovingImage{
 		super.y += y;
 	}
 	
+	
+	/**
+	 * draws the element if its not dead
+	 */
 	public void draw(PApplet g) {
 		if(isDead) {
 			

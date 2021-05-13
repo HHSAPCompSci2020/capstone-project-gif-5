@@ -43,7 +43,6 @@ public class MovingImage extends Rectangle2D.Double {
 
 	// CONSTRUCTORS
 	/** creates a moving image with starting coordinates (x, y), width w, height h, with "frames" amount of animation switches,
-	 * @param img the image file of the moving image
 	 * @param x  the x coordinate of the image
 	 * @param y  the y coordinate of the image
 	 * @param w the width of the image
@@ -160,6 +159,12 @@ public class MovingImage extends Rectangle2D.Double {
 		i.image(image,(float)x,(float)y);
 
 	}
+	/**
+	 * checks if the enemy is touching the wall
+	 * @param x x coordinate of player
+	 * @param y y coordinate of player
+	 * @return returns if the player is in the wall
+	 */
 	public boolean touchingWall(double x, double y) {
 		if(w==null) {
 			return false;

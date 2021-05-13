@@ -14,6 +14,12 @@ public class Goblin extends Enemy{
 	protected int ogH;
 	/**
 	 * Basic information of a normal Goblin
+	 * @param x x coordinate
+	 * @param y y coordinate
+	 * @param w width of image
+	 * @param h height of image
+	 * @param frames number of frames in an animation
+	 * @param name the name of the image file
 	 */
     public Goblin(int x, int y, int w, int h, int frames, String name) {
         super(x, y, w, h, frames, name);
@@ -23,7 +29,9 @@ public class Goblin extends Enemy{
 		canAttack = true;
 		counter = 0;
 	}
-    
+    /**
+     * draws the goblin
+     */
     public void draw(PApplet surface, Player p) {
     	
     	super.draw(surface, p);

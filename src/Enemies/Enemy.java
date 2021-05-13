@@ -21,14 +21,26 @@ public class Enemy extends MovingImage{
     boolean sawPlayer = false;
     public boolean dead = false;
     boolean frozen = false;
-	
+	/**
+	 * 
+	 * @param x the x variable
+	 * @param y the y variable 
+	 * @param w the width of the enemy
+	 * @param h the height of the enemy
+	 * @param frames frames in a goblin
+	 * @param name name of the png file
+	 */
     public Enemy(int x, int y, int w, int h, int frames, String name) {
 		super(x, y, w, h, frames, name);
 		// TODO Auto-generated constructor stub
 	}
 
 	
-    
+    /**
+     * Draws the enemy
+     * @param surface PApplet object 
+     * @param p the player
+     */
     public void draw(PApplet surface, Player p) {
     	if(!dead) {
     		surface.fill(255,255,255);
@@ -39,11 +51,17 @@ public class Enemy extends MovingImage{
     		act(p);
     	}
     }
-    
+    /**
+     * gets the enemy freeze state
+     * @return freeze state
+     */
     public boolean getFrozen() {
     	return frozen;
     }
-    
+    /**
+     * freezes or un freezes enemy
+     * @param b what to change the freeze state to
+     */
     public void setFrozen(boolean b) {
     	frozen = b;
     }
