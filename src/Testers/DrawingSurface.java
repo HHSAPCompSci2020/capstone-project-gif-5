@@ -377,7 +377,7 @@ public class DrawingSurface extends PApplet {
 	 */
 
 	public void setUpWand(){
-		 translate((float) master.getX(), (float) master.getY());
+		 translate((float) (master.getX()-5), (float) master.getY()+15);
 		 x = Math.atan2(master.getY2() - master.getY(), master.getX2() - master.getX());
 		 rotate((float) (x+ 2 * 0.349));
 		 image(wand, 0,0);
