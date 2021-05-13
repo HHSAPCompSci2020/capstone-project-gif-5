@@ -230,8 +230,10 @@ public class DrawingSurface extends PApplet {
 	}
 
 
-
 	
+	/**
+	 * setsup the dungeon, it reads from 2d array and creates the new dungeon
+	 */
      public void dungeonSetUp() {
     	 imageMode(CENTER);
     	 if (Dungeon != null) {
@@ -269,7 +271,9 @@ public class DrawingSurface extends PApplet {
      }
      
      
-
+     /**
+      * method that draws the dungeon every draw method call
+      */
      public void dungeonDraw() {
     	 imageMode(CENTER);
     	 if (Dungeon != null) {

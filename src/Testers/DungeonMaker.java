@@ -33,19 +33,26 @@ import java.util.ArrayList;
 
 public class DungeonMaker extends Dungeon {
 	
-
-	// Constructs an empty grid
+	/**
+	 * constructs an empty grid
+	 */
+	// C
 	public DungeonMaker() {
 		super();
 	}
-
+	/**
+	 * he grid defined in the file specified
+	 * @param filename
+	 */
 	// Constructs the grid defined in the file specified
 	public DungeonMaker(String filename) {
 		super(12,10,filename);
 		
 		 
 	}
-
+	/**
+	 * draws the grid
+	 */
 	public void draw(PApplet marker, float x, float y, float width, float height) {
 		marker.background(37,19,26);
 		marker.noFill();

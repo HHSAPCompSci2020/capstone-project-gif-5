@@ -160,6 +160,12 @@ public class MovingImage extends Rectangle2D.Double {
 		i.image(image,(float)x,(float)y);
 
 	}
+	/**
+	 * checks if the enemy is touching the wall
+	 * @param x x coordinate of player
+	 * @param y y coordinate of player
+	 * @return returns if the player is in the wall
+	 */
 	public boolean touchingWall(double x, double y) {
 		if(w==null) {
 			return false;

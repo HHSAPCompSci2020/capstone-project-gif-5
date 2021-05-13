@@ -23,7 +23,9 @@ public class Goblin extends Enemy{
 		canAttack = true;
 		counter = 0;
 	}
-    
+    /**
+     * draws the goblin
+     */
     public void draw(PApplet surface, Player p) {
     	
     	super.draw(surface, p);
