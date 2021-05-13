@@ -49,6 +49,8 @@ public class DrawingSurface extends PApplet {
 	private PImage iceImg;
 	private int gcounter;
 	private int counter;
+	private int ecounter = 0;
+	private boolean startCount = false;
 	private int repeat;
 	private boolean facingLeft;
 	private double x;
@@ -167,6 +169,9 @@ public class DrawingSurface extends PApplet {
 			}
 			
 		}
+		
+		if(startCount)
+		ecounter++;
 		
 		for(Element u : elements) {
 			u.interactWithObjects(enemies);
@@ -382,17 +387,24 @@ public class DrawingSurface extends PApplet {
 	 * checks if the mouse is pressed
 	 */
 	public void mousePressed() {
-		
-		if(element == 1) {
+		if(ecounter>=30) {
+			ecounter = 0;
+			startCount = false;
+		}
+		if(ecounter == 0) {
+			startCount = true;
+			if(element == 1) {
 			
-			Ice i = new Ice ((int)master.getX(),(int)master.getY(),64,64,1,"ice");
-			i.setImage(iceImg);
+				Ice i = new Ice ((int)master.getX(),(int)master.getY(),64,64,1,"ice");
+				i.setImage(iceImg);
 			
-			double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 		
-			i.direction = dir;
-			i.w = walls;
-			elements.add(i);
+				i.direction = dir;
+				i.w = walls;
+				elements.add(i);
+			}
+			
 		}
 		
 		
