@@ -55,30 +55,30 @@ public class Enemy extends MovingImage{
         }
         if(sawPlayer) {
             if(x<p.getX()) {
-                x+=1;
+            	moveByAmount(1,0);
             }
             else if(x>p.getX()) {
-                 x-=1;   
+            	moveByAmount(-1,0);
             }
             if(y<p.getY()) {
-                y+=1;
+            	moveByAmount(0,1);
             }
             else if(y>p.getY()) {
-             y-=1;
+            	moveByAmount(0,-1);
             }
         }
         if(frozen) {
         	if(x<p.getX()) {
-                x+=1;
+        		moveByAmount(1,0);
             }
             else if(x>p.getX()) {
-                 x-=1;   
+            	moveByAmount(-1,0);
             }
             if(y<p.getY()) {
-                y+=1;
+            	moveByAmount(0,1);
             }
             else if(y>p.getY()) {
-             y-=1;
+            	moveByAmount(0,-1);
             }
         }
     }

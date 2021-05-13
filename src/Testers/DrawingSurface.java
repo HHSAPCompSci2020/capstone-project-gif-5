@@ -83,7 +83,7 @@ public class DrawingSurface extends PApplet {
 //		Ice icee = new Ice(dungeon1, counter, counter, counter, counter, counter, counter, x);
 		//sice = new Ice( 100, 100, 100, 100, 1, 1, "ICE");
 		master = new Player( 10,  10,  64,  64,   "WIZARD",6);
-		goblin = new Goblin(500, 500, 64, 64, 6, "goblin");
+		
 //		enemies.add(new Goblin());
 //		ice = new Ice();
 		Dungeon = new DungeonMaker("room1");
@@ -127,9 +127,7 @@ public class DrawingSurface extends PApplet {
 		//size(100,100);
 		photo = loadImage("WIZARD"+1+".png");
 		master.setImage(photo);
-		
-		goblinImg = loadImage("goblin.png");
-		goblin.setImage(goblinImg);
+	
 		wand = loadImage("wand.png");
 		
 		//photo.resize(128,128);
@@ -152,13 +150,17 @@ public class DrawingSurface extends PApplet {
 //			}
 //		}
 		
+		for(Enemy p : enemies) {
+			p.draw(this,master);
+		}
+		
 		//everything in this Matrix is pushed
 		pushMatrix();
 		
 		//draw ze stuff
 		
 		master.draw(this);
-		goblin.draw(this, master);
+	
 
 		//animate le object
 		
@@ -203,6 +205,13 @@ public class DrawingSurface extends PApplet {
  						walls.add(w);
  						
  						
+ 					}
+ 					if(Dungeon.grid[i][j]=='g') {
+ 						Goblin goblin = new Goblin((int)rectX,(int)rectY, 64, 64, 6, "goblin");
+ 						goblinImg = loadImage("goblin.png");
+ 						goblin.setImage(goblinImg);
+ 						goblin.w = walls;
+ 						enemies.add(goblin);
  					}
  				}
  			}
@@ -261,7 +270,7 @@ public class DrawingSurface extends PApplet {
  						imageMode(CENTER);
  					}
  					
- 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*') {
+ 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*'||Dungeon.grid[i][j]=='g') {
  					imageMode(CORNER);
  					if(i==1 && j==1) {
 	 						
@@ -292,6 +301,9 @@ public class DrawingSurface extends PApplet {
 							
 							
 						}
+ 					
+ 					
+ 					
  					imageMode(CENTER);
 
  				}
