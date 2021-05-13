@@ -173,6 +173,11 @@ public class DrawingSurface extends PApplet {
 		if(startCount)
 		ecounter++;
 		
+		if(ecounter>=30) {
+			ecounter = 0;
+			startCount = false;
+		}
+		
 		for(Element u : elements) {
 			u.interactWithObjects(enemies);
 			if(u.isDead == true) {
@@ -211,7 +216,15 @@ public class DrawingSurface extends PApplet {
 		fill(255, 0, 0);
 		rect(30, 30, (float)(master.getHealth()* 0.01 * 100), 10);
 		text("Health: " + master.getHealth(), 30, 30);
-		
+
+		fill(255);
+		rect(30, 60, 100, 10);
+		fill(0, 0, 255);
+		if(startCount)
+		rect(30, 60, (int)((10.0/3.0)*ecounter), 10);
+		else {
+			rect(30, 60, 100, 10);
+		}
 		
 		
 	}
@@ -387,10 +400,6 @@ public class DrawingSurface extends PApplet {
 	 * checks if the mouse is pressed
 	 */
 	public void mousePressed() {
-		if(ecounter>=30) {
-			ecounter = 0;
-			startCount = false;
-		}
 		if(ecounter == 0) {
 			startCount = true;
 			if(element == 1) {
