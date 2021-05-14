@@ -16,7 +16,8 @@ public abstract class Element extends MovingImage{
 	public boolean isDead = false;
 	protected int speed = 15;
 	public double direction; // in radians
-
+	public float width;
+	public float height;
 	private Shape s; //for testing intersections
 	
 	//what does "frames" do?
@@ -35,7 +36,8 @@ public abstract class Element extends MovingImage{
 		s = new Circle(); // s is a new shape
 		this.speed = speed;
 		this.direction = direction;
-		
+		width = w;
+		height = h;
 	}
 	
 	public void act() {
@@ -101,6 +103,10 @@ public abstract class Element extends MovingImage{
 	 * draws the element if its not dead
 	 */
 	public void draw(PApplet g) {
+		
+		
+		
+		
 		if(isDead) {
 			
 		}
@@ -108,7 +114,10 @@ public abstract class Element extends MovingImage{
 //			super.draw(g);
 			move();
 			
+			
+	
 			super.draw(g);
+		
 			
 			}
 		
