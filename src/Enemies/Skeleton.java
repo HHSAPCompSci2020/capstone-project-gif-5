@@ -71,8 +71,11 @@ public class Skeleton extends Enemy{
     		counter = 0;
     	}
     	//System.out.print("bruh");
-    	if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))>250) {
+    	if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))>300) {
+    		stop = false;
     		super.act(p);
+    	}else {
+    		stop = true;
     	}
         if (intersects(p) && canAttack) {
             p.setHealth(-10);
@@ -80,7 +83,7 @@ public class Skeleton extends Enemy{
         }
         else if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<300 && canAttack) {
         	Arrow a = new Arrow((int)x, (int)y, 64, 64, "arrow", 1);
-        	arrowImage = surface.loadImage("icicle8.png");
+        	arrowImage = surface.loadImage("ARROW.png");
         	a.setImage(arrowImage);
         	double dir =  Math.atan2((p.getY()-getY()),(p.getX()-getX()));
     		

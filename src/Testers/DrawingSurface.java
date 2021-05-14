@@ -130,9 +130,9 @@ public class DrawingSurface extends PApplet {
 		long start = System.currentTimeMillis();
 		imageMode(CENTER);
 		//size(100,100);
-		photo = loadImage("WIZARD"+1+".png");
+		photo = loadImage("WIZARD"+""+".png");
 		master.setImage(photo);
-		photo = loadImage("LWIZARD"+1+".png");
+		photo = loadImage("LWIZARD"+""+".png");
 		master.setImage2(photo);
 		
 		iceImg = loadImage("icicle8.png");
@@ -140,7 +140,7 @@ public class DrawingSurface extends PApplet {
 		
 		wand = loadImage("wand.png");
 		
-		//photo.resize(128,128);
+		wand.resize(32,32);
 	}
 	
 	/**
@@ -261,10 +261,12 @@ public class DrawingSurface extends PApplet {
  						enemies.add(goblin);
  					}
  					if(Dungeon.grid[i][j]=='s') {
- 						Skeleton skelly = new Skeleton((int)rectX,(int)rectY, 64, 64, 6, "skelly");
- 						PImage skellyImg = loadImage("hunt.png");
+ 						Skeleton skelly = new Skeleton((int)rectX,(int)rectY, 64, 64, 6, "skeleton");
+ 						PImage skellyImg = loadImage("skeleton.png");
  						skelly.setImage(skellyImg);
- 						skellyImg = loadImage("hunt.png");
+ 						skellyImg.resize(100, 100);
+ 						skellyImg = loadImage("lskeleton.png");
+ 						
  						skelly.setImage2(skellyImg);
  						skelly.w = walls;
  						enemies.add(skelly);
