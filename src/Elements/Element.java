@@ -116,7 +116,6 @@ public abstract class Element extends MovingImage{
 //			super.draw(g);
 //			g.rotate((float)(direction + 0.5));
 //			System.out.println("j");
-			g.image(image, height, width, height, speed);
 //			rotate((float)(direction));
 	
 //			 translate((float) (master.getX()-5), (float) master.getY()+15);
@@ -124,13 +123,16 @@ public abstract class Element extends MovingImage{
 //			 rotate((float) (x+ 2 * 0.349));
 //			 image(wand, 0,0);
 			
-			
-			 
-			 
-			 
+			g.pushMatrix();
+			g.rotate((float)(direction));
+			g.image(image, height, width, height, speed);
 			move();
-	
 			super.draw(g);
+			g.popMatrix(); 
+			 
+//			move();
+//	
+//			super.draw(g);
 		
 			
 			}
