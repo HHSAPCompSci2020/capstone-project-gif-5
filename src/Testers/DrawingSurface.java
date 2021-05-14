@@ -425,6 +425,7 @@ public class DrawingSurface extends PApplet {
 //				translate(3000,30);
 				
 				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+				System.out.println(i.getX());
 				i.setImage(iceImg);
 				
 //				popMatrix();

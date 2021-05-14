@@ -113,6 +113,9 @@ public abstract class Element extends MovingImage{
 		
 		if(isDead) {}
 		else {		
+			
+			super.draw(g);
+			move();
 //			super.draw(g);
 //			g.rotate((float)(direction + 0.5));
 //			System.out.println("j");
@@ -123,13 +126,18 @@ public abstract class Element extends MovingImage{
 //			 rotate((float) (x+ 2 * 0.349));
 //			 image(wand, 0,0);
 			
-			g.pushMatrix();
-			g.rotate((float)(direction));
-			g.image(image, height, width, height, speed);
-			move();
-			super.draw(g);
-			g.popMatrix(); 
-			 
+//			g.push();
+//			g.translate((float)(x), (float)(y));
+//			g.rotate((float)(direction));
+//			g.image(image, (float)x, (float)y, width, height);
+//			g.pop();
+			
+//			g.push();
+//			 g.translate((float) (x-5), (float) (y+15));
+//			 g.rotate((float) (direction));
+//			 g.image(image, (float)x,(float)y);
+//			g.pop();
+//			move();
 //			move();
 //	
 //			super.draw(g);
