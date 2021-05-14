@@ -221,7 +221,7 @@ public class DrawingSurface extends PApplet {
 		rect(30, 60, 100, 10);
 		fill(0, 0, 255);
 		if(startCount)
-		rect(30, 60, (int)((10.0/3.0)*ecounter), 10);
+		rect(30, 60, (int)((10.0/6.0)*ecounter), 10);
 		else {
 			rect(30, 60, 100, 10);
 		}

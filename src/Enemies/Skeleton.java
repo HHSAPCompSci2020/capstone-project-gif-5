@@ -71,7 +71,9 @@ public class Skeleton extends Enemy{
     		counter = 0;
     	}
     	//System.out.print("bruh");
-    	super.act(p);
+    	if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))>250) {
+    		super.act(p);
+    	}
         if (intersects(p) && canAttack) {
             p.setHealth(-10);
             canAttack = false;
