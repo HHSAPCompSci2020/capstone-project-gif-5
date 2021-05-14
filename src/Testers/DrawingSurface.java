@@ -417,17 +417,17 @@ public class DrawingSurface extends PApplet {
 			startCount = true;
 			if(element == 1) {
 			
-				pushMatrix();
+//				pushMatrix();
 				
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 
 //				rotate((float)(dir));
-				translate(3000,30);
+//				translate(3000,30);
 				
 				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
 				i.setImage(iceImg);
 				
-				popMatrix();
+//				popMatrix();
 				
 				i.direction = dir;
 				i.w = walls;
