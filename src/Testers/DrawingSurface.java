@@ -173,7 +173,7 @@ public class DrawingSurface extends PApplet {
 		if(startCount)
 		ecounter++;
 		
-		if(ecounter>=30) {
+		if(ecounter>=60) {
 			ecounter = 0;
 			startCount = false;
 		}
