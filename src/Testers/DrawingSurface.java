@@ -208,13 +208,14 @@ public class DrawingSurface extends PApplet {
 		popMatrix();
 
 
-		//display text
+		//display health
 		fill(255,255,255);
 		rect(30, 30, 100, 10);
 		fill(255, 0, 0);
 		rect(30, 30, (float)(master.getHealth()* 0.01 * 100), 10);
 		text("Health: " + master.getHealth(), 30, 30);
 
+		//mana
 		fill(255);
 		rect(30, 60, 100, 10);
 		fill(0, 0, 255);
@@ -417,18 +418,18 @@ public class DrawingSurface extends PApplet {
 			startCount = true;
 			if(element == 1) {
 			
-//				pushMatrix();
+				pushMatrix();
 				
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 
 //				rotate((float)(dir));
-//				translate(3000,30);
+				translate(3000,30);
 				
 				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
 				System.out.println(i.getX());
 				i.setImage(iceImg);
 				
-//				popMatrix();
+				popMatrix();
 				
 				i.direction = dir;
 				i.w = walls;

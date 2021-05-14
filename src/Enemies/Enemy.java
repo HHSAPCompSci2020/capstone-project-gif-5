@@ -43,10 +43,6 @@ public class Enemy extends MovingImage{
      */
     public void draw(PApplet surface, Player p) {
     	if(!dead) {
-    		surface.fill(255,255,255);
-    		surface.rect((float)x-23, (float)y-40, 50, 5);
-    		surface.fill(255, 0, 0);
-    		surface.rect((float)x-23, (float)y-40, (float)(health* 0.01 * ogH*100/ogH), 5);
     		super.draw(surface);
     		act(p);
     	}
