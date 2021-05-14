@@ -85,6 +85,7 @@ public class Skeleton extends Enemy{
 			a.direction = dir;
 			a.w = this.w;
 			arrows.add(a);
+			canAttack = false;
         }
         else if(!canAttack) {
         	counter++;
