@@ -208,13 +208,14 @@ public class DrawingSurface extends PApplet {
 		popMatrix();
 
 
-		//display text
+		//display health
 		fill(255,255,255);
 		rect(30, 30, 100, 10);
 		fill(255, 0, 0);
 		rect(30, 30, (float)(master.getHealth()* 0.01 * 100), 10);
 		text("Health: " + master.getHealth(), 30, 30);
 
+		//mana
 		fill(255);
 		rect(30, 60, 100, 10);
 		fill(0, 0, 255);

@@ -47,6 +47,13 @@ public class Skeleton extends Enemy{
     	super.draw(surface, p);
     	act(surface, p);
     	
+    	if(!dead) {
+    		surface.fill(255,255,255);
+    		surface.rect((float)x-23, (float)y-40, 50, 5);
+    		surface.fill(255, 0, 0);
+    		surface.rect((float)x-23, (float)y-40, (float)(health*0.01*100), 5);
+    	}
+    	
     	for(Arrow u : arrows) {
 			u.interactWithObjects(p);
 			if(u.isDead == true) {
@@ -66,7 +73,7 @@ public class Skeleton extends Enemy{
      * @param p The player you act with and check if you intersect with
      */
     public void act(PApplet surface, Player p) {
-    	if(counter >= 180) {
+    	if(counter >= 60) {
     		canAttack = true;
     		counter = 0;
     	}
