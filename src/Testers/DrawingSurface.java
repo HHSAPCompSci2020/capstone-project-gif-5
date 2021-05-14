@@ -262,6 +262,15 @@ public class DrawingSurface extends PApplet {
  						goblin.w = walls;
  						enemies.add(goblin);
  					}
+ 					if(Dungeon.grid[i][j]=='s') {
+ 						Skeleton skelly = new Skeleton((int)rectX,(int)rectY, 64, 64, 6, "skelly");
+ 						PImage skellyImg = loadImage("hunt.png");
+ 						skelly.setImage(skellyImg);
+ 						skellyImg = loadImage("hunt.png");
+ 						skelly.setImage2(skellyImg);
+ 						skelly.w = walls;
+ 						enemies.add(skelly);
+ 					}
  				}
  			}
  		}
@@ -321,7 +330,7 @@ public class DrawingSurface extends PApplet {
  						imageMode(CENTER);
  					}
  					
- 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*'||Dungeon.grid[i][j]=='g') {
+ 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*'||Dungeon.grid[i][j]=='g'||Dungeon.grid[i][j]=='s') {
  					imageMode(CORNER);
  					if(i==1 && j==1) {
 	 						
