@@ -30,7 +30,7 @@ public abstract class Element extends MovingImage{
 	 * @param frames The number of frames the animation has
 	 * @param name name of the file
 	 * */
-	public Element(int x,int y,int w,int h,String name, int frames) {
+	public Element(int x,int y,int w,int h, int speed, double direction, String name, int frames) {
 		
 		super(x, y, w, h, frames, name);
 		s = new Circle(); // s is a new shape
@@ -104,17 +104,31 @@ public abstract class Element extends MovingImage{
 	 */
 	public void draw(PApplet g) {
 		
+//		
+//		if(!facingLeft || image2==null) {
+//			g.image(image,(int)x,(int)y,(int)width,(int)height);
+//		}else {
+//			g.image(image2,(int)x,(int)y,(int)width,(int)height);
+//		}
 		
-		
-		
-		if(isDead) {
-			
-		}
+		if(isDead) {}
 		else {		
 //			super.draw(g);
+//			g.rotate((float)(direction + 0.5));
+//			System.out.println("j");
+			g.image(image, height, width, height, speed);
+//			rotate((float)(direction));
+	
+//			 translate((float) (master.getX()-5), (float) master.getY()+15);
+//			 x = Math.atan2(master.getY2() - master.getY(), master.getX2() - master.getX());
+//			 rotate((float) (x+ 2 * 0.349));
+//			 image(wand, 0,0);
+			
+			
+			 
+			 
+			 
 			move();
-			
-			
 	
 			super.draw(g);
 		
@@ -123,6 +137,10 @@ public abstract class Element extends MovingImage{
 		
 //		p = g.loadImage(name);
 //		g.draw(this);
+	}
+	
+	public void rotate(PApplet g) {
+		
 	}
 
 	/**

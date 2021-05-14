@@ -28,9 +28,9 @@ public class Ice extends Element {
 	 * @param frames The number of frames the animation has
 	 * @param name name of the file path
 	 * */
-	public Ice(int x,int y,int w,int h,int frames,String name) {
+	public Ice(int x,int y,int w,int h, int speed, double direction, String name, int frames) {
 		
-		super(x,  y,  w,  h,  name,  frames);
+		super(x, y, w, h, speed, direction, name, frames);
 		
 	}
 	

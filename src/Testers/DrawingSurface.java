@@ -201,8 +201,6 @@ public class DrawingSurface extends PApplet {
 
 		//animate le object
 		
-		
-		
 		//the wand action
 		setUpWand();
 		
@@ -417,11 +415,18 @@ public class DrawingSurface extends PApplet {
 			startCount = true;
 			if(element == 1) {
 			
-				Ice i = new Ice ((int)master.getX(),(int)master.getY(),64,64,1,"ice");
-				i.setImage(iceImg);
-			
+				pushMatrix();
+				
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
-		
+
+//				rotate((float)(dir));
+				translate(3000,30);
+				
+				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+				i.setImage(iceImg);
+				
+				popMatrix();
+				
 				i.direction = dir;
 				i.w = walls;
 				elements.add(i);
@@ -450,17 +455,6 @@ public class DrawingSurface extends PApplet {
 		 rotate((float) (x+ 2 * 0.349));
 		 image(wand, 0,0);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
 
 
