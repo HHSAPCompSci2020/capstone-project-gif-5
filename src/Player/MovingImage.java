@@ -33,6 +33,7 @@ public class MovingImage extends Rectangle2D.Double {
 	private String inWall = "none";
 	public ArrayList<wall> w = new ArrayList<wall>();
 	PApplet i;
+	protected boolean stop;
 	protected PImage image;
 	protected PImage image2;
 	private int counter;
@@ -83,7 +84,9 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param y the vertical distance to move the movingImage
 	 * */
 	public void moveByAmount(double x, double y) {
-		
+		if(stop) {
+			return;
+		}
 		if(touchingWall(this.x,this.y)){
 			
 			
