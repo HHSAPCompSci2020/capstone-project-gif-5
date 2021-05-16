@@ -80,6 +80,8 @@ public class DrawingSurface extends PApplet {
 	private PImage blankFloor2; 
 	private PImage lW; 
 	private int element = 1;
+	private int level = 1;
+	private int maxLevel = 2;
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -91,7 +93,7 @@ public class DrawingSurface extends PApplet {
 		
 //		enemies.add(new Goblin());
 //		ice = new Ice();
-		Dungeon = new DungeonMaker("room1");
+		Dungeon = new DungeonMaker("room"+level);
 		counter = 1;
 		gcounter = 1;
 		repeat = 0;
@@ -148,6 +150,18 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
+		if(enemies.isEmpty()) {
+			level++;
+			if(level <= maxLevel) {
+			
+				Dungeon = new DungeonMaker("room"+level);
+				dungeonSetUp();
+			}
+		}
+			
+			
+	
+		
 		background(37,19,26);
 		//Dungeon.draw(this, 0, 0, 12, 10);
 		dungeonDraw();
@@ -160,13 +174,16 @@ public class DrawingSurface extends PApplet {
 //			}
 //		}
 		
-		for(Enemy p : enemies) {
-			if(p.dead == true) {
-				p = null;
-				enemies.remove(p);
+		for(int i = 0; i < enemies.size(); i++) {
+			
+			if(enemies.get(i).dead == true) {
+				enemies.set(i,null);
+				enemies.remove(i);
+				
 			}else {
-				p.draw(this,master);
+				enemies.get(i).draw(this,master);
 			}
+			
 			
 		}
 		

@@ -84,6 +84,14 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param y the vertical distance to move the movingImage
 	 * */
 	public void moveByAmount(double x, double y) {
+		if(x>0) {
+			facingLeft = false;
+
+		}
+		if(x<0) {
+			facingLeft = true;
+
+		}
 		if(stop) {
 			return;
 		}
@@ -96,14 +104,7 @@ public class MovingImage extends Rectangle2D.Double {
 		if(touchingWall(super.x + x,super.y + y)) {
 			return;
 		}
-		if(x>0) {
-			facingLeft = false;
-
-		}
-		if(x<0) {
-			facingLeft = true;
-
-		}
+		
 		super.x += x;
 		super.y += y;
 	}
