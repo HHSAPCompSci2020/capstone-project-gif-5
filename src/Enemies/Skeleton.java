@@ -53,7 +53,6 @@ public class Skeleton extends Enemy{
     		surface.fill(255, 0, 0);
     		surface.rect((float)x-23, (float)y-40, (float)(health*0.01*100), 5);
     	}
-    	
     	for(Arrow u : arrows) {
 			u.interactWithObjects(p);
 			if(u.isDead == true) {
