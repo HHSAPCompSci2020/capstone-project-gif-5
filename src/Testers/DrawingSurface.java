@@ -429,6 +429,7 @@ public class DrawingSurface extends PApplet {
 		if(key == ' ') {
 			if(element < 2) {
 				element++;
+				return;
 			}
 			if(element == 2) {
 				element = 1;
