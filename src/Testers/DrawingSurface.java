@@ -426,6 +426,12 @@ public class DrawingSurface extends PApplet {
 			master.runTrue();
 			master.changeState(2);
 		}
+		if(key == ' ') {
+			element++;
+			if(element == 2) {
+				element = 1;
+			}
+		}
 	}
 	/**
 	 * checks if the mouse is pressed
