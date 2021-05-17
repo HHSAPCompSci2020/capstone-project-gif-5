@@ -34,7 +34,7 @@ public class Ice extends Element {
 		
 	}
 	
-	public void strikeEnemy(double direction, Enemy e) {
+	public void strikeEnemy(double direction, Enemy e, ArrayList<Enemy> enemies) {
 		
 		e.setFrozen(true);
 		e.loseHealth(10);

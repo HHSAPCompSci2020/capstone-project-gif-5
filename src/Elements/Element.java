@@ -39,31 +39,17 @@ public abstract class Element extends MovingImage{
 		width = w;
 		height = h;
 	}
-	
-	public void act() {
-		
-	}
-	
+
 	/** checks whether any enemies have touched the element. if there are any, then interact with them
 	 * @param e an arraylist full of all the enemies
 	 * */
 	public void interactWithObjects(ArrayList<Enemy> e) {
 		
-		boolean hasIntersected = false;
-		
 		for(int i = 0; i < e.size(); i ++) {
 			if(this.intersectsEnemy(e.get(i))) {
-				//enemy loses health
-				//dissipate();
-				// how to get direction?
-				strikeEnemy(direction, e.get(i));
+				strikeEnemy(direction, e.get(i), e);
 				dissipate();
 			}
-			//intersects walls?
-		}
-		
-		if(hasIntersected = false) {
-			dissipate();
 		}
 	}
 	
@@ -104,61 +90,25 @@ public abstract class Element extends MovingImage{
 	 */
 	public void draw(PApplet g) {
 		
-//		
-//		if(!facingLeft || image2==null) {
-//			g.image(image,(int)x,(int)y,(int)width,(int)height);
-//		}else {
-//			g.image(image2,(int)x,(int)y,(int)width,(int)height);
-//		}
-		
 		if(isDead) {}
 		else {		
-			
+			g.pushMatrix();
+			g.imageMode(g.CENTER);
+		//	System.out.println("d " + direction);
 			super.draw(g);
+			g.popMatrix();
 			move();
-//			super.draw(g);
-//			g.rotate((float)(direction + 0.5));
-//			System.out.println("j");
-//			rotate((float)(direction));
-	
-//			 translate((float) (master.getX()-5), (float) master.getY()+15);
-//			 x = Math.atan2(master.getY2() - master.getY(), master.getX2() - master.getX());
-//			 rotate((float) (x+ 2 * 0.349));
-//			 image(wand, 0,0);
-			
-//			g.push();
-//			g.translate((float)(x), (float)(y));
-//			g.rotate((float)(direction));
-//			g.image(image, (float)x, (float)y, width, height);
-//			g.pop();
-			
-//			g.push();
-//			 g.translate((float) (x-5), (float) (y+15));
-//			 g.rotate((float) (direction));
-//			 g.image(image, (float)x,(float)y);
-//			g.pop();
-//			move();
-//			move();
-//	
-//			super.draw(g);
-		
-			
 			}
 		
-//		p = g.loadImage(name);
-//		g.draw(this);
 	}
 	
-	public void rotate(PApplet g) {
-		
-	}
 
 	/**
 	 * returns whether any of the four corners of the enemy are inside the element
 	 * @param e the enemy that this element checks for intersection with
 	 * @return whether this element has intersected this enemy or not
 	 * */
-	private boolean intersectsEnemy(Enemy e) {
+	public boolean intersectsEnemy(Enemy e) {
 		if(isPointInside(e.getX(), e.getY())) {
 			return true;
 		}
@@ -198,7 +148,7 @@ public abstract class Element extends MovingImage{
 		moveToLocation(-10,-10);
 	}
 
-	public abstract void strikeEnemy(double direction, Enemy e);
+	public abstract void strikeEnemy(double direction, Enemy e, ArrayList<Enemy> enemies);
 	
 	/**moves the element
 	 * */
