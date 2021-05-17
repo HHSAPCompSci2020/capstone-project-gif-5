@@ -88,14 +88,7 @@ public class Skeleton extends Enemy{
             canAttack = false;
         }
         else if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<300 && canAttack) {
-        	Arrow a = new Arrow((int)x, (int)y, 64, 64, "arrow", 1);
-        	arrowImage = surface.loadImage("ARROW.png");
-        	a.setImage(arrowImage);
-        	double dir =  Math.atan2((p.getY()-getY()),(p.getX()-getX()));
-    		
-			a.direction = dir;
-			a.w = this.w;
-			arrows.add(a);
+        	attack(surface, p);
 			canAttack = false;
         }
         else if(!canAttack) {
@@ -103,8 +96,15 @@ public class Skeleton extends Enemy{
         }
     }
     
-    public void attack() {
-    	
+    public void attack(PApplet surface, Player p) {
+    	Arrow a = new Arrow((int)x, (int)y, 64, 64, "arrow", 1);
+    	arrowImage = surface.loadImage("ARROW.png");
+    	a.setImage(arrowImage);
+    	double dir =  Math.atan2((p.getY()-getY()),(p.getX()-getX()));
+		
+		a.direction = dir;
+		a.w = this.w;
+		arrows.add(a);
     }
 
 

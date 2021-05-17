@@ -101,16 +101,13 @@ public class Arrow extends MovingImage{
 	 * draws the element if its not dead
 	 */
 	public void draw(PApplet g) {
-		if(isDead) {
-			
-		}
-		else {		
+		if(!isDead) { 
 //			super.draw(g);
 			move();
 			
 			super.draw(g);
 			
-			}
+		}
 		
 //		p = g.loadImage(name);
 //		g.draw(this);

@@ -427,7 +427,9 @@ public class DrawingSurface extends PApplet {
 			master.changeState(2);
 		}
 		if(key == ' ') {
-			element++;
+			if(element < 2) {
+				element++;
+			}
 			if(element == 2) {
 				element = 1;
 			}
