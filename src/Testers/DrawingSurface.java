@@ -138,7 +138,7 @@ public class DrawingSurface extends PApplet {
 		photo = loadImage("LWIZARD"+""+".png");
 		master.setImage2(photo);
 		
-		iceImg = loadImage("icicle8.png");
+		iceImg = loadImage("icicle.png");
 		lightningImg = loadImage("lightning.png");
 		
 		wand = loadImage("wand.png");
