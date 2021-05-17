@@ -1,27 +1,7 @@
 package Elements;
-<<<<<<< Updated upstream
 
 import Enemies.Enemy;
 
-/**
- * 
- * @author Franklin Wang
- *Lightning elemenet
- */
-public class Lightning extends Element {
-
-	public Lightning(int x, int y, int w, int h, int speed, double direction, String name, int frames) {
-		super(x, y, w, h, speed, direction, name, frames);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void strikeEnemy(double direction, Enemy e) {
-		// TODO Auto-generated method stub
-		e.loseHealth(10);
-	}
-=======
->>>>>>> Stashed changes
 
 import java.util.ArrayList;
 
@@ -73,7 +53,7 @@ public class Lightning extends Element{
 	@Override
 	public void strikeEnemy(double direction, Enemy e, ArrayList<Enemy> enemies) {
 		// TODO Auto-generated method stub
-		e.loseHealth(10);
+		e.loseHealth(0.1);
 		
 //		ArrayList<Enemy> enemiesCopy = new ArrayList<Enemy>(enemies.size());
 //		for(int a = 0; a < enemies.size(); a ++) {

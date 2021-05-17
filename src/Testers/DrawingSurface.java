@@ -11,22 +11,13 @@ import gbitton299.shapes.*;
 import Player.*;
 import java.lang.*;
 import java.util.ArrayList;
-/*
-import javax.imageio.*;
-import java.awt.image.*;
-import java.io.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-*/
-
 
 
 
 
 /**
  * 
- * @author ido Tal
+ * @author ido Tal, Franklin Wang, Gilad Bitton
  * @version beta
  * This class connects everything together and draws it
  */
@@ -50,7 +41,7 @@ public class DrawingSurface extends PApplet {
 	private PImage iceImg, lightningImg;
 	private int gcounter;
 	private int counter;
-	private int ecounter = 50;
+	private double ecounter = 60;
 	private boolean startCount = false;
 	private int repeat;
 	private boolean facingLeft;
@@ -444,7 +435,7 @@ public class DrawingSurface extends PApplet {
 //		}
 		
 		
-		if(element == 1) {
+		if(element == 2) {
 			System.out.println(ecounter);
 			if(ecounter - 20 >= 0) {
 				
@@ -456,7 +447,6 @@ public class DrawingSurface extends PApplet {
 				
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 
-				translate(3000,30);
 				
 				Ice i = new Ice((int)master.getX(), (int)master.getY(), 
 						64, 64, 10, dir, "ice", 1);
@@ -470,81 +460,87 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 		
-		if(element == 2) {
-			pushMatrix();
-			
-			double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
-
-//			rotate((float)(dir));
-			translate(3000,30);
-			
-//			Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+//		if(element == 2) {
+//			pushMatrix();
+//			
+//			double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//
+////			rotate((float)(dir));
+//			translate(3000,30);
+//			
+////			Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+////			System.out.println(i.getX());
+//			
+//			Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
 //			System.out.println(i.getX());
-			
-			Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
-			System.out.println(i.getX());
-			
-			i.setImage(lightningImg);
-			
-			popMatrix();
-			
-			i.direction = dir;
-			i.w = walls;
-			elements.add(i);
-		}
-		
-//		if(ecounter == 0) {
-//			startCount = true;
-//			if(element == 1) {
 //			
-//				pushMatrix();
-//				
-//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
-//
-//				translate(3000,30);
-//				
-//				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
-//				System.out.println(i.getX());
-//				i.setImage(iceImg);
-//				
-//				popMatrix();
-//				
-//				i.direction = dir;
-//				i.w = walls;
-//				elements.add(i);
-//			}
+//			i.setImage(lightningImg);
 //			
-//			if(element == 2) {
-//				pushMatrix();
-//				
-//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
-//
-////				rotate((float)(dir));
-//				translate(3000,30);
-//				
-////				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
-////				System.out.println(i.getX());
-//				
-//				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
-//				System.out.println(i.getX());
-//				
-//				i.setImage(lightningImg);
-//				
-//				popMatrix();
-//				
-//				i.direction = dir;
-//				i.w = walls;
-//				elements.add(i);
-//			}
+//			popMatrix();
 //			
+//			i.direction = dir;
+//			i.w = walls;
+//			elements.add(i);
 //		}
 		
+		if(element == 1) {
+			System.out.println(ecounter);
+			if(ecounter - 10 >= 0) {
+				
+				ecounter = ecounter - 10;
+				startCount = true;
+				System.out.println(ecounter);
+				pushMatrix();
+				
+				
+				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+				
+				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 
+						64, 64, 10, dir, "lightning", 1);
+				i.setImage(lightningImg);
+				
+				popMatrix();
+				
+				i.direction = dir;
+				i.w = walls;
+				elements.add(i);
+			}
+		}
 		
 	}
+	
+	public void mouseDragged() {
+		startCount = false;
+		System.out.println("ASDFASDFASDF");
+		if(element == 1) {
+			System.out.println(ecounter);
+			if(ecounter - 1 >= 0) {
+				
+				ecounter = ecounter - 1;
+//				startCount = true;
+				System.out.println(ecounter);
+				pushMatrix();
+				
+				
+				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+				
+				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 
+						64, 64, 10, dir, "lightning", 1);
+				i.setImage(lightningImg);
+				
+				popMatrix();
+				
+				i.direction = dir;
+				i.w = walls;
+				elements.add(i);
+			}
+		}
+		startCount = true;
+	}
+	
 	/**
 	 * checks if a key is realeased
 	 */
-
 	public void keyReleased(){
 		master.keyReleased();
 	}
