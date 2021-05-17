@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import Elements.Element;
 import Elements.Ice;
+import Elements.Lightning;
 import Enemies.*;
 import processing.core.*;
 import gbitton299.shapes.*;
@@ -46,10 +47,10 @@ public class DrawingSurface extends PApplet {
 	private PImage wand;
 
 	private PImage goblinImg;
-	private PImage iceImg;
+	private PImage iceImg, lightningImg;
 	private int gcounter;
 	private int counter;
-	private int ecounter = 0;
+	private int ecounter = 50;
 	private boolean startCount = false;
 	private int repeat;
 	private boolean facingLeft;
@@ -115,7 +116,7 @@ public class DrawingSurface extends PApplet {
 		 rightWall = loadImage("tiles/tile035.png");
 		 
 		 topLeftFloor = loadImage("tiles/tile011.png");
-		 topRightFloor  = loadImage("tiles/tile014.png");;
+		 topRightFloor  = loadImage("tiles/tile014.png");
 		 bottomLeftFloor= loadImage("tiles/tile031.png");;
 		 bottomRightFloor = loadImage("tiles/tile034.png");;
 		 upFloor = loadImage("tiles/tile012.png");
@@ -138,7 +139,7 @@ public class DrawingSurface extends PApplet {
 		master.setImage2(photo);
 		
 		iceImg = loadImage("icicle8.png");
-		
+		lightningImg = loadImage("lightning.png");
 		
 		wand = loadImage("wand.png");
 		
@@ -159,9 +160,6 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 			
-			
-	
-		
 		background(37,19,26);
 		//Dungeon.draw(this, 0, 0, 12, 10);
 		dungeonDraw();
@@ -191,8 +189,12 @@ public class DrawingSurface extends PApplet {
 		ecounter++;
 		
 		if(ecounter>=60) {
+			ecounter = 60;
+			startCount = true;
+		}
+		
+		if(ecounter <= 0) {
 			ecounter = 0;
-			startCount = false;
 		}
 		
 		for(Element u : elements) {
@@ -207,6 +209,10 @@ public class DrawingSurface extends PApplet {
 			
 			
 		}
+		
+//		while(mousePressed == true) {
+//			System.out.println("bbbbbbbbbb");
+//		}
 		
 		//everything in this Matrix is pushed
 		pushMatrix();
@@ -431,19 +437,29 @@ public class DrawingSurface extends PApplet {
 	 * checks if the mouse is pressed
 	 */
 	public void mousePressed() {
-		if(ecounter == 0) {
-			startCount = true;
-			if(element == 1) {
-			
+//		
+//		if(ecounter>=60) {
+//			ecounter = 0;
+//			startCount = false;
+//		}
+		
+		
+		if(element == 1) {
+			System.out.println(ecounter);
+			if(ecounter - 20 >= 0) {
+				
+				ecounter = ecounter - 20;
+				startCount = true;
+				System.out.println(ecounter);
 				pushMatrix();
+				
 				
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 
-//				rotate((float)(dir));
 				translate(3000,30);
 				
-				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
-				System.out.println(i.getX());
+				Ice i = new Ice((int)master.getX(), (int)master.getY(), 
+						64, 64, 10, dir, "ice", 1);
 				i.setImage(iceImg);
 				
 				popMatrix();
@@ -452,8 +468,76 @@ public class DrawingSurface extends PApplet {
 				i.w = walls;
 				elements.add(i);
 			}
-			
 		}
+		
+		if(element == 2) {
+			pushMatrix();
+			
+			double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+
+//			rotate((float)(dir));
+			translate(3000,30);
+			
+//			Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+//			System.out.println(i.getX());
+			
+			Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+			System.out.println(i.getX());
+			
+			i.setImage(lightningImg);
+			
+			popMatrix();
+			
+			i.direction = dir;
+			i.w = walls;
+			elements.add(i);
+		}
+		
+//		if(ecounter == 0) {
+//			startCount = true;
+//			if(element == 1) {
+//			
+//				pushMatrix();
+//				
+//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//
+//				translate(3000,30);
+//				
+//				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+//				System.out.println(i.getX());
+//				i.setImage(iceImg);
+//				
+//				popMatrix();
+//				
+//				i.direction = dir;
+//				i.w = walls;
+//				elements.add(i);
+//			}
+//			
+//			if(element == 2) {
+//				pushMatrix();
+//				
+//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//
+////				rotate((float)(dir));
+//				translate(3000,30);
+//				
+////				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+////				System.out.println(i.getX());
+//				
+//				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+//				System.out.println(i.getX());
+//				
+//				i.setImage(lightningImg);
+//				
+//				popMatrix();
+//				
+//				i.direction = dir;
+//				i.w = walls;
+//				elements.add(i);
+//			}
+//			
+//		}
 		
 		
 	}
