@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import Elements.Element;
 import Elements.Ice;
+import Elements.Lightning;
 import Enemies.*;
 import processing.core.*;
 import gbitton299.shapes.*;
@@ -46,10 +47,18 @@ public class DrawingSurface extends PApplet {
 	private PImage wand;
 
 	private PImage goblinImg;
-	private PImage iceImg;
+<<<<<<< Updated upstream
+	private PImage iceImg, lightningImg;
 	private int gcounter;
 	private int counter;
-	private int ecounter = 0;
+	private int ecounter = 50;
+=======
+	private PImage iceImg;
+	private PImage lightningImg;
+	private int gcounter;
+	private int counter;
+	private int ecounter = 100;
+>>>>>>> Stashed changes
 	private boolean startCount = false;
 	private int repeat;
 	private boolean facingLeft;
@@ -87,13 +96,15 @@ public class DrawingSurface extends PApplet {
 	 */
 	public DrawingSurface() {
 	
-//		Ice icee = new Ice(dungeon1, counter, counter, counter, counter, counter, counter, x);
-		//sice = new Ice( 100, 100, 100, 100, 1, 1, "ICE");
 		master = new Player( 10,  10,  64,  64,   "WIZARD",6);
 		
+<<<<<<< Updated upstream
 //		enemies.add(new Goblin());
 //		ice = new Ice();
 		Dungeon = new DungeonMaker("room"+level);
+=======
+		Dungeon = new DungeonMaker("room1");
+>>>>>>> Stashed changes
 		counter = 1;
 		gcounter = 1;
 		repeat = 0;
@@ -115,7 +126,7 @@ public class DrawingSurface extends PApplet {
 		 rightWall = loadImage("tiles/tile035.png");
 		 
 		 topLeftFloor = loadImage("tiles/tile011.png");
-		 topRightFloor  = loadImage("tiles/tile014.png");;
+		 topRightFloor  = loadImage("tiles/tile014.png");
 		 bottomLeftFloor= loadImage("tiles/tile031.png");;
 		 bottomRightFloor = loadImage("tiles/tile034.png");;
 		 upFloor = loadImage("tiles/tile012.png");
@@ -138,7 +149,11 @@ public class DrawingSurface extends PApplet {
 		master.setImage2(photo);
 		
 		iceImg = loadImage("icicle8.png");
+		lightningImg = loadImage("lightning.png");
+<<<<<<< Updated upstream
+=======
 		
+>>>>>>> Stashed changes
 		
 		wand = loadImage("wand.png");
 		
@@ -159,9 +174,6 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 			
-			
-	
-		
 		background(37,19,26);
 		//Dungeon.draw(this, 0, 0, 12, 10);
 		dungeonDraw();
@@ -187,13 +199,28 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		
-		if(startCount)
-		ecounter++;
-		
-		if(ecounter>=60) {
-			ecounter = 0;
-			startCount = false;
+		if(startCount) {
+			System.out.println(ecounter);
+			ecounter++;
+			
 		}
+		
+<<<<<<< Updated upstream
+		if(ecounter>=60) {
+			ecounter = 60;
+			startCount = true;
+		}
+		
+		if(ecounter <= 0) {
+			ecounter = 0;
+=======
+		if(ecounter>=100) {
+//			ecounter = 0;
+			startCount = false;
+>>>>>>> Stashed changes
+		}
+		
+		
 		
 		for(Element u : elements) {
 			u.interactWithObjects(enemies);
@@ -207,6 +234,10 @@ public class DrawingSurface extends PApplet {
 			
 			
 		}
+		
+//		while(mousePressed == true) {
+//			System.out.println("bbbbbbbbbb");
+//		}
 		
 		//everything in this Matrix is pushed
 		pushMatrix();
@@ -236,8 +267,9 @@ public class DrawingSurface extends PApplet {
 		fill(255);
 		rect(30, 60, 100, 10);
 		fill(0, 0, 255);
-		if(startCount)
-		rect(30, 60, (int)((10.0/6.0)*ecounter), 10);
+		if(startCount) {
+			rect(30, 60, (int)(ecounter), 10);
+		}
 		else {
 			rect(30, 60, 100, 10);
 		}
@@ -426,34 +458,198 @@ public class DrawingSurface extends PApplet {
 			master.runTrue();
 			master.changeState(2);
 		}
+		
 	}
 	/**
 	 * checks if the mouse is pressed
 	 */
 	public void mousePressed() {
-		if(ecounter == 0) {
-			startCount = true;
-			if(element == 1) {
-			
+<<<<<<< Updated upstream
+//		
+//		if(ecounter>=60) {
+//			ecounter = 0;
+//			startCount = false;
+//		}
+		
+		
+		if(element == 1) {
+			System.out.println(ecounter);
+			if(ecounter - 20 >= 0) {
+				
+				ecounter = ecounter - 20;
+				startCount = true;
+				System.out.println(ecounter);
 				pushMatrix();
+				
 				
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 
-//				rotate((float)(dir));
 				translate(3000,30);
 				
-				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
-				System.out.println(i.getX());
+				Ice i = new Ice((int)master.getX(), (int)master.getY(), 
+						64, 64, 10, dir, "ice", 1);
 				i.setImage(iceImg);
 				
 				popMatrix();
+=======
+		
+		// startcount is false, ecounter is 0
+		// once mouse is pressed, set startcount to true
+		// once ecounter becomes 100, set startcount to false
+		// when ecounter is not 100, set startcount to true
+		// 
+		
+		
+		if(element == 1) {
+			double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//			startCount = true;
+			System.out.println(ecounter);
+			if(ecounter >= 100) {
+				startCount = false;
+				ecounter = 100;
+			}
+			else {
+				startCount = true;
+			}
+			
+			if(ecounter - 25 > 0) {
+				System.out.println((ecounter - 25) + " is greater than 0");
+>>>>>>> Stashed changes
 				
+				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 5, dir, "ice", 1);
+				i.setImage(lightningImg);
 				i.direction = dir;
 				i.w = walls;
 				elements.add(i);
+				
+				ecounter = ecounter - 25;
+				
 			}
-			
+<<<<<<< Updated upstream
 		}
+		
+		if(element == 2) {
+			pushMatrix();
+			
+			double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+
+//			rotate((float)(dir));
+			translate(3000,30);
+			
+//			Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+//			System.out.println(i.getX());
+			
+			Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+			System.out.println(i.getX());
+			
+			i.setImage(lightningImg);
+			
+			popMatrix();
+			
+			i.direction = dir;
+			i.w = walls;
+			elements.add(i);
+		}
+		
+//		if(ecounter == 0) {
+//			startCount = true;
+//			if(element == 1) {
+//			
+//				pushMatrix();
+//				
+//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//
+//				translate(3000,30);
+//				
+//				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+//				System.out.println(i.getX());
+//				i.setImage(iceImg);
+//				
+//				popMatrix();
+//				
+//				i.direction = dir;
+//				i.w = walls;
+//				elements.add(i);
+//			}
+//			
+//			if(element == 2) {
+//				pushMatrix();
+//				
+//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//
+////				rotate((float)(dir));
+//				translate(3000,30);
+//				
+////				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+////				System.out.println(i.getX());
+//				
+//				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+//				System.out.println(i.getX());
+//				
+//				i.setImage(lightningImg);
+//				
+//				popMatrix();
+=======
+		}
+		
+//		if(element == 1) {
+//			System.out.println(ecounter);
+//			if(ecounter != 5) {
+//				System.out.println("11111");
+//				if(this.mousePressed) {
+//					System.out.println("ASDF");
+//					//when it's full, it's zero. 
+//					double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//					
+//					Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 5, dir, "ice", 1);
+//					i.setImage(lightningImg);
+//					i.direction = dir;
+//					i.w = walls;
+//					elements.add(i);
+//					ecounter ++;
+//					startCount = true;
+//				}
+//			}
+//		}
+		
+//		if(ecounter == 0) {
+//			startCount = true;
+//			if(element == 1) {
+//
+//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//				
+//				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 5, dir, "ice", 1);
+//				i.setImage(lightningImg);
+//
+//				Lightning j = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 5, dir, "ice", 1);
+//				j.setImage(lightningImg);
+//
+//				i.direction = dir;
+//				i.w = walls;
+//				elements.add(i);
+//				
+//				j.direction = dir;
+//				j.w = walls;
+//				elements.add(j);
+//			}
+//			
+//			if(element == 2) {
+//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//
+//				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 5, dir, "ice", 1);
+//				i.setImage(iceImg);
+//
+>>>>>>> Stashed changes
+//				
+//				i.direction = dir;
+//				i.w = walls;
+//				elements.add(i);
+//			}
+<<<<<<< Updated upstream
+//			
+=======
+>>>>>>> Stashed changes
+//		}
 		
 		
 	}
@@ -471,10 +667,12 @@ public class DrawingSurface extends PApplet {
 	 */
 
 	public void setUpWand(){
+		pushMatrix();
 		 translate((float) (master.getX()-5), (float) master.getY()+15);
 		 x = Math.atan2(master.getY2() - master.getY(), master.getX2() - master.getX());
 		 rotate((float) (x+ 2 * 0.349));
 		 image(wand, 0,0);
+		 popMatrix();
 	}
 }
 
