@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import Elements.Element;
 import Elements.Ice;
+import Elements.Lightning;
 import Enemies.*;
 import processing.core.*;
 import gbitton299.shapes.*;
@@ -46,7 +47,7 @@ public class DrawingSurface extends PApplet {
 	private PImage wand;
 
 	private PImage goblinImg;
-	private PImage iceImg;
+	private PImage iceImg, lightningImg;
 	private int gcounter;
 	private int counter;
 	private int ecounter = 0;
@@ -138,6 +139,7 @@ public class DrawingSurface extends PApplet {
 		master.setImage2(photo);
 		
 		iceImg = loadImage("icicle8.png");
+		lightningImg = loadImage("lightning.png");
 		
 		
 		wand = loadImage("wand.png");
@@ -393,6 +395,35 @@ public class DrawingSurface extends PApplet {
     	 master.w = walls;
     	 
      }
+     
+ 	public void mouseDragged() {
+		startCount = false;
+		System.out.println("ASDFASDFASDF");
+		if(element == 1) {
+			System.out.println(ecounter);
+			if(ecounter - 1 >= 0) {
+				
+				ecounter = ecounter - 1;
+//				startCount = true;
+				System.out.println(ecounter);
+				pushMatrix();
+				
+				
+				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+				
+				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 
+						64, 64, 10, dir, "lightning", 1);
+				i.setImage(lightningImg);
+				
+				popMatrix();
+				
+				i.direction = dir;
+				i.w = walls;
+				elements.add(i);
+			}
+		}
+		startCount = true;
+	}
      
      
 	 /**
