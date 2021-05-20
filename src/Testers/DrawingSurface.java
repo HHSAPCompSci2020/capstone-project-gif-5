@@ -79,6 +79,7 @@ public class DrawingSurface extends PApplet {
 	private PImage rightFloor ;
 	private PImage blankFloor; 
 	private PImage blankFloor2; 
+	private PImage midWall; 
 	private PImage lW; 
 	private int element = 1;
 	private int level = 1;
@@ -125,6 +126,7 @@ public class DrawingSurface extends PApplet {
 		 rightFloor = loadImage("tiles/tile024.png");
 		 blankFloor = loadImage("tiles/tile023.png");
 		 blankFloor2 = loadImage("tiles/tile022.png");
+		 midWall = loadImage("tiles/tile002.png");
 		
 		lW = loadImage("LWIZARD1.png");
 		
@@ -345,7 +347,7 @@ public class DrawingSurface extends PApplet {
  						else if(i==Dungeon.grid.length-1) {
  							image(downWall,rectX,rectY,64,64);
  						}else {
- 							image(downWall,rectX,rectY,64,64);
+ 							image(midWall,rectX,rectY,64,64);
  						}
  						
  						
