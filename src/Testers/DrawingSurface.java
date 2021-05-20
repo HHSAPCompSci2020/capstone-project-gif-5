@@ -87,6 +87,7 @@ public class DrawingSurface extends PApplet {
 	private int element = 1;
 	private int level = 1;
 	private int maxLevel = 2;
+	private PImage midWall; 
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -129,7 +130,7 @@ public class DrawingSurface extends PApplet {
 		 rightFloor = loadImage("tiles/tile024.png");
 		 blankFloor = loadImage("tiles/tile023.png");
 		 blankFloor2 = loadImage("tiles/tile022.png");
-		
+		 midWall = loadImage("tiles/tile002.png");
 		lW = loadImage("LWIZARD1.png");
 		
 		
@@ -162,6 +163,8 @@ public class DrawingSurface extends PApplet {
 			if(level <= maxLevel) {
 			
 				Dungeon = new DungeonMaker("room"+level);
+				walls = new ArrayList<wall>();
+				elements = new ArrayList<Element>();
 				dungeonSetUp();
 			}
 		}
@@ -403,6 +406,8 @@ public class DrawingSurface extends PApplet {
  						}
  						else if(i==Dungeon.grid.length-1) {
  							image(downWall,rectX,rectY,64,64);
+ 						}else {
+ 							image(midWall,rectX,rectY,64,64);
  						}
  						
  						
