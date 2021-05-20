@@ -53,7 +53,7 @@ public class Lightning extends Element{
 	@Override
 	public void strikeEnemy(double direction, Enemy e, ArrayList<Enemy> enemies) {
 		// TODO Auto-generated method stub
-		e.loseHealth(0.01);
+		e.loseHealth(1);
 		
 //		ArrayList<Enemy> enemiesCopy = new ArrayList<Enemy>(enemies.size());
 //		for(int a = 0; a < enemies.size(); a ++) {

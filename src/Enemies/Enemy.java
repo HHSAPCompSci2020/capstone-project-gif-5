@@ -205,7 +205,7 @@ public class Enemy extends MovingImage{
      * Loses a specified amount of health
      * @param x Amount of health lost
      */
-    public void loseHealth(double x) {
+    public void loseHealth(int x) {
     	
     	health -= x;
     	if(health <= 0) {

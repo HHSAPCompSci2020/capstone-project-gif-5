@@ -91,12 +91,16 @@ public abstract class Element extends MovingImage{
 	public void draw(PApplet g) {
 		
 		if(isDead) {}
-		else {		
+		else {
+			/*
+		
 			g.pushMatrix();
-			g.imageMode(g.CENTER);
-		//	System.out.println("d " + direction);
-			super.draw(g);
+			g.translate((float)x+width/2,(float) y+height/2);
+			g.rotate((float)direction+90);
+			g.image(image,(int)0,(int)0,(int)width,(int)height);
 			g.popMatrix();
+			*/
+			super.draw(g);
 			move();
 			}
 		
