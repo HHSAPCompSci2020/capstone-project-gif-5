@@ -157,7 +157,9 @@ public class DrawingSurface extends PApplet {
 			if(level <= maxLevel) {
 			
 				Dungeon = new DungeonMaker("room"+level);
+				walls = new ArrayList<wall>();
 				dungeonSetUp();
+				
 			}
 		}
 			
@@ -342,6 +344,8 @@ public class DrawingSurface extends PApplet {
  						}
  						else if(i==Dungeon.grid.length-1) {
  							image(downWall,rectX,rectY,64,64);
+ 						}else {
+ 							image(downWall,rectX,rectY,64,64);
  						}
  						
  						
@@ -398,7 +402,7 @@ public class DrawingSurface extends PApplet {
      
  	public void mouseDragged() {
 		startCount = false;
-		System.out.println("ASDFASDFASDF");
+		
 		if(element == 1) {
 			System.out.println(ecounter);
 			if(ecounter - 1 >= 0) {
