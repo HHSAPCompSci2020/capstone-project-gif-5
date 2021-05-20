@@ -9,6 +9,8 @@ import Enemies.*;
 import processing.core.*;
 import gbitton299.shapes.*;
 import Player.*;
+
+import java.awt.event.KeyEvent;
 import java.lang.*;
 import java.util.ArrayList;
 /*
@@ -54,7 +56,9 @@ public class DrawingSurface extends PApplet {
 	private boolean startCount = false;
 	private int repeat;
 	private boolean facingLeft;
+	private boolean shooting = false;
 	private double x;
+	private ArrayList<Integer> keys;
 	private ArrayList<wall> walls = new ArrayList<wall>();
 	
 	
@@ -137,6 +141,7 @@ public class DrawingSurface extends PApplet {
 		master.setImage(photo);
 		photo = loadImage("LWIZARD"+""+".png");
 		master.setImage2(photo);
+		keys = new ArrayList<Integer>();
 		
 		iceImg = loadImage("icicle8.png");
 		lightningImg = loadImage("lightning.png");
@@ -197,6 +202,28 @@ public class DrawingSurface extends PApplet {
 			startCount = false;
 		}
 		
+		if(shooting) {
+//			if(ecounter - 1 >= 0) {
+				
+//				ecounter = ecounter + 1;
+//				startCount = true;
+				System.out.println(ecounter);
+//				pushMatrix();
+				
+				
+				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+				
+				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "lightning", 1);
+				i.setImage(lightningImg);
+				
+//				popMatrix();
+				
+				i.direction = dir;
+				i.w = walls;
+				elements.add(i);
+//			}
+		}
+		
 		for(Element u : elements) {
 			u.interactWithObjects(enemies);
 			if(u.isDead == true) {
@@ -244,7 +271,41 @@ public class DrawingSurface extends PApplet {
 			rect(30, 60, 100, 10);
 		}
 		
-		
+		if (isPressed(KeyEvent.VK_A)) {
+			facingLeft = true;
+			master.moveLeft();
+			master.runTrue();
+			master.changeState(4);
+		}
+		if (isPressed(KeyEvent.VK_D))
+		{
+			facingLeft = false;
+			master.moveRight();
+			master.runTrue();
+			master.changeState(3);
+		}
+		if (isPressed(KeyEvent.VK_W)) {
+			master.moveUp();
+			master.runTrue();
+			master.changeState(1);
+		}
+		if(isPressed(KeyEvent.VK_S)) {
+			master.moveDown();
+			master.runTrue();
+			master.changeState(2);
+		}
+		if(isPressed(KeyEvent.VK_SPACE)) {
+			if(element < 2) {
+				element++;
+				return;
+			}
+			if(element == 2) {
+				element = 1;
+			}
+		}
+			
+			
+			
 	}
 
 
@@ -396,85 +457,63 @@ public class DrawingSurface extends PApplet {
     	 
      }
      
- 	public void mouseDragged() {
-		startCount = false;
-		System.out.println("ASDFASDFASDF");
-		if(element == 1) {
-			System.out.println(ecounter);
-			if(ecounter - 1 >= 0) {
-				
-				ecounter = ecounter - 1;
-//				startCount = true;
-				System.out.println(ecounter);
-				pushMatrix();
-				
-				
-				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
-				
-				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 
-						64, 64, 10, dir, "lightning", 1);
-				i.setImage(lightningImg);
-				
-				popMatrix();
-				
-				i.direction = dir;
-				i.w = walls;
-				elements.add(i);
-			}
-		}
-		startCount = true;
-	}
+// 	public void mouseDragged() {
+//		startCount = false;
+//		System.out.println("ASDFASDFASDF");
+//		if(element == 2) {
+//			System.out.println(ecounter);
+//			if(ecounter - 1 >= 0) {
+//				
+//				ecounter = ecounter - 1;
+////				startCount = true;
+//				System.out.println(ecounter);
+//				pushMatrix();
+//				
+//				
+//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+//				
+//				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 
+//						64, 64, 10, dir, "lightning", 1);
+//				i.setImage(lightningImg);
+//				
+//				popMatrix();
+//				
+//				i.direction = dir;
+//				i.w = walls;
+//				elements.add(i);
+//			}
+//		}
+//		startCount = true;
+//	}
      
      
 	 /**
 	  * checks key pressed and then makes the wizard move
 	  */
+	
+	
 	public void keyPressed() {
-		
-		if (key == 'w') {
-			
-			master.moveUp();
-			master.runTrue();
-			master.changeState(1);
-		}
-		
-		if (key == 'a') {
-			facingLeft = true;
-			master.moveLeft();
-			master.runTrue();
-			master.changeState(4);
-		}
-		if (key == 'd') {
-			facingLeft = false;
-			master.moveRight();
-			master.runTrue();
-			master.changeState(3);
-		}
-		
-		if (key == 's') {
-			
-			master.moveDown();
-			master.runTrue();
-			master.changeState(2);
-		}
-		if(key == ' ') {
-			if(element < 2) {
-				element++;
-				return;
-			}
-			if(element == 2) {
-				element = 1;
-			}
-		}
+		keys.add(keyCode);
 	}
+
+	public void keyReleased() {
+		master.keyReleased();
+		while(keys.contains(keyCode))
+			keys.remove(new Integer(keyCode));
+	}
+
+	public boolean isPressed(Integer code) {
+		return keys.contains(code);
+	}
+
 	/**
 	 * checks if the mouse is pressed
 	 */
 	public void mousePressed() {
-		if(ecounter == 0) {
-			startCount = true;
-			if(element == 1) {
 			
+			if(element == 1) {
+				if(ecounter == 0) {
+				startCount = true;
 				pushMatrix();
 				
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
@@ -490,23 +529,25 @@ public class DrawingSurface extends PApplet {
 				i.direction = dir;
 				i.w = walls;
 				elements.add(i);
+				}
 			}
-			if(element == 2) {
-				
+			else if(element == 2) {
+				if(!shooting)
+					shooting = true;
+			
 			}
-			
-			
-		}
 		
 		
 	}
+	
+	public void mouseReleased() {
+		shooting = false;
+	}
+	
 	/**
 	 * checks if a key is realeased
 	 */
 
-	public void keyReleased(){
-		master.keyReleased();
-	}
 
 	
 	/**
