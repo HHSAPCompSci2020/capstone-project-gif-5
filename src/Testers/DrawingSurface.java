@@ -2,7 +2,7 @@ package Testers;
 
 import javax.swing.*;
 
-import Elements.Element;
+import Elements.*;
 import Elements.Ice;
 import Elements.Lightning;
 import Enemies.*;
@@ -49,7 +49,7 @@ public class DrawingSurface extends PApplet {
 	private PImage wand;
 
 	private PImage goblinImg;
-	private PImage iceImg, lightningImg;
+	private PImage iceImg, lightningImg,fireImg;
 	private int gcounter;
 	private int counter;
 	private int ecounter = 0;
@@ -145,6 +145,7 @@ public class DrawingSurface extends PApplet {
 		keys = new ArrayList<Integer>();
 		
 		iceImg = loadImage("icicle8.png");
+		fireImg = loadImage("fireball.png");
 		lightningImg = loadImage("lightning.png");
 		
 		
@@ -191,9 +192,14 @@ public class DrawingSurface extends PApplet {
 				enemies.remove(i);
 				
 			}else {
+				if(enemies.get(i).getFired()) {
+					tint(240, 175, 0);
+				}
 				if(enemies.get(i).getFrozen()) {
 					tint(0, 175, 240);
 				}
+				
+				
 				enemies.get(i).draw(this,master);
 				
 				noTint();
@@ -303,11 +309,11 @@ public class DrawingSurface extends PApplet {
 			master.changeState(2);
 		}
 		if(isPressed(KeyEvent.VK_SPACE)) {
-			if(element < 2) {
+			if(element < 3) {
 				element++;
 				return;
 			}
-			if(element == 2) {
+			if(element == 3) {
 				element = 1;
 			}
 		}
@@ -517,7 +523,25 @@ public class DrawingSurface extends PApplet {
 				if(!shooting)
 					shooting = true;
 			
-			}
+			}else if(element == 3) {
+				if(ecounter ==0) {
+					startCount = true;
+					pushMatrix();
+					
+					double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+
+//					rotate((float)(dir));
+					translate(3000,30);
+					
+					Fire i = new Fire((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+					i.setImage(fireImg);
+					
+					popMatrix();
+					
+					i.direction = dir;
+					i.w = walls;
+					elements.add(i);
+			}}
 		
 		
 	}

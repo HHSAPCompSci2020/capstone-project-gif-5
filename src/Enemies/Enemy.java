@@ -21,7 +21,9 @@ public class Enemy extends MovingImage{
     boolean sawPlayer = false;
     public boolean dead = false;
     boolean frozen = false;
+    boolean fired = false;
     private int counter = 0;
+    private int fcounter = 0;
 	/**
 	 * 
 	 * @param x the x variable
@@ -54,6 +56,18 @@ public class Enemy extends MovingImage{
     		}
     		
     	}
+    	if(fired) {
+    		
+    		if(fcounter%10==0) {
+    			loseHealth(1);
+    		}
+    		frozen = false;
+    		fcounter++;
+    		if(fcounter>100) {
+    			setFired(false);
+    		}
+    		
+    	}
     }
     /**
      * gets the enemy freeze state
@@ -69,6 +83,17 @@ public class Enemy extends MovingImage{
     public void setFrozen(boolean b) {
     	frozen = b;
     	counter = 0;
+    	
+    	
+    }
+    
+    public boolean getFired() {
+    	return fired;
+    }
+    
+    public void setFired(boolean b) {
+    	fired = b;
+    	fcounter = 0;
     	
     	
     }
