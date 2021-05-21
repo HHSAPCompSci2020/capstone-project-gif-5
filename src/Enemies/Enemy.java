@@ -21,6 +21,7 @@ public class Enemy extends MovingImage{
     boolean sawPlayer = false;
     public boolean dead = false;
     boolean frozen = false;
+    private int counter = 0;
 	/**
 	 * 
 	 * @param x the x variable
@@ -46,6 +47,13 @@ public class Enemy extends MovingImage{
     		super.draw(surface);
     		act(p);
     	}
+    	if(frozen) {
+    		counter++;
+    		if(counter>100) {
+    			setFrozen(false);
+    		}
+    		
+    	}
     }
     /**
      * gets the enemy freeze state
@@ -60,6 +68,9 @@ public class Enemy extends MovingImage{
      */
     public void setFrozen(boolean b) {
     	frozen = b;
+    	counter = 0;
+    	
+    	
     }
 
     /**

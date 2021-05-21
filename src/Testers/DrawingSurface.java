@@ -191,14 +191,19 @@ public class DrawingSurface extends PApplet {
 				enemies.remove(i);
 				
 			}else {
+				if(enemies.get(i).getFrozen()) {
+					tint(0, 175, 240);
+				}
 				enemies.get(i).draw(this,master);
+				
+				noTint();
 			}
 			
 			
 		}
 		
 		if(startCount)
-		ecounter++;
+			ecounter++;
 		
 		if(ecounter>=60) {
 			ecounter = 0;
@@ -210,7 +215,7 @@ public class DrawingSurface extends PApplet {
 				
 //				ecounter = ecounter + 1;
 //				startCount = true;
-				System.out.println(ecounter);
+				
 //				pushMatrix();
 				
 				
@@ -269,7 +274,7 @@ public class DrawingSurface extends PApplet {
 		rect(30, 60, 100, 10);
 		fill(0, 0, 255);
 		if(startCount)
-		rect(30, 60, (int)((10.0/6.0)*ecounter), 10);
+			rect(30, 60, (int)((10.0/6.0)*ecounter), 10);
 		else {
 			rect(30, 60, 100, 10);
 		}
@@ -461,35 +466,7 @@ public class DrawingSurface extends PApplet {
     	 master.w = walls;
     	 
      }
-     
-// 	public void mouseDragged() {
-//		startCount = false;
-//		System.out.println("ASDFASDFASDF");
-//		if(element == 2) {
-//			System.out.println(ecounter);
-//			if(ecounter - 1 >= 0) {
-//				
-//				ecounter = ecounter - 1;
-////				startCount = true;
-//				System.out.println(ecounter);
-//				pushMatrix();
-//				
-//				
-//				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
-//				
-//				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 
-//						64, 64, 10, dir, "lightning", 1);
-//				i.setImage(lightningImg);
-//				
-//				popMatrix();
-//				
-//				i.direction = dir;
-//				i.w = walls;
-//				elements.add(i);
-//			}
-//		}
-//		startCount = true;
-//	}
+
      
      
 	 /**
@@ -517,7 +494,7 @@ public class DrawingSurface extends PApplet {
 	public void mousePressed() {
 			
 			if(element == 1) {
-				if(ecounter == 0) {
+				if(ecounter ==0) {
 				startCount = true;
 				pushMatrix();
 				
