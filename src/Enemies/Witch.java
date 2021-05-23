@@ -78,7 +78,7 @@ public class Witch extends Enemy{
     		counter = 0;
     	}
     	//System.out.print("bruh");
-    	if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))>500) {
+    	if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))>400) {
     		stop = false;
     		super.act(p);
     	}else {
@@ -88,7 +88,7 @@ public class Witch extends Enemy{
             p.setHealth(-10);
             canAttack = false;
         }
-        else if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<=500 && canAttack) {
+        else if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<=400 && canAttack) {
 			Skeleton skelly = new Skeleton((int)x,(int)y, 64, 64, 6, "skeleton");
 			PImage skellyImg = surface.loadImage("skeleton.png");
 			skelly.setImage(skellyImg);

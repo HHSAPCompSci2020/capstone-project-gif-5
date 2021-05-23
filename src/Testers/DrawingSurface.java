@@ -415,7 +415,7 @@ public class DrawingSurface extends PApplet {
  					if(Dungeon.grid[i][j]=='w') {
  						Witch witch = new Witch((int)rectX,(int)rectY, 64, 64, 6, "witch");
  						witchImg = loadImage("witch.png");
- 						witch.setImage(giantImg);
+ 						witch.setImage(witchImg);
  						witch.w = walls;
  						enemies.add(witch);
  					}
