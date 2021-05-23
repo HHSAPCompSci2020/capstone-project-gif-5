@@ -50,6 +50,7 @@ public class DrawingSurface extends PApplet {
 
 	private PImage goblinImg;
 	private PImage giantImg;
+	private PImage witchImg;
 	private PImage iceImg, lightningImg,fireImg;
 	private int gcounter;
 	private int counter;
@@ -412,6 +413,13 @@ public class DrawingSurface extends PApplet {
  						skelly.setImage2(skellyImg);
  						skelly.w = walls;
  						enemies.add(skelly);
+ 					}
+ 					if(Dungeon.grid[i][j]=='w') {
+ 						Witch witch = new Witch((int)rectX,(int)rectY, 64, 64, 6, "witch");
+ 						witchImg = loadImage("witch.png");
+ 						witch.setImage(giantImg);
+ 						witch.w = walls;
+ 						enemies.add(witch);
  					}
  				}
  			}
