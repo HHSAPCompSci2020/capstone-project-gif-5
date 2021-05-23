@@ -45,9 +45,6 @@ public class Arrow extends MovingImage{
 		
 	}
 	
-	public void act() {
-		
-	}
 	
 	/** checks whether any enemies have touched the arrow. if there are any, then interact with them
 	 * @param p The Player it's attacking

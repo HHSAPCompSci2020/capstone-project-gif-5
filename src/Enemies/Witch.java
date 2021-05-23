@@ -148,10 +148,7 @@ public class Witch extends Enemy{
         }
     }
     
-    public void attack() {
-    	
-    }
-
+  
     public ArrayList<Skeleton> getEnemies() {
     	return enemies;
     }
