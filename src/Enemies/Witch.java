@@ -24,6 +24,7 @@ public class Witch extends Enemy{
 	private PImage skellyImage;
 	private PImage skellyImage2;
 	private PImage magicImg;
+	private boolean beg = true;
 	
 	/**
 	 * Basic information of a normal Goblin
@@ -49,6 +50,12 @@ public class Witch extends Enemy{
      * draws the goblin
      */
     public void draw(PApplet surface, Player p) {
+    	
+    	
+    	if(beg) {
+    		beg = false;
+    		magicImg = surface.loadImage("wmagic.png");
+    	}
     	
     	super.draw(surface, p);
     	act(surface, p);
@@ -122,8 +129,8 @@ public class Witch extends Enemy{
 			canSpawn = false;
         }
         if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<=400 && canAttack) {
-        	WMagic m = new WMagic((int)x, (int)y, 64, 64, "magic", 1);
-        	magicImg = surface.loadImage("wmagic.png");
+        	WMagic m = new WMagic((int)x, (int)y, 32, 32, "magic", 1);
+        	
         	m.setImage(magicImg);
         	double dir =  Math.atan2((p.getY()-getY()),(p.getX()-getX()));
     		
