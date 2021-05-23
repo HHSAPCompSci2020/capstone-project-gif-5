@@ -23,7 +23,7 @@ public class Giant extends Enemy{
 	 */
     public Giant(int x, int y, int w, int h, int frames, String name) {
         super(x, y, w, h, frames, name);
-		diameter = 80;
+		diameter = 100;
 		health = 100;
 		ogH = 100;
 		canAttack = true;
@@ -33,7 +33,6 @@ public class Giant extends Enemy{
      * draws the goblin
      */
     public void draw(PApplet surface, Player p) {
-    	
     	super.draw(surface, p);
     	if(!dead) {
     		surface.fill(255,255,255);
