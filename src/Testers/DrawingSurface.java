@@ -386,7 +386,6 @@ public class DrawingSurface extends PApplet {
 		}
 		else if(gameOver) {
 			background(0);
-			textMode(CENTER);
 			textSize(128);
 			fill(255, 0, 0);
 			text("GAME OVER", 130 , 300);
@@ -395,7 +394,6 @@ public class DrawingSurface extends PApplet {
 		}
 		else if(victory) {
 			background(0);
-			textMode(CENTER);
 			textSize(128);
 			fill(0, 255, 0);
 			text("VICTORY", 200 , 300);
