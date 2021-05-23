@@ -15,11 +15,15 @@ import Player.*;
 public class Witch extends Enemy{
 
 	private boolean canAttack;
+	private boolean canSpawn;
 	private int counter;
+	private int counter2;
 	protected int ogH;
 	private ArrayList<Skeleton> enemies;
+	private ArrayList<WMagic> magic;
 	private PImage skellyImage;
 	private PImage skellyImage2;
+	private PImage magicImg;
 	
 	/**
 	 * Basic information of a normal Goblin
@@ -36,9 +40,10 @@ public class Witch extends Enemy{
 		health = 50;
 		ogH = 50;
 		canAttack = true;
+		canSpawn = true;
 		counter = 0;
 		enemies = new ArrayList<Skeleton>();
-		
+		magic = new ArrayList<WMagic>();
 	}
     /**
      * draws the goblin
@@ -66,6 +71,18 @@ public class Witch extends Enemy{
 			
 			
 		}
+    	for(WMagic u : magic) {
+			u.interactWithObjects(p);
+			if(u.isDead == true) {
+				u = null;
+				magic.remove(u);
+				
+			}else {
+				u.draw(surface);
+			}
+			
+			
+		}
     }
 
     /**
@@ -73,9 +90,13 @@ public class Witch extends Enemy{
      * @param p The player you act with and check if you intersect with
      */
     public void act(PApplet surface, Player p) {
-    	if(counter >= 180) {
-    		canAttack = true;
+    	if(counter >= 300) {
+    		canSpawn = true;
     		counter = 0;
+    	}
+    	if(counter2 >= 60) {
+    		canAttack = true;
+    		counter2 = 0;
     	}
     	//System.out.print("bruh");
     	if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))>400) {
@@ -84,11 +105,11 @@ public class Witch extends Enemy{
     	}else {
     		stop = true;
     	}
-        if (intersects(p) && canAttack) {
+        if (intersects(p)) {
             p.setHealth(-10);
             canAttack = false;
         }
-        else if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<=400 && canAttack) {
+        if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<=400 && canSpawn) {
 			Skeleton skelly = new Skeleton((int)x,(int)y, 64, 64, 6, "skeleton");
 			PImage skellyImg = surface.loadImage("skeleton.png");
 			skelly.setImage(skellyImg);
@@ -98,9 +119,23 @@ public class Witch extends Enemy{
 			skelly.setImage2(skellyImg);
 			skelly.w = this.w;
 			enemies.add(skelly);
+			canSpawn = false;
+        }
+        if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))<=400 && canAttack) {
+        	WMagic m = new WMagic((int)x, (int)y, 64, 64, "magic", 1);
+        	magicImg = surface.loadImage("wmagic.png");
+        	m.setImage(magicImg);
+        	double dir =  Math.atan2((p.getY()-getY()),(p.getX()-getX()));
+    		
+			m.direction = dir;
+			m.w = this.w;
+			magic.add(m);
 			canAttack = false;
         }
-        else if(!canAttack) {
+        if(!canAttack) {
+        	counter2++;
+        }
+        if(!canSpawn) {
         	counter++;
         }
     }
