@@ -33,6 +33,7 @@ public abstract class Element extends MovingImage{
 	public Element(int x,int y,int w,int h, int speed, double direction, String name, int frames) {
 		
 		super(x, y, w, h, frames, name);
+		
 		s = new Circle(); // s is a new shape
 		this.speed = speed;
 		this.direction = direction;
@@ -92,15 +93,17 @@ public abstract class Element extends MovingImage{
 		
 		if(isDead) {}
 		else {
-			/*
-		
+			
+			
 			g.pushMatrix();
 			g.translate((float)x+width/2,(float) y+height/2);
-			g.rotate((float)direction+90);
+			
+			g.rotate((float)direction+(float)Math.PI/4);
+			
 			g.image(image,(int)0,(int)0,(int)width,(int)height);
 			g.popMatrix();
-			*/
-			super.draw(g);
+			
+			
 			move();
 			}
 		

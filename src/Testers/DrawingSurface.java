@@ -288,7 +288,7 @@ public class DrawingSurface extends PApplet {
 						ecounter-=5;
 						double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 						
-						Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "lightning", 1);
+						Lightning i = new Lightning((int)master.getX()-25, (int)master.getY()-25, 64, 64, 10, dir, "lightning", 1);
 						i.setImage(lightningImg);
 						
 //						popMatrix();
@@ -633,7 +633,7 @@ public class DrawingSurface extends PApplet {
 //				rotate((float)(dir));
 				translate(3000,30);
 				
-				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+				Ice i = new Ice((int)master.getX()-25, (int)master.getY()-25, 64, 64, 10, dir, "ice", 1);
 				i.setImage(iceImg);
 				
 				popMatrix();
@@ -658,7 +658,7 @@ public class DrawingSurface extends PApplet {
 //					rotate((float)(dir));
 					translate(3000,30);
 					
-					Fire i = new Fire((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "fire", 1);
+					Fire i = new Fire((int)master.getX()-25, (int)master.getY()-25, 64, 64, 10, dir, "fire", 1);
 					i.setImage(fireImg);
 					
 					popMatrix();
@@ -678,7 +678,7 @@ public class DrawingSurface extends PApplet {
 
 					translate(3000,30);
 					
-					Magic i = new Magic((int)master.getX(), (int)master.getY(), 32, 32, 10, dir, "magic", 1);
+					Magic i = new Magic((int)master.getX()-25, (int)master.getY()-25, 32, 32, 10, dir, "magic", 1);
 					i.setImage(magicImg);
 					
 					popMatrix();
