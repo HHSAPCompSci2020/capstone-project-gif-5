@@ -108,7 +108,13 @@ public class Arrow extends MovingImage{
 //			super.draw(g);
 			move();
 			
-			super.draw(g);
+			g.pushMatrix();
+			g.translate((float)(x+width/2),(float)( y+height/2));
+			
+			g.rotate((float)direction);
+			
+			g.image(image,(int)0,(int)0,(int)width,(int)height);
+			g.popMatrix();
 			
 			}
 		
