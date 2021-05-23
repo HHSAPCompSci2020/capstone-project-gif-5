@@ -36,7 +36,7 @@ public class DungeonMaker extends Dungeon {
 	/**
 	 * constructs an empty grid
 	 */
-	// C
+
 	public DungeonMaker() {
 		super();
 	}
