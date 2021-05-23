@@ -35,7 +35,7 @@ public class DungeonGame{
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 		window.pack();
-		window.setTitle("DungeonGame");
+		window.setTitle("The Wizards Dungeon");
 		window.move(200, 200);
 		window.setSize(1000, 800);
 		window.setMinimumSize(new Dimension(1000,800));
