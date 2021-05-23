@@ -49,7 +49,8 @@ public class WMagic extends MovingImage{
 	}
 	
 	/** checks whether any enemies have touched the element. if there are any, then interact with them
-	 * @param e an arraylist full of all the enemies
+	 * @param p The Player it's attacking
+	 * @param surface the surface it's being drawn on 
 	 * */
 	public void interactWithObjects(Player p) {
 		
@@ -168,8 +169,8 @@ public class WMagic extends MovingImage{
 	}
 	/**
 	 * This strikes the enemy
-	 * @param direction
-	 * @param p
+	 * @param direction The direction it's going
+	 * @param p The player it's striking
 	 */
 	public void strikeEnemy(double direction, Player p) {
 		p.setHealth(-10);

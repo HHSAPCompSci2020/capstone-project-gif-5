@@ -39,9 +39,9 @@ public class Ice extends Element {
 		
 	}
 	/**
-	 * @param The direction the element will go to
-	 * @param	 the enemy its hitting
-	 * @param all of the enemies that are in the array list
+	 * @param direction The direction the element will go to
+	 * @param e the enemy its hitting
+	 * @param enemies all of the enemies that are in the array list
 	 */
 	public void strikeEnemy(double direction, Enemy e, ArrayList<Enemy> enemies) {
 		
@@ -53,7 +53,7 @@ public class Ice extends Element {
 	}
 	/**
 	 * Draws the element using PApplet
-	 * @param This is a PApplet object
+	 * @param g This is a PApplet object
 	 */
 	public void draw(PApplet g) {
 		

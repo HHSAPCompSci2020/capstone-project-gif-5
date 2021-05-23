@@ -50,7 +50,7 @@ public class Arrow extends MovingImage{
 	}
 	
 	/** checks whether any enemies have touched the arrow. if there are any, then interact with them
-	 * @param e an arraylist full of all the enemies
+	 * @param p The Player it's attacking
 	 * */
 	public void interactWithObjects(Player p) {
 		

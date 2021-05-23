@@ -86,7 +86,7 @@ public class Lightning extends Element{
 	
 	/**
 	 * Draws the element using PApplet
-	 * @param This is a PApplet object
+	 * @param g This is a PApplet object
 	 */
 	public void draw(PApplet g) {
 		

@@ -70,6 +70,7 @@ public class Skeleton extends Enemy{
     /**
      * What a Skeleton does when they act
      * @param p The player you act with and check if you intersect with
+     * @param surface The PApplet it's being drawn on
      */
     public void act(PApplet surface, Player p) {
     	if(counter >= 60) {

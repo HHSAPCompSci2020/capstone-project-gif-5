@@ -95,6 +95,7 @@ public class Witch extends Enemy{
     /**
      * What a Witch does when they act
      * @param p The player you act with and check if you intersect with
+     * @param surface the surface it's being drawn on 
      */
     public void act(PApplet surface, Player p) {
     	if(counter >= 300) {
