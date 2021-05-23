@@ -17,6 +17,8 @@ public class Magic extends Element {
 	 * @param h the height of the magic image
 	 * @param frames The number of frames the animation has
 	 * @param name name of the file path
+	 * @param direction direction of the element
+	 * @param speed the speed of the object
 	 * */
 	public Magic(int x, int y, int w, int h, int speed, double direction, String name, int frames) {
 		super(x, y, w, h, speed, direction, name, frames);

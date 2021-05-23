@@ -21,13 +21,17 @@ public abstract class Element extends MovingImage{
 	private Shape s; //for testing intersections
 	//what does "frames" do?
 	
-	/**instantiates an ice element
+	/**
+	 * instantiates an  element
+	 * @param direction direction of the element
+	 * @param speed the speed of the object
 	 * @param x the starting x coordinate
 	 * @param y the starting y coordinate
 	 * @param w the width of the ice image
 	 * @param h the height of the ice image
 	 * @param frames The number of frames the animation has
 	 * @param name name of the file
+	 * @param speed the speed of the object
 	 * */
 	public Element(int x,int y,int w,int h, int speed, double direction, String name, int frames) {
 		
