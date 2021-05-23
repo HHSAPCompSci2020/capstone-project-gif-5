@@ -13,14 +13,13 @@ import Player.*;
 import java.awt.event.KeyEvent;
 import java.lang.*;
 import java.util.ArrayList;
-/*
-import javax.imageio.*;
+
 import java.awt.image.*;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-*/
+
 
 
 
@@ -114,12 +113,10 @@ public class DrawingSurface extends PApplet {
 	 */
 	public DrawingSurface() {
 	
-//		Ice icee = new Ice(dungeon1, counter, counter, counter, counter, counter, counter, x);
-		//sice = new Ice( 100, 100, 100, 100, 1, 1, "ICE");
+
 		master = new Player( 10,  10,  64,  64,   "WIZARD",6);
 		
-//		enemies.add(new Goblin());
-//		ice = new Ice();
+
 		Dungeon = new DungeonMaker("room"+level);
 		counter = 1;
 		gcounter = 1;
@@ -165,7 +162,7 @@ public class DrawingSurface extends PApplet {
 		dungeonSetUp();
 		long start = System.currentTimeMillis();
 		imageMode(CENTER);
-		//size(100,100);
+
 		photo = loadImage("WIZARD"+""+".png");
 		master.setImage(photo);
 		photo = loadImage("LWIZARD"+""+".png");
@@ -184,7 +181,7 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	/**
-	 * draws the enemiesand other things on the dungeon
+	 * draws the enemies and other things on the dungeon
 	 */
 	public void draw() {
 		
@@ -235,16 +232,9 @@ public class DrawingSurface extends PApplet {
 			}else if(element==4) {
 				image(magicp,900,50,64,64);
 			}
-			//Dungeon.draw(this, 0, 0, 12, 10);
+
 			dungeonDraw();
-			//creating goblins
-//			goblin.act(master);
-			
-//			for(Enemy e : enemies) {
-//				if(e.getHealth() <= 0) {
-//					enemies.remove(e);
-//				}
-//			}
+
 			
 			for(int i = 0; i < enemies.size(); i++) {
 				
@@ -291,14 +281,14 @@ public class DrawingSurface extends PApplet {
 						Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "lightning", 1);
 						i.setImage(lightningImg);
 						
-//						popMatrix();
+
 						
 						i.direction = dir;
 						i.w = walls;
 						elements.add(i);
 					}
 					
-//				}
+
 			}
 			
 			for(Element u : elements) {
@@ -314,31 +304,31 @@ public class DrawingSurface extends PApplet {
 				
 			}
 			
-			//everything in this Matrix is pushed
+
 			pushMatrix();
 			
-			//draw ze stuff
+			
 			
 			master.draw(this);
 		
 
-			//animate le object
+		
 			
-			//the wand action
+		
 			setUpWand();
 			
-			//pop le matrix
+			
 			popMatrix();
 
 
-			//display health
+		
 			fill(255,255,255);
 			rect(30, 30, 100, 10);
 			fill(255, 0, 0);
 			rect(30, 30, (float)(master.getHealth()* 0.01 * 100), 10);
 			text("Health: " + master.getHealth(), 30, 30);
 
-			//mana
+		
 			fill(255);
 			rect(30, 60, 100, 10);
 			fill(0, 0, 255);
@@ -630,7 +620,7 @@ public class DrawingSurface extends PApplet {
 				
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 
-//				rotate((float)(dir));
+
 				translate(3000,30);
 				
 				Ice i = new Ice((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
@@ -655,7 +645,7 @@ public class DrawingSurface extends PApplet {
 					
 					double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 
-//					rotate((float)(dir));
+
 					translate(3000,30);
 					
 					Fire i = new Fire((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "fire", 1);

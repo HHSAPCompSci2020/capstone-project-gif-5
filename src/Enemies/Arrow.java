@@ -13,17 +13,22 @@ import processing.core.PImage;
 import java.lang.*;
 import processing.core.*;
 
+/**
+ * 
+ * @author Gilad Bitton
+ *The arrow class that represents an Arrow
+ */
 public class Arrow extends MovingImage{
 	
 	public boolean isDead = false;
 	protected int speed = 15;
-	public double direction; // in radians
+	public double direction; 
 
-	private Shape s; //for testing intersections
+	private Shape s; 
 	
-	//what does "frames" do?
+
 	
-	/**instantiates an ice element
+	/**instantiates an ice arrow
 	 * @param x the starting x coordinate
 	 * @param y the starting y coordinate
 	 * @param w the width of the ice image
@@ -44,7 +49,7 @@ public class Arrow extends MovingImage{
 		
 	}
 	
-	/** checks whether any enemies have touched the element. if there are any, then interact with them
+	/** checks whether any enemies have touched the arrow. if there are any, then interact with them
 	 * @param e an arraylist full of all the enemies
 	 * */
 	public void interactWithObjects(Player p) {
@@ -52,20 +57,18 @@ public class Arrow extends MovingImage{
 		boolean hasIntersected = false;
 		
 			if(this.intersectsEnemy(p)) {
-				//enemy loses health
-				//dissipate();
-				// how to get direction?
+				
 				strikeEnemy(direction, p);
 				dissipate();
 			}
-			//intersects walls?
+		
 		
 		if(hasIntersected = false) {
 			dissipate();
 		}
 	}
 	
-	/**This moves an element, its an override and it  moves stuff.
+	/**This moves an arrow, its an override and it  moves stuff.
 	 * @param x is the move amount to the x
 	 * @param y is the move amount to the y
 	 */
@@ -98,14 +101,14 @@ public class Arrow extends MovingImage{
 	
 	
 	/**
-	 * draws the element if its not dead
+	 * draws the arrow if its not dead
+	 * @param g is PApplet object
 	 */
 	public void draw(PApplet g) {
 		if(isDead) {
 			
 		}
 		else {		
-//			super.draw(g);
 			move();
 			
 			g.pushMatrix();
@@ -117,15 +120,13 @@ public class Arrow extends MovingImage{
 			g.popMatrix();
 			
 			}
-		
-//		p = g.loadImage(name);
-//		g.draw(this);
+
 	}
 
 	/**
-	 * returns whether any of the four corners of the enemy are inside the element
-	 * @param e the enemy that this element checks for intersection with
-	 * @return whether this element has intersected this enemy or not
+	 * returns whether any of the four corners of the enemy are inside the arrow
+	 * @param e the enemy that this arrow checks for intersection with
+	 * @return whether this arrow has intersected this enemy or not
 	 * */
 	private boolean intersectsEnemy(Player p) {
 		if(isPointInside(p.getX(), p.getY())) {
@@ -143,10 +144,10 @@ public class Arrow extends MovingImage{
 		return false;
 	}
 	
-	/** returns whether the given point is inside the element or not
+	/** returns whether the given point is inside the arrow or not
 	 * @param d the x coordinate of the given point
 	 * @param e the y coordinate of the given point
-	 * @return whether the given point is inside the element
+	 * @return whether the given point is inside the arrow
 	 * */
 
 	private boolean isPointInside(double x, double y) {
@@ -159,68 +160,43 @@ public class Arrow extends MovingImage{
 		return false;
 	}
 	
-	/** makes this element disappear from the board and affect any nearby enemies
+	/** makes this arrow disappear from the board and affect any nearby enemies
 	 * 
 	 * */
 	public void dissipate() {
 		isDead = true;
 		moveToLocation(-10,-10);
 	}
-
+	/**
+	 * hits the enemy
+	 * @param direction the direction of the arrow
+	 * @param p the player to hit
+	 */
 	public void strikeEnemy(double direction, Player p) {
 		p.setHealth(-10);
 	}
 	
-	/**moves the element
+	/**moves the arrow
 	 * */
 	public void move() {
-		// changes the x and y coordinates of the element,
-		// moves in the direction of the private angle variable
-	
-		//if at a wall, then stop moving and dissipate
-		//if not at wall, then keep moving
-		
-		
-		
-//		if(intersectsWalls()) {
-//			dissipate();
-//		}
-//		else {
-//			x += speed * Math.cos(direction);
-//			y -= speed * Math.sin(direction);
-//		}
-		
-		
-		
 		moveByAmount(speed * Math.cos(direction),speed * Math.sin(direction));
 		
 		
 		
 	}
 	
-	/** returns the starting x coordinate of the element
-	 * @return the starting x coordinate of the element
+	/** returns the starting x coordinate of the arrow
+	 * @return the starting x coordinate of the arrow
 	 * */
 	public double getX() {
 		return x;
 	}
 	
-	/** returns the starting y coordinate of the element
-	 * @return the starting y coordinate of the element
+	/** returns the starting y coordinate of the arrow
+	 * @return the starting y coordinate of the arrow
 	 * */
 	public double getY() {
 		return y;
 	}
 	
-	
-	
-	
-	
-	// other methods : 
-	// intersects wall?
-	// 
-
-	// questions : 
-	// how to make element disappear as it dissipates?
-	// 
 }

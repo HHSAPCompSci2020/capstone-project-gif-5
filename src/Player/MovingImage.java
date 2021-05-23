@@ -129,10 +129,10 @@ public class MovingImage extends Rectangle2D.Double {
 	
 		if(!facingLeft || image2==null) {
 			g.image(image,(int)x,(int)y,(int)width,(int)height);
-//			g.image(image,0,0,(int)width,(int)height);
+		
 		}else {
 			g.image(image2,(int)x,(int)y,(int)width,(int)height);
-//			g.image(image2,0,0,(int)width,(int)height);
+		
 		}
 		
 	}

@@ -26,8 +26,8 @@ import java.util.ArrayList;
 
 	Represents a 2D maze.
 
-	Coded by:
-	Modified on:
+	Coded by: Ido Tal
+	Modified on: Ido Tal
 
 */
 

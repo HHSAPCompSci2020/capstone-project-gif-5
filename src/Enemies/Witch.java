@@ -8,7 +8,7 @@ import Elements.Element;
 import Player.*;
 
 /**
- * A class representing the Goblin enemy type
+ * A class representing the Witch enemy type
  * @author Gilad Bitton
  * @version 5/6/2021
  */
@@ -27,7 +27,7 @@ public class Witch extends Enemy{
 	private boolean beg = true;
 	
 	/**
-	 * Basic information of a normal Goblin
+	 * Basic information of a normal Witch
 	 * @param x x coordinate
 	 * @param y y coordinate
 	 * @param w width of image
@@ -47,7 +47,7 @@ public class Witch extends Enemy{
 		magic = new ArrayList<WMagic>();
 	}
     /**
-     * draws the goblin
+     * draws the Witch
      */
     public void draw(PApplet surface, Player p) {
     	
@@ -93,7 +93,7 @@ public class Witch extends Enemy{
     }
 
     /**
-     * What a Goblin does when they act
+     * What a Witch does when they act
      * @param p The player you act with and check if you intersect with
      */
     public void act(PApplet surface, Player p) {
@@ -105,7 +105,7 @@ public class Witch extends Enemy{
     		canAttack = true;
     		counter2 = 0;
     	}
-    	//System.out.print("bruh");
+ 
     	if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))>400) {
     		stop = false;
     		super.act(p);

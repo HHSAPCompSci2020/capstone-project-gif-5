@@ -35,7 +35,7 @@ public class Enemy extends MovingImage{
 	 */
     public Enemy(int x, int y, int w, int h, int frames, String name) {
 		super(x, y, w, h, frames, name);
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	

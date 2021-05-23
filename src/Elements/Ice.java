@@ -1,6 +1,8 @@
 package Elements;
 
 import java.util.ArrayList;
+
+
 import java.util.*;
 
 import Enemies.Enemy;
@@ -8,15 +10,18 @@ import gbitton299.shapes.Shape;
 import processing.core.PApplet;
 import processing.core.PImage;
 import java.util.Timer;
+
+/**
+ * 
+ * @author Franklin
+ *This is the ice class
+ */
 public class Ice extends Element {
 	
-//private static PImage iceImg;
-//	private int speed;
-//	private double direction; // in radians
-//	private Shape s; //for testing intersections
+
 
 	protected int speed = 10;
-	//what does "frames" do?
+	
 	
 	
 	
@@ -33,7 +38,11 @@ public class Ice extends Element {
 		super(x, y, w, h, speed, direction, name, frames);
 		
 	}
-	
+	/**
+	 * @param The direction the element will go to
+	 * @param	 the enemy its hitting
+	 * @param all of the enemies that are in the array list
+	 */
 	public void strikeEnemy(double direction, Enemy e, ArrayList<Enemy> enemies) {
 		
 		e.setFrozen(true);
@@ -42,7 +51,10 @@ public class Ice extends Element {
 		
 
 	}
-	
+	/**
+	 * Draws the element using PApplet
+	 * @param This is a PApplet object
+	 */
 	public void draw(PApplet g) {
 		
 		if(isDead) {}

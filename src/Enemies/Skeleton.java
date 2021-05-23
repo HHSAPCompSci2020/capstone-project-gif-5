@@ -8,7 +8,7 @@ import Elements.Element;
 import Player.*;
 
 /**
- * A class representing the Goblin enemy type
+ * A class representing the Skeleton enemy type
  * @author Gilad Bitton
  * @version 5/6/2021
  */
@@ -21,7 +21,7 @@ public class Skeleton extends Enemy{
 	private PImage arrowImage;
 	
 	/**
-	 * Basic information of a normal Goblin
+	 * Basic information of a normal Skeleton
 	 * @param x x coordinate
 	 * @param y y coordinate
 	 * @param w width of image
@@ -40,7 +40,7 @@ public class Skeleton extends Enemy{
 		
 	}
     /**
-     * draws the goblin
+     * draws the Skeleton
      */
     public void draw(PApplet surface, Player p) {
     	
@@ -68,7 +68,7 @@ public class Skeleton extends Enemy{
     }
 
     /**
-     * What a Goblin does when they act
+     * What a Skeleton does when they act
      * @param p The player you act with and check if you intersect with
      */
     public void act(PApplet surface, Player p) {
@@ -76,7 +76,7 @@ public class Skeleton extends Enemy{
     		canAttack = true;
     		counter = 0;
     	}
-    	//System.out.print("bruh");
+    
     	if((Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2)))>300) {
     		stop = false;
     		super.act(p);
@@ -102,11 +102,7 @@ public class Skeleton extends Enemy{
         	counter++;
         }
     }
-    
-    public void attack() {
-    	
-    }
-
+   
 
     
 }

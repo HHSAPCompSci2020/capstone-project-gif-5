@@ -3,7 +3,7 @@ import processing.core.PApplet;
 import Player.*;
 
 /**
- * A class representing the Goblin enemy type
+ * A class representing the Giant enemy type
  * @author Gilad Bitton
  * @version 5/6/2021
  */
@@ -13,7 +13,7 @@ public class Giant extends Enemy{
 	private int counter;
 	protected int ogH;
 	/**
-	 * Basic information of a normal Goblin
+	 * Basic information of a normal Giant
 	 * @param x x coordinate
 	 * @param y y coordinate
 	 * @param w width of image
@@ -30,7 +30,7 @@ public class Giant extends Enemy{
 		counter = 0;
 	}
     /**
-     * draws the goblin
+     * draws the Giant
      */
     public void draw(PApplet surface, Player p) {
     	super.draw(surface, p);
@@ -44,7 +44,7 @@ public class Giant extends Enemy{
     }
 
     /**
-     * What a Goblin does when they act
+     * What a Giant does when they act
      * @param p The player you act with and check if you intersect with
      */
     public void act(Player p) {

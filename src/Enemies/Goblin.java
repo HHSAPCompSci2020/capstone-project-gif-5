@@ -53,8 +53,7 @@ public class Goblin extends Enemy{
     		canAttack = true;
     		counter = 0;
     	}
-    	//System.out.print("bruh");
-    	super.act(p);
+        	super.act(p);
         if (intersects(p) && canAttack) {
             p.setHealth(-10);
             canAttack = false;

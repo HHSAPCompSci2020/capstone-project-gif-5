@@ -28,6 +28,13 @@ protected int speed = 10;
 		
 	}
 	
+	
+	@Override
+	/**
+	 * @param The direction the element will go to
+	 * @param	 the enemy its hitting
+	 * @param all of the enemies that are in the array list
+	 */
 	public void strikeEnemy(double direction, Enemy e, ArrayList<Enemy> enemies) {
 		
 		e.setFired(true);

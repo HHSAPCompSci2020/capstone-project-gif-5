@@ -12,16 +12,20 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import java.lang.*;
 import processing.core.*;
-
+/**
+ * 
+ * @author Gilad Bitton
+ *The Wmagic is the witches magic
+ */
 public class WMagic extends MovingImage{
 	
 	public boolean isDead = false;
 	protected int speed = 15;
-	public double direction; // in radians
+	public double direction;
 
-	private Shape s; //for testing intersections
+	private Shape s; 
 	
-	//what does "frames" do?
+	
 	
 	/**instantiates an ice element
 	 * @param x the starting x coordinate
@@ -52,13 +56,10 @@ public class WMagic extends MovingImage{
 		boolean hasIntersected = false;
 		
 			if(this.intersectsEnemy(p)) {
-				//enemy loses health
-				//dissipate();
-				// how to get direction?
+			
 				strikeEnemy(direction, p);
 				dissipate();
 			}
-			//intersects walls?
 		
 		if(hasIntersected = false) {
 			dissipate();
@@ -105,7 +106,7 @@ public class WMagic extends MovingImage{
 			
 		}
 		else {		
-//			super.draw(g);
+//			
 			move();
 			
 			g.pushMatrix();
@@ -118,8 +119,7 @@ public class WMagic extends MovingImage{
 			
 			}
 		
-//		p = g.loadImage(name);
-//		g.draw(this);
+
 	}
 
 	/**
@@ -166,7 +166,11 @@ public class WMagic extends MovingImage{
 		isDead = true;
 		moveToLocation(-10,-10);
 	}
-
+	/**
+	 * This strikes the enemy
+	 * @param direction
+	 * @param p
+	 */
 	public void strikeEnemy(double direction, Player p) {
 		p.setHealth(-10);
 	}
@@ -174,21 +178,7 @@ public class WMagic extends MovingImage{
 	/**moves the element
 	 * */
 	public void move() {
-		// changes the x and y coordinates of the element,
-		// moves in the direction of the private angle variable
-	
-		//if at a wall, then stop moving and dissipate
-		//if not at wall, then keep moving
-		
-		
-		
-//		if(intersectsWalls()) {
-//			dissipate();
-//		}
-//		else {
-//			x += speed * Math.cos(direction);
-//			y -= speed * Math.sin(direction);
-//		}
+
 		
 		
 		
@@ -211,16 +201,5 @@ public class WMagic extends MovingImage{
 	public double getY() {
 		return y;
 	}
-	
-	
-	
-	
-	
-	// other methods : 
-	// intersects wall?
-	// 
 
-	// questions : 
-	// how to make element disappear as it dissipates?
-	// 
 }
