@@ -251,26 +251,26 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		
-		if(startCount)
+		if(ecounter<60)
 			ecounter++;
 		
-		if(ecounter>=60) {
-			ecounter = 0;
-			startCount = false;
-		}
+		
 		
 		if(shooting) {
-			
-				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+				if(ecounter-5 > 0) {
+					ecounter-=5;
+					double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+					
+					Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "lightning", 1);
+					i.setImage(lightningImg);
+					
+//					popMatrix();
+					
+					i.direction = dir;
+					i.w = walls;
+					elements.add(i);
+				}
 				
-				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "lightning", 1);
-				i.setImage(lightningImg);
-				
-//				popMatrix();
-				
-				i.direction = dir;
-				i.w = walls;
-				elements.add(i);
 //			}
 		}
 		
@@ -315,11 +315,9 @@ public class DrawingSurface extends PApplet {
 		fill(255);
 		rect(30, 60, 100, 10);
 		fill(0, 0, 255);
-		if(startCount)
-			rect(30, 60, (int)((10.0/6.0)*ecounter), 10);
-		else {
-			rect(30, 60, 100, 10);
-		}
+		
+		rect(30, 60, (int)((10.0/6.0)*ecounter), 10);
+		
 		
 		if (isPressed(KeyEvent.VK_A)) {
 			facingLeft = true;
@@ -397,7 +395,7 @@ public class DrawingSurface extends PApplet {
  						enemies.add(goblin);
  					}
  					if(Dungeon.grid[i][j]=='G') {
- 						Giant giant = new Giant((int)rectX,(int)rectY, 64, 64, 6, "giant");
+ 						Giant giant = new Giant((int)rectX,(int)rectY, 128, 128, 6, "giant");
  						giantImg = loadImage("giant.png");
  						giant.setImage(giantImg);
  						giant.w = walls;
@@ -484,7 +482,7 @@ public class DrawingSurface extends PApplet {
  					
  				
  					
- 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*'||Dungeon.grid[i][j]=='g'||Dungeon.grid[i][j]=='s') {
+ 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*'||Dungeon.grid[i][j]=='g'||Dungeon.grid[i][j]=='s'||Dungeon.grid[i][j]=='G') {
  					imageMode(CORNER);
  					if(i==1 && j==1) {
 	 						
@@ -579,7 +577,8 @@ public class DrawingSurface extends PApplet {
 	public void mousePressed() {
 			
 			if(element == 1) {
-				if(ecounter ==0) {
+				if(ecounter >32) {
+				ecounter-=32;
 				startCount = true;
 				pushMatrix();
 				
@@ -603,7 +602,8 @@ public class DrawingSurface extends PApplet {
 					shooting = true;
 			
 			}else if(element == 3) {
-				if(ecounter ==0) {
+				if(ecounter >32) {
+					ecounter-=32;
 					startCount = true;
 					pushMatrix();
 					
