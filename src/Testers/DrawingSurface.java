@@ -96,8 +96,8 @@ public class DrawingSurface extends PApplet {
 	private PImage ladder; 
 	private PImage lW; 
 	private int element = 1;
-	private int level = 1;
-	private int maxLevel = 2;
+	private int level = 2;
+	private int maxLevel = 1;
 	private PImage midWall; 
 	private int exitX = 0;
 	private int exitY = 0;
@@ -105,6 +105,9 @@ public class DrawingSurface extends PApplet {
 	private int potionx=-100;
 	private int potiony=-100;
 	private boolean potionDrank = false;
+	private boolean gameOver = false;
+	private boolean victory = false;
+	
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -184,191 +187,217 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-		if(enemies.isEmpty() && master.getX() < exitX+64 && master.getX() > exitX && master.getY() < exitY+64 && master.getY() > exitY) {
-			level++;
-			if(level <= maxLevel) {
-			
-				Dungeon = new DungeonMaker("room"+level);
-				walls = new ArrayList<wall>();
-				elements = new ArrayList<Element>();
-				dungeonSetUp();
-			}
-		}
-			
+
 		
-		if(master.getX() < potionx+64 && master.getX() > potionx && master.getY() < potiony+64 && master.getY() > potiony) {
-			if(!potionDrank) {
-				potionDrank = true;
-				potionx=-100;
-				potiony=-100;
+		if(!gameOver && !victory) {
+			if(enemies.isEmpty() && master.getX() < exitX+64 && master.getX() > exitX && master.getY() < exitY+64 && master.getY() > exitY) {
+				level++;
+				if(level <= maxLevel) {
 				
-				master.setHealth(50); 
+					Dungeon = new DungeonMaker("room"+level);
+					walls = new ArrayList<wall>();
+					elements = new ArrayList<Element>();
+					dungeonSetUp();
+				}
 			}
+			
+			if(master.getHealth() <= 0)
+				gameOver = true;
+			
+			if(level > maxLevel)
+				victory = true;
+				
+			
+			if(master.getX() < potionx+64 && master.getX() > potionx && master.getY() < potiony+64 && master.getY() > potiony) {
+				if(!potionDrank) {
+					potionDrank = true;
+					potionx=-100;
+					potiony=-100;
+					
+					master.setHealth(50); 
+				}
+			
+			}
+				
+				
 		
-		}
 			
 			
-	
-		
-		
-		
-		background(37,19,26);
-		if(element==1) {
-			image(icep,900,50,64,64);
-		}else if(element==2) {
-			image(lightningp,900,50,64,64);
-		}else if(element==3) {
-			image(firep,900,50,64,64);
-		}else if(element==4) {
-			image(magicp,900,50,64,64);
-		}
-		//Dungeon.draw(this, 0, 0, 12, 10);
-		dungeonDraw();
-		//creating goblins
-//		goblin.act(master);
-		
-//		for(Enemy e : enemies) {
-//			if(e.getHealth() <= 0) {
-//				enemies.remove(e);
+			
+			background(37,19,26);
+			if(element==1) {
+				image(icep,900,50,64,64);
+			}else if(element==2) {
+				image(lightningp,900,50,64,64);
+			}else if(element==3) {
+				image(firep,900,50,64,64);
+			}else if(element==4) {
+				image(magicp,900,50,64,64);
+			}
+			//Dungeon.draw(this, 0, 0, 12, 10);
+			dungeonDraw();
+			//creating goblins
+//			goblin.act(master);
+			
+//			for(Enemy e : enemies) {
+//				if(e.getHealth() <= 0) {
+//					enemies.remove(e);
+//				}
 //			}
-//		}
-		
-		for(int i = 0; i < enemies.size(); i++) {
 			
-			if(enemies.get(i) instanceof Witch) {
-				Witch w = (Witch) enemies.get(i);
-				for(int j = 0; j < w.getEnemies().size(); j++) {
-					enemies.add(w.getEnemies().get(j));
-					w.getEnemies().remove(j);
-					j--;
-				}
-			}
-			
-			if(enemies.get(i).dead == true) {
-				enemies.set(i,null);
-				enemies.remove(i);
+			for(int i = 0; i < enemies.size(); i++) {
 				
-			}else {
-				if(enemies.get(i).getFired()) {
-					tint(240, 175, 0);
-				}
-				if(enemies.get(i).getFrozen()) {
-					tint(0, 175, 240);
+				if(enemies.get(i) instanceof Witch) {
+					Witch w = (Witch) enemies.get(i);
+					for(int j = 0; j < w.getEnemies().size(); j++) {
+						enemies.add(w.getEnemies().get(j));
+						w.getEnemies().remove(j);
+						j--;
+					}
 				}
 				
-				
-				enemies.get(i).draw(this,master);
-				
-				noTint();
-			}
-			
-			
-		}
-		
-		if(ecounter<60)
-			ecounter++;
-		
-		
-		
-		if(shooting) {
-				if(ecounter-5 > 0) {
-					ecounter-=5;
-					double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+				if(enemies.get(i).dead == true) {
+					enemies.set(i,null);
+					enemies.remove(i);
 					
-					Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "lightning", 1);
-					i.setImage(lightningImg);
+				}else {
+					if(enemies.get(i).getFired()) {
+						tint(240, 175, 0);
+					}
+					if(enemies.get(i).getFrozen()) {
+						tint(0, 175, 240);
+					}
 					
-//					popMatrix();
 					
-					i.direction = dir;
-					i.w = walls;
-					elements.add(i);
+					enemies.get(i).draw(this,master);
+					
+					noTint();
 				}
 				
-//			}
-		}
-		
-		for(Element u : elements) {
-			u.interactWithObjects(enemies);
-			if(u.isDead == true) {
-				u = null;
-				elements.remove(u);
 				
-			}else {
-				u.draw(this);
 			}
 			
+			if(ecounter<60)
+				ecounter++;
 			
-		}
-		
-		//everything in this Matrix is pushed
-		pushMatrix();
-		
-		//draw ze stuff
-		
-		master.draw(this);
-	
-
-		//animate le object
-		
-		//the wand action
-		setUpWand();
-		
-		//pop le matrix
-		popMatrix();
-
-
-		//display health
-		fill(255,255,255);
-		rect(30, 30, 100, 10);
-		fill(255, 0, 0);
-		rect(30, 30, (float)(master.getHealth()* 0.01 * 100), 10);
-		text("Health: " + master.getHealth(), 30, 30);
-
-		//mana
-		fill(255);
-		rect(30, 60, 100, 10);
-		fill(0, 0, 255);
-		
-		rect(30, 60, (int)((10.0/6.0)*ecounter), 10);
-		
-		
-		if (isPressed(KeyEvent.VK_A)) {
-			facingLeft = true;
-			master.moveLeft();
-			master.runTrue();
-			master.changeState(4);
-		}
-		if (isPressed(KeyEvent.VK_D))
-		{
-			facingLeft = false;
-			master.moveRight();
-			master.runTrue();
-			master.changeState(3);
-		}
-		if (isPressed(KeyEvent.VK_W)) {
-			master.moveUp();
-			master.runTrue();
-			master.changeState(1);
-		}
-		if(isPressed(KeyEvent.VK_S)) {
-			master.moveDown();
-			master.runTrue();
-			master.changeState(2);
-		}
-		elementx++;
-		if(isPressed(KeyEvent.VK_SPACE)) {
-			if(elementx>10) {
-				elementx = 0;
-				if(element < 4) {
-					element++;
-					return;
-				}
-				if(element == 4) {
-					element = 1;
-				}
+			
+			
+			if(shooting) {
+					if(ecounter-5 > 0) {
+						ecounter-=5;
+						double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+						
+						Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "lightning", 1);
+						i.setImage(lightningImg);
+						
+//						popMatrix();
+						
+						i.direction = dir;
+						i.w = walls;
+						elements.add(i);
+					}
+					
+//				}
 			}
 			
+			for(Element u : elements) {
+				u.interactWithObjects(enemies);
+				if(u.isDead == true) {
+					u = null;
+					elements.remove(u);
+					
+				}else {
+					u.draw(this);
+				}
+				
+				
+			}
+			
+			//everything in this Matrix is pushed
+			pushMatrix();
+			
+			//draw ze stuff
+			
+			master.draw(this);
+		
+
+			//animate le object
+			
+			//the wand action
+			setUpWand();
+			
+			//pop le matrix
+			popMatrix();
+
+
+			//display health
+			fill(255,255,255);
+			rect(30, 30, 100, 10);
+			fill(255, 0, 0);
+			rect(30, 30, (float)(master.getHealth()* 0.01 * 100), 10);
+			text("Health: " + master.getHealth(), 30, 30);
+
+			//mana
+			fill(255);
+			rect(30, 60, 100, 10);
+			fill(0, 0, 255);
+			
+			rect(30, 60, (int)((10.0/6.0)*ecounter), 10);
+			
+			
+			if (isPressed(KeyEvent.VK_A)) {
+				facingLeft = true;
+				master.moveLeft();
+				master.runTrue();
+				master.changeState(4);
+			}
+			if (isPressed(KeyEvent.VK_D))
+			{
+				facingLeft = false;
+				master.moveRight();
+				master.runTrue();
+				master.changeState(3);
+			}
+			if (isPressed(KeyEvent.VK_W)) {
+				master.moveUp();
+				master.runTrue();
+				master.changeState(1);
+			}
+			if(isPressed(KeyEvent.VK_S)) {
+				master.moveDown();
+				master.runTrue();
+				master.changeState(2);
+			}
+			elementx++;
+			if(isPressed(KeyEvent.VK_SPACE)) {
+				if(elementx>10) {
+					elementx = 0;
+					if(element < 4) {
+						element++;
+						return;
+					}
+					if(element == 4) {
+						element = 1;
+					}
+				}
+				
+			}
+		}
+		else if(gameOver) {
+			background(0);
+			textMode(CENTER);
+			textSize(128);
+			fill(255, 0, 0);
+			text("GAME OVER", 130 , 300);
+			textSize(32);
+			text("Room Number: " + level, 350 , 400);
+		}
+		else if(victory) {
+			background(0);
+			textMode(CENTER);
+			textSize(128);
+			fill(0, 255, 0);
+			text("VICTORY", 200 , 300);
 		}
 			
 			

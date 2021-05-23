@@ -179,9 +179,6 @@ public class Player extends MovingImage{
 	 */
 	public void setHealth(double change) {
 		health += change;
-		if(health <= 0) {
-			System.exit(1);
-		}
 	}
 
 	/**
