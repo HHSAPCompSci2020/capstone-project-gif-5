@@ -112,7 +112,7 @@ public class Witch extends Enemy{
     	}else {
     		stop = true;
     	}
-        if (intersects(p)) {
+        if (intersects(p) && canAttack) {
             p.setHealth(-10);
             canAttack = false;
         }
