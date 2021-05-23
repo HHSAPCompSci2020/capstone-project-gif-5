@@ -19,7 +19,6 @@ public abstract class Element extends MovingImage{
 	public float width;
 	public float height;
 	private Shape s; //for testing intersections
-	private int canDis = 0;
 	//what does "frames" do?
 	
 	/**instantiates an ice element
@@ -59,22 +58,18 @@ public abstract class Element extends MovingImage{
 	 * @param y is the move amount to the y
 	 */
 	public void moveByAmount(double x, double y) {
-		if(canDis>10) {
-			
 			if(touchingWall(this.x,this.y)){
-				
 				dissipate();
 				isDead = true;
 				return;
 			}
+			/*
 			if(touchingWall(super.x + x,super.y + y)) {
 				dissipate();
 				isDead = true;
 				return;
-
-				
-			}
-		}
+				*/
+//		}
 		
 		if(x>0) {
 			facingLeft = false;
@@ -93,8 +88,6 @@ public abstract class Element extends MovingImage{
 	 * draws the element if its not dead
 	 */
 	public void draw(PApplet g) {
-		canDis++;
-		
 		if(isDead) {}
 		else {
 			
