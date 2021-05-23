@@ -89,7 +89,8 @@ public class DrawingSurface extends PApplet {
 	private PImage magicp; 
 	private PImage earthp; 
 	private PImage icep; 
-	private PImage firep; 
+	private PImage firep;
+	private PImage magicImg;
 	private PImage potion; 
 	private PImage ladder; 
 	private PImage lW; 
@@ -167,6 +168,7 @@ public class DrawingSurface extends PApplet {
 		keys = new ArrayList<Integer>();
 		
 		iceImg = loadImage("icicle8.png");
+		magicImg = loadImage("magic.png");
 		fireImg = loadImage("fireball.png");
 		lightningImg = loadImage("lightning.png");
 		
@@ -216,6 +218,8 @@ public class DrawingSurface extends PApplet {
 			image(lightningp,900,50,64,64);
 		}else if(element==3) {
 			image(firep,900,50,64,64);
+		}else if(element==4) {
+			image(magicp,900,50,64,64);
 		}
 		//Dungeon.draw(this, 0, 0, 12, 10);
 		dungeonDraw();
@@ -346,11 +350,11 @@ public class DrawingSurface extends PApplet {
 		if(isPressed(KeyEvent.VK_SPACE)) {
 			if(elementx>10) {
 				elementx = 0;
-				if(element < 3) {
+				if(element < 4) {
 					element++;
 					return;
 				}
-				if(element == 3) {
+				if(element == 4) {
 					element = 1;
 				}
 			}
@@ -612,7 +616,7 @@ public class DrawingSurface extends PApplet {
 //					rotate((float)(dir));
 					translate(3000,30);
 					
-					Fire i = new Fire((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "ice", 1);
+					Fire i = new Fire((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "fire", 1);
 					i.setImage(fireImg);
 					
 					popMatrix();
@@ -621,7 +625,30 @@ public class DrawingSurface extends PApplet {
 					i.w = walls;
 					elements.add(i);
 			}}
+			else if(element==4) {
+				if(ecounter >16) {
+					ecounter-=16;
+					startCount = true;
+					pushMatrix();
+					
+					double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
+
+
+					translate(3000,30);
+					
+					Magic i = new Magic((int)master.getX(), (int)master.getY(), 32, 32, 10, dir, "magic", 1);
+					i.setImage(magicImg);
+					
+					popMatrix();
+					
+					i.direction = dir;
+					i.w = walls;
+					elements.add(i);
+			}
+			}
 		
+			
+			
 		
 	}
 	
