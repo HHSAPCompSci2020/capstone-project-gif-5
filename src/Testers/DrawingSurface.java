@@ -258,14 +258,7 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		if(shooting) {
-//			if(ecounter - 1 >= 0) {
-				
-//				ecounter = ecounter + 1;
-//				startCount = true;
-				
-//				pushMatrix();
-				
-				
+			
 				double dir =  Math.atan2((mouseY-master.getY()),(mouseX-master.getX()));
 				
 				Lightning i = new Lightning((int)master.getX(), (int)master.getY(), 64, 64, 10, dir, "lightning", 1);
