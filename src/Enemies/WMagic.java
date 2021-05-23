@@ -50,7 +50,6 @@ public class WMagic extends MovingImage{
 	
 	/** checks whether any enemies have touched the element. if there are any, then interact with them
 	 * @param p The Player it's attacking
-	 * @param surface the surface it's being drawn on 
 	 * */
 	public void interactWithObjects(Player p) {
 		

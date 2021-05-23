@@ -31,7 +31,6 @@ public abstract class Element extends MovingImage{
 	 * @param h the height of the ice image
 	 * @param frames The number of frames the animation has
 	 * @param name name of the file
-	 * @param speed the speed of the object
 	 * */
 	public Element(int x,int y,int w,int h, int speed, double direction, String name, int frames) {
 		
