@@ -58,18 +58,16 @@ public abstract class Element extends MovingImage{
 	 * @param y is the move amount to the y
 	 */
 	public void moveByAmount(double x, double y) {
-			if(touchingWall(this.x,this.y)){
-				dissipate();
-				isDead = true;
-				return;
-			}
-			/*
-			if(touchingWall(super.x + x,super.y + y)) {
-				dissipate();
-				isDead = true;
-				return;
-				*/
-//		}
+		if(touchingWall(this.x,this.y)){
+			dissipate();
+			isDead = true;
+			return;
+		}
+		if(touchingWall(super.x + x,super.y + y)) {
+			dissipate();
+			isDead = true;
+			return;
+		}
 		
 		if(x>0) {
 			facingLeft = false;
