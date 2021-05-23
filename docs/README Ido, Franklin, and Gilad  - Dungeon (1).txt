@@ -39,7 +39,7 @@ What are the primary features of your program?
 
 
 
-Our program is a dungeon crawling game. In the game your goal is to exit the dungeon by going from room to room. You see a bird’s eye view of your current room and the whole game would be 2D. To be able to move on to the next room, you would need to defeat all the enemies in the current room. The player would be able to defeat the enemies since they are a wizard with different elemental powers. By using these powers against the enemies you would do damage to them until they die. The powers will range from a normal magical burst, to a fire area of effect in front of you, a ground area of effect around you, an ice beam, and a lightning bolt. The enemies however won’t go down without a fight so we’ll have different types of enemies in each room trying to kill you before you kill them. Each enemy would have a different method of hurting you, be different sizes, and the player would need to use different abilities to defeat them. The player would need to defeat the enemy in order to continue and the rooms will be locked off until done so. Each room would also be different from one another, we want rooms to have things like pillars or bookshelves you can hide behind, or pits you can fall into and take damage and other stuff. Once you clear out all the rooms you would unlock the final room where you fight a boss battle against a really strong enemy (probably a dragon). After you defeat the boss you would beat the game. If you would die at any time you would get a game over screen and have to restart the game. Our primary audience would be people from the ages of 5 - 19. This is because those types of people are bored in life and they want to have fun. There will be lots of cool mechanics and different types of monsters you can face. As you advance you will also gain new moves and new abilities. 
+Our program is a dungeon crawling game. In the game your goal is to exit the dungeon by going from room to room. You see a bird’s eye view of your current room and the whole game would be 2D. To be able to move on to the next room, you would need to defeat all the enemies in the current room. The player would be able to defeat the enemies since they are a wizard with different elemental powers. By using these powers against the enemies you would do damage to them until they die. The powers will range from a normal magical burst, to a fire area of effect in front of you, an ice beam, and a lightning bolt. The enemies however won’t go down without a fight so we’ll have different types of enemies in each room trying to kill you before you kill them. Each enemy would have a different method of hurting you, be different sizes, and the player would need to use different abilities to defeat them. The player would need to defeat the enemies in order to continue and the rooms will be locked off until done so. Each room would also be different from one another, we want rooms to have things like pillars or bookshelves you can hide behind. Rooms get increasingly harder until you get to the last room which is the hardest. After you defeat it you would beat the game. If you would die at any time you would get a game over screen and have to restart the game. Our primary audience would be people from the ages of 5 - 19. This is because those types of people are bored in life and they want to have fun. There will be lots of cool mechanics and different types of monsters you can face.
 
 
 
@@ -54,7 +54,7 @@ Will you have menus that need to be navigated? What will they look like?
 Do actions need to be taken in a certain order?]
 
 
-When you open the game you will be presented with a play button and a settings button. When you press the settings button you can change the volume and also the gameplay settings. To click stuff you would use the left mouse button. When you click on the play button you will spawn in the middle of the screen. On the top left there would be a button to send you back to the home screen. It will look like a basic home button. Then when you are in the game you will control yourself with WASD and use the scroll wheel to change from ability to ability. Using your mouse you can use the ability that you have currently selected. You will need to aim your mouse at the spot you want to attack.
+Once you start the game you will be spawned in the first dungeon. You would move around it using WASD. to shoot your elemental attacks you would press mouse1. To switch between elemental attacks you would press the spacebar. The 4 elemental attacks you have available to you are fire (low damage but burns over time), ice (relatively high damage and slows down enemies over time), lightning (high rate of fire but low damage), magic (In between all the others with no special effects). Throughout the dungeon you would encounter health potions which would regenerate you 50 HP. You should avoid enemies and enemy attacks to keep your health. Once you beat all the enemies in a room you could move on to the next one using the ladder. Try to make it to the last room, beat it,m and win! 
 
 
 Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
@@ -93,15 +93,19 @@ Enemy superclass
 * The enemy superclass makes it very easy to create new enemies. All you have to do is change the way it follows the player, speed, damage, and range which will be fields, also you need to change sprite, animations and the way it attacks. Any special attacks would be added in the individual class. 
    * Goblin a small enemy that's fast and does a small amount of damage
    * Skeleton is a medium enemy that has long range attacks and does a low amount of damage
-   * Dragon the final boss that has a lot of health and does a lot of damage. Also breathes fire.
-*  WizardElement (A superclass with all components of an elemental power)
+   * Giant A big yet slow enemy who has a lot of health and deals a lot of damage
+   * Witch Can shoot magic balls at the player but also spawns skeletons over time. By far your most formidable foe.
+WMagic 
+* A magic ball for the witch to shoot
+Arrow
+* The arrow skeletons shoot
+ WizardElement (A superclass with all components of an elemental power)
 * Magic (default power; magic balls that in a straight line)
-* Lightning (slower than magic, but does a lot more damage; looks like a strike of lightning)
-* Earth (A radial attack around the player)
-* Fire (An attack with an area of affect in front of the player; short ranged but has the ability to do the burn effect, which does damage to enemies overtime)
-* Ice (an ice like burst in front of the player; doesn’t do much damage but has the chance to freeze the opponent, making them slower or even unable to move) 
+* Lightning (looks like a strike of lightning that is fast but does a small amount of damage)
+* Fire (An attack with an area of affect in front of the player; has the ability to do the burn effect, which does damage to enemies overtime)
+* Ice (an ice like burst in front of the player; does a good amount of damage and also has the chance to freeze the opponent, making them slower or even unable to move) 
 Player 
-* The player class will make a wizard sprite and make you be able to move and such. It will also create new elementals power. They will be using set elemental powers.
+* The player class will make a wizard sprite and make you be able to move and such. It will also create new elemental power. They will be using set elemental powers.
 Dungeon
 * A class representing the screen the player will play on. Also makes sure to create rooms with different enemies and such.
 DungeonMaker
@@ -112,6 +116,8 @@ DrawingSurface
 * Draws everything onto a canvas.
 DungeonGame
 * Is the main method for the game and it runs everything.
+Wall
+* A class representing walls that movingImages can’t cross.
 
 
 
@@ -122,15 +128,15 @@ Credits:
 * Give credit to all outside resources used. This includes downloaded images or sounds, external java libraries, parent/tutor/student coding help, etc.]
 
 
-Ido: Creates sprites of the game and the player, dungeon, and movingImage classes
+Ido: Creates sprites of the game and the player, dungeon, and movingImage classes, fire, dungeon game, wall, dungeon maker, and magic.
 
-Gilad: Creates the enemy class and all of its subclasses
-
-
-Franklin: Creates the WizardElement class and all of its subclasses
+Gilad: Creates the enemy class and all of its subclasses, Also created the enemy attacks.
 
 
-All of us: We all worked on DrawingSurface
+Franklin: Creates the WizardElement class and ice and lightning.
+
+
+All of us: We all worked on DrawingSurface.
 
 
 Additional credit to the processing library, which we used in our project.
