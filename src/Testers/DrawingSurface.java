@@ -230,6 +230,15 @@ public class DrawingSurface extends PApplet {
 		
 		for(int i = 0; i < enemies.size(); i++) {
 			
+			if(enemies.get(i) instanceof Witch) {
+				Witch w = (Witch) enemies.get(i);
+				for(int j = 0; j < w.getEnemies().size(); j++) {
+					enemies.add(w.getEnemies().get(j));
+					w.getEnemies().remove(j);
+					j--;
+				}
+			}
+			
 			if(enemies.get(i).dead == true) {
 				enemies.set(i,null);
 				enemies.remove(i);
@@ -645,6 +654,7 @@ public class DrawingSurface extends PApplet {
 		 rotate((float) (x+ 2 * 0.349));
 		 image(wand, 0,0);
 	}
+	
 }
 
 

@@ -109,7 +109,9 @@ public class Witch extends Enemy{
     	
     }
 
-
+    public ArrayList<Skeleton> getEnemies() {
+    	return enemies;
+    }
     
 }
 
