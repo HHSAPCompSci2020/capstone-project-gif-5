@@ -83,6 +83,12 @@ public class DrawingSurface extends PApplet {
 	private PImage rightFloor ;
 	private PImage blankFloor; 
 	private PImage blankFloor2; 
+	private PImage lightningp; 
+	private PImage magicp; 
+	private PImage earthp; 
+	private PImage icep; 
+	private PImage firep; 
+	private PImage potion; 
 	private PImage ladder; 
 	private PImage lW; 
 	private int element = 1;
@@ -91,6 +97,10 @@ public class DrawingSurface extends PApplet {
 	private PImage midWall; 
 	private int exitX = 0;
 	private int exitY = 0;
+	private int elementx  = 0;
+	private int potionx=-100;
+	private int potiony=-100;
+	private boolean potionDrank = false;
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -133,9 +143,15 @@ public class DrawingSurface extends PApplet {
 		 rightFloor = loadImage("tiles/tile024.png");
 		 blankFloor = loadImage("tiles/tile023.png");
 		 blankFloor2 = loadImage("tiles/tile022.png");
+		 icep = loadImage("icep.png");
+		 firep = loadImage("firep.png");
+		 earthp = loadImage("earthp.png");
+		 magicp = loadImage("magicp.png");
+		 lightningp = loadImage("lightningp.png");
 		 midWall = loadImage("tiles/tile002.png");
 		 ladder = loadImage("tiles/tile039.png");
 		lW = loadImage("LWIZARD1.png");
+		potion = loadImage("tiles/tile089.png");
 		
 		
 		dungeonSetUp();
@@ -174,10 +190,31 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 			
+		
+		if(master.getX() < potionx+64 && master.getX() > potionx && master.getY() < potiony+64 && master.getY() > potiony) {
+			if(!potionDrank) {
+				potionDrank = true;
+				potionx=-100;
+				potiony=-100;
+				
+				master.setHealth(50); 
+			}
+		
+		}
+			
 			
 	
 		
+		
+		
 		background(37,19,26);
+		if(element==1) {
+			image(icep,900,50,64,64);
+		}else if(element==2) {
+			image(lightningp,900,50,64,64);
+		}else if(element==3) {
+			image(firep,900,50,64,64);
+		}
 		//Dungeon.draw(this, 0, 0, 12, 10);
 		dungeonDraw();
 		//creating goblins
@@ -312,14 +349,19 @@ public class DrawingSurface extends PApplet {
 			master.runTrue();
 			master.changeState(2);
 		}
+		elementx++;
 		if(isPressed(KeyEvent.VK_SPACE)) {
-			if(element < 3) {
-				element++;
-				return;
+			if(elementx>5) {
+				elementx = 0;
+				if(element < 3) {
+					element++;
+					return;
+				}
+				if(element == 3) {
+					element = 1;
+				}
 			}
-			if(element == 3) {
-				element = 1;
-			}
+			
 		}
 			
 			
@@ -477,7 +519,21 @@ public class DrawingSurface extends PApplet {
 						imageMode(CORNER);
 						image(ladder,rectX,rectY,64,64);
 						imageMode(CENTER);
-					}
+				}
+ 				
+ 				if(Dungeon.grid[i][j]=='h') {
+ 					imageMode(CORNER);
+ 					image(blankFloor,rectX,rectY,64,64);
+ 					imageMode(CENTER);
+ 					if(!potionDrank) {
+ 						potionx = (int)rectX;
+ 						potiony = (int)rectY;
+ 						imageMode(CORNER);
+ 						image(potion,rectX,rectY,64,64);
+ 						imageMode(CENTER);
+ 					}
+					
+			}
  						
  				}
  			}
