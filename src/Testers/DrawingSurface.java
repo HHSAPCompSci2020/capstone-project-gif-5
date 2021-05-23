@@ -415,7 +415,7 @@ public class DrawingSurface extends PApplet {
  					if(Dungeon.grid[i][j]=='w') {
  						Witch witch = new Witch((int)rectX,(int)rectY, 64, 64, 6, "witch");
  						witchImg = loadImage("witch.png");
- 						witch.setImage(giantImg);
+ 						witch.setImage(witchImg);
  						witch.w = walls;
  						enemies.add(witch);
  					}
@@ -482,7 +482,7 @@ public class DrawingSurface extends PApplet {
  					
  				
  					
- 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*'||Dungeon.grid[i][j]=='g'||Dungeon.grid[i][j]=='s'||Dungeon.grid[i][j]=='G') {
+ 				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*'||Dungeon.grid[i][j]=='g'||Dungeon.grid[i][j]=='s'||Dungeon.grid[i][j]=='G'||Dungeon.grid[i][j]=='w') {
  					imageMode(CORNER);
  					if(i==1 && j==1) {
 	 						
