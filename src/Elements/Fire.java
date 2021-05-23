@@ -14,13 +14,15 @@ protected int speed = 10;
 	
 	
 	
-	/**instantiates an ice element
+	/**instantiates an fire element
 	 * @param x the starting x coordinate
 	 * @param y the starting y coordinate
 	 * @param w the width of the ice image
 	 * @param h the height of the ice image
 	 * @param frames The number of frames the animation has
 	 * @param name name of the file path
+	 * @param direction direction of the element
+	 * @param speed the speed of the object
 	 * */
 	public Fire(int x,int y,int w,int h, int speed, double direction, String name, int frames) {
 		

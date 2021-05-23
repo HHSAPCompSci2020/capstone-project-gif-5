@@ -15,13 +15,15 @@ import Enemies.Enemy;
 public class Lightning extends Element{
 
 	int hitCount = 0;
-	/**instantiates an ice element
+	/**instantiates an lightning element
 	 * @param x the starting x coordinate
 	 * @param y the starting y coordinate
 	 * @param w the width of the lightning image
 	 * @param h the height of the lightning image
 	 * @param frames The number of frames the animation has
 	 * @param name name of the file path
+	 * @param direction direction of the element
+	 * @param speed the speed of the object
 	 * */
 	public Lightning(int x, int y, int w, int h, int speed, double direction, String name, int frames) {
 		super(x, y, w, h, speed, direction, name, frames);
