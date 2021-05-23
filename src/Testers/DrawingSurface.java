@@ -351,7 +351,7 @@ public class DrawingSurface extends PApplet {
 		}
 		elementx++;
 		if(isPressed(KeyEvent.VK_SPACE)) {
-			if(elementx>5) {
+			if(elementx>10) {
 				elementx = 0;
 				if(element < 3) {
 					element++;
