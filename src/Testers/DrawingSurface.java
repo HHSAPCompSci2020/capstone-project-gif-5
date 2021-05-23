@@ -83,11 +83,14 @@ public class DrawingSurface extends PApplet {
 	private PImage rightFloor ;
 	private PImage blankFloor; 
 	private PImage blankFloor2; 
+	private PImage ladder; 
 	private PImage lW; 
 	private int element = 1;
 	private int level = 1;
 	private int maxLevel = 2;
 	private PImage midWall; 
+	private int exitX = 0;
+	private int exitY = 0;
 	/**
 	 * constructs the player and some monsters
 	 */
@@ -131,6 +134,7 @@ public class DrawingSurface extends PApplet {
 		 blankFloor = loadImage("tiles/tile023.png");
 		 blankFloor2 = loadImage("tiles/tile022.png");
 		 midWall = loadImage("tiles/tile002.png");
+		 ladder = loadImage("tiles/tile039.png");
 		lW = loadImage("LWIZARD1.png");
 		
 		
@@ -159,7 +163,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-		if(enemies.isEmpty()) {
+		if(enemies.isEmpty() && master.getX() < exitX+64 && master.getX() > exitX && master.getY() < exitY+64 && master.getY() > exitY) {
 			level++;
 			if(level <= maxLevel) {
 			
@@ -427,6 +431,8 @@ public class DrawingSurface extends PApplet {
  						imageMode(CENTER);
  					}
  					
+ 				
+ 					
  				if(Dungeon.grid[i][j]=='.'||Dungeon.grid[i][j]=='*'||Dungeon.grid[i][j]=='g'||Dungeon.grid[i][j]=='s') {
  					imageMode(CORNER);
  					if(i==1 && j==1) {
@@ -464,6 +470,14 @@ public class DrawingSurface extends PApplet {
  					imageMode(CENTER);
 
  				}
+ 				
+ 				if(Dungeon.grid[i][j]=='*') {
+ 						exitX = (int)rectX;
+ 						exitY = (int)rectY;
+						imageMode(CORNER);
+						image(ladder,rectX,rectY,64,64);
+						imageMode(CENTER);
+					}
  						
  				}
  			}
