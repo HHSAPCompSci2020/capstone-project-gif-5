@@ -51,6 +51,7 @@ public class DrawingSurface extends PApplet {
 	private PImage goblinImg;
 	private PImage giantImg;
 	private PImage witchImg;
+	private PImage lwitchImg;
 	private PImage iceImg, lightningImg,fireImg;
 	private int gcounter;
 	private int counter;
@@ -156,7 +157,7 @@ public class DrawingSurface extends PApplet {
 		lW = loadImage("LWIZARD1.png");
 		potion = loadImage("tiles/tile089.png");
 		
-		
+		lwitchImg = loadImage("lwitch.png");
 		dungeonSetUp();
 		long start = System.currentTimeMillis();
 		imageMode(CENTER);
@@ -428,7 +429,8 @@ public class DrawingSurface extends PApplet {
  					if(Dungeon.grid[i][j]=='w') {
  						Witch witch = new Witch((int)rectX,(int)rectY, 64, 64, 6, "witch");
  						witchImg = loadImage("witch.png");
- 						witch.setImage(witchImg);
+ 						witch.setImage(lwitchImg);
+ 						witch.setImage2(witchImg);
  						witch.w = walls;
  						enemies.add(witch);
  					}
