@@ -14,7 +14,7 @@ protected int speed = 10;
 	
 	
 	
-	/**instantiates an ice element
+	/**instantiates an fire element
 	 * @param x the starting x coordinate
 	 * @param y the starting y coordinate
 	 * @param w the width of the ice image

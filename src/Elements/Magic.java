@@ -10,7 +10,7 @@ import Enemies.Enemy;
  *Magic elemenet
  */
 public class Magic extends Element {
-	/**instantiates an ice element
+	/**instantiates an magic element
 	 * @param x the starting x coordinate
 	 * @param y the starting y coordinate
 	 * @param w the width of the magic image
