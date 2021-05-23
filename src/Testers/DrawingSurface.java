@@ -98,7 +98,7 @@ public class DrawingSurface extends PApplet {
 	private PImage lW; 
 	private int element = 1;
 	private int level = 1;
-	private int maxLevel = 2;
+	private int maxLevel = 15;
 	private PImage midWall; 
 	private int exitX = 0;
 	private int exitY = 0;
