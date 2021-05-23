@@ -49,6 +49,7 @@ public class DrawingSurface extends PApplet {
 	private PImage wand;
 
 	private PImage goblinImg;
+	private PImage giantImg;
 	private PImage iceImg, lightningImg,fireImg;
 	private int gcounter;
 	private int counter;
@@ -391,6 +392,13 @@ public class DrawingSurface extends PApplet {
  						goblin.setImage2(goblinImg);
  						goblin.w = walls;
  						enemies.add(goblin);
+ 					}
+ 					if(Dungeon.grid[i][j]=='G') {
+ 						Giant giant = new Giant((int)rectX,(int)rectY, 64, 64, 6, "giant");
+ 						giantImg = loadImage("giant.png");
+ 						giant.setImage(giantImg);
+ 						giant.w = walls;
+ 						enemies.add(giant);
  					}
  					if(Dungeon.grid[i][j]=='s') {
  						Skeleton skelly = new Skeleton((int)rectX,(int)rectY, 64, 64, 6, "skeleton");
