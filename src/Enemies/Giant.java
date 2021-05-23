@@ -37,9 +37,9 @@ public class Giant extends Enemy{
     	super.draw(surface, p);
     	if(!dead) {
     		surface.fill(255,255,255);
-    		surface.rect((float)x-23, (float)y-40, 50, 5);
+    		surface.rect((float)x-23, (float)y-80, 50, 5);
     		surface.fill(255, 0, 0);
-    		surface.rect((float)x-23, (float)y-40, (float)(health*0.01*50), 5);
+    		surface.rect((float)x-23, (float)y-80, (float)(health*0.01*50), 5);
     	}
     	act(p);
     }
